@@ -14,31 +14,31 @@ body {
 }
 
 header {
-  padding: 1.5rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background-color: #ffffff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding-bottom: 1rem;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
+.logo-wide {
+  width: 100%;
+  padding: 1rem 0;
 }
 
-.logo img {
-  max-height: 50px;
+.logo-wide img {
+  max-height: 80px;
   width: auto;
 }
 
 nav {
   display: flex;
-  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-bottom: 0.5rem;
 }
 
 nav a {
-  margin-left: 1.5rem;
   text-decoration: none;
   color: #000000;
   font-weight: 500;
@@ -48,6 +48,7 @@ nav a {
 nav a:hover {
   color: #555555;
 }
+
 
 main {
   flex: 1;

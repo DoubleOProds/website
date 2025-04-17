@@ -26,8 +26,10 @@ header {
 }
 
 .logo-wide img {
-  max-height: 5px;
+  height: 10px;
   width: auto;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 nav {

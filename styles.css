@@ -21,12 +21,12 @@ header {
 }
 
 .logo-wide {
-  width: 50%;
+  width: 100%;
   padding: 1rem 0;
 }
 
 .logo-wide img {
-  max-height: 40px;
+  max-height: 5px;
   width: auto;
 }
 

@@ -15,15 +15,8 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background-image: url('Late Night Background.png'); /* Change this path */
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
       color: #f8fafc;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      background-color: #0f172a;
     }
 
     header {
@@ -33,6 +26,9 @@
       align-items: center;
       background-color: rgba(15, 23, 42, 0.9);
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     .logo {
@@ -53,20 +49,26 @@
       color: #38bdf8;
     }
 
-    main {
-      flex: 1;
-      padding: 4rem 2rem;
+    .scrolling-bg {
+      background-image: url('images/late-night-bg.jpg'); /* Change this path */
+      background-size: 100% auto; /* cover width, scroll height */
+      background-repeat: no-repeat;
+      background-position: top center;
+      height: 300vh; /* makes the background scroll with the page */
+      position: relative;
     }
 
-    .late-night-content {
+    .content-box {
+      position: sticky;
+      top: 20%;
       background-color: rgba(0, 0, 0, 0.6);
       padding: 2rem;
       border-radius: 1rem;
       max-width: 800px;
-      margin: 4rem auto;
-      text-align: center;
+      margin: 0 auto;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-      animation: fadeIn 1.2s ease;
+      text-align: center;
+      color: #f8fafc;
     }
 
     h1, h2 {
@@ -79,11 +81,6 @@
       color: #cbd5e1;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     @media (max-width: 600px) {
       h1, h2 {
         font-size: 2rem;
@@ -91,6 +88,10 @@
 
       nav a {
         margin-left: 1rem;
+      }
+
+      .content-box {
+        padding: 1.5rem;
       }
     }
   </style>
@@ -107,24 +108,18 @@
     </nav>
   </header>
 
-  <main>
-    <section class="late-night-content">
+  <div class="scrolling-bg">
+    <div class="content-box">
       <h1>TheLateNight</h1>
       <p>
         Dive into sharp wit, cultural commentary, and electric interviews. TheLateNight is your go-to after-hours talk show with a twist.
       </p>
-    </section>
-
-    <section class="late-night-content" style="margin-top: 100vh;">
-      <h2>Late Night Vibes</h2>
-      <p>
-        As you scroll, the night gets deeper. Neon lights, big laughs, and unscripted moments await.
-      </p>
-    </section>
-  </main>
+    </div>
+  </div>
 
 </body>
 </html>
+
 
 
 

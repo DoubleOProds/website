@@ -75,4 +75,22 @@ p {
     margin-left: 1rem;
   }
 }
+/* Special style just for TheLateNight */
+.late-night-background {
+  background-image: url('images/late-night-bg.jpg'); /* adjust path */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.late-night-content {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 700px;
+  margin: 4rem auto;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
 

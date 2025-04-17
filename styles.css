@@ -77,7 +77,7 @@ p {
 }
 /* Special style just for TheLateNight */
 .late-night-background {
-  background-image: url('images/late-night-bg.jpg'); /* adjust path */
+  background-image: url('Late Night Background.png'); /* adjust path */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

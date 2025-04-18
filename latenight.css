@@ -15,7 +15,7 @@ body {
   min-height: 100vh;
 }
 
-/* Shared header styling */
+/* Header Shared Styles with Initial Blur */
 header {
   padding: 1.5rem 2rem;
   display: flex;
@@ -25,6 +25,12 @@ header {
   background-color: #ffffff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  filter: blur(5px); /* Initial blur effect */
+  transition: filter 0.3s ease; /* Smooth transition for the blur effect */
+}
+
+header.scrolled {
+  filter: blur(0); /* Remove blur when scrolled */
 }
 
 .logo {
@@ -103,8 +109,3 @@ p {
     padding: 2rem 1rem;
   }
 }
-
-
-
-
-

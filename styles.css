@@ -31,8 +31,8 @@ header {
 }
 
 .logo img {
-  max-width: auto;
   height: 60px;
+  max-width: auto;
 }
 
 nav {

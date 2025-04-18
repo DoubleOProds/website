@@ -100,26 +100,6 @@ p {
 }
 
 /* === TheLateNight Page Specific Styles === */
-body.latenight {
-  background-color: #0f172a;
-  color: #f8fafc;
-}
-
-body.latenight header {
-  background-color: rgba(15, 23, 42, 0.95);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  padding: 1.5rem 2rem;
-  position: sticky;
-  top: 0;
-}
-
-body.latenight nav a {
-  color: #f8fafc;
-}
-
-body.latenight nav a:hover {
-  color: #38bdf8;
-}
 
 .background-wrapper {
   background-image: url('Late Night Background.png');

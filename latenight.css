@@ -66,16 +66,16 @@ nav a:hover {
   width: 100%;
 }
 
-/* Deep purple content boxes with white text */
+/* Deep purple transparent content boxes with white text */
 .content-section {
   padding: 4rem 2rem;
   max-width: 800px;
   margin: 0 auto;
-  background-color: #36013F; /* Deep purple */
+  background-color: rgba(54, 1, 63, 0.7); /* Semi-transparent deep purple */
   border-radius: 1rem;
   margin-top: 5rem;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  color: white; /* Ensure all text inside is white */
+  color: white; /* White text inside the transparent box */
 }
 
 h1, h2 {
@@ -103,6 +103,7 @@ p {
     padding: 2rem 1rem;
   }
 }
+
 
 
 

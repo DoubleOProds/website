@@ -17,7 +17,7 @@ body {
 
 /* Shared header styling */
 header {
-  padding: 1.5rem 2rem
+  padding: 1.5rem 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,27 +66,27 @@ nav a:hover {
   width: 100%;
 }
 
-/* Deep purple content boxes */
+/* Deep purple content boxes with white text */
 .content-section {
   padding: 4rem 2rem;
   max-width: 800px;
   margin: 0 auto;
-  background-color: #36013F;
+  background-color: #36013F; /* Deep purple */
   border-radius: 1rem;
   margin-top: 5rem;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  color: #f8f8ff; /* Light text for readability */
+  color: white; /* Ensure all text inside is white */
 }
 
 h1, h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #f8f8ff;
+  color: white; /* White text for the headers */
 }
 
 p {
   font-size: 1.2rem;
-  color: #e2e8f0;
+  color: white; /* White text for paragraphs */
 }
 
 /* Responsive layout */
@@ -103,5 +103,6 @@ p {
     padding: 2rem 1rem;
   }
 }
+
 
 

@@ -100,6 +100,38 @@ p {
 }
 
 /* === TheLateNight Page Specific Styles === */
+body.latenight {
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+body.latenight header {
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding-bottom: 1rem;
+  position: relative;
+  z-index: 1000;
+}
+
+body.latenight nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-bottom: 0.5rem;
+}
+
+body.latenight nav a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+body.latenight nav a:hover {
+  color: #555555;
+}
 
 .background-wrapper {
   background-image: url('Late Night Background.png');

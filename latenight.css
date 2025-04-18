@@ -77,10 +77,10 @@ nav a:hover {
   padding: 4rem 2rem;
   max-width: 800px;
   margin: 0 auto;
-  background-color: rgba(54, 1, 63, 0); /* Fully transparent background */
+  background-color: rgba(54, 1, 63, 5); /* Fully transparent background */
   border-radius: 1rem;
   margin-top: 5rem;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 3);
   color: white; /* White text inside the transparent box */
 }
 

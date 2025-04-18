@@ -4,30 +4,24 @@
   box-sizing: border-box;
 }
 
-/* Body - Default Theme */
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #f0f4f8;
+  color: #333;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* Header Shared Styles */
+/* Header Styles */
 header {
   padding: 1.5rem 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   background-color: #ffffff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-}
-
-.logo {
-  margin-bottom: 0.5rem;
 }
 
 .logo img {
@@ -35,63 +29,105 @@ header {
   height: auto;
 }
 
+/* Nav Styles */
 nav {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
+  margin-top: 1rem;
 }
 
 nav a {
+  margin: 0 1rem;
   text-decoration: none;
-  color: #000000;
+  color: #333;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 nav a:hover {
-  color: #555555;
+  color: #38bdf8;
 }
 
-/* Main Content */
+/* Main Section Styling */
 main {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   padding: 2rem;
+  background-color: #ffffff;
 }
 
-h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  animation: fadeIn 1.2s ease;
+/* Show Container */
+.show-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
 }
 
-p {
+/* Show Item Styling */
+.show-item {
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  width: 45%;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.show-item:hover {
+  transform: scale(1.05);
+}
+
+.show-item img {
+  width: 100%;
+  height: auto;
+}
+
+.show-item p {
   font-size: 1.2rem;
-  color: #333333;
-  animation: fadeIn 1.6s ease;
+  padding: 1rem;
+  color: #333;
+  background-color: #f8fafc;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Additional Styles for Mission Section */
+.mission h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
-/* Mobile Responsiveness */
+.mission h2, .mission h3 {
+  font-size: 1.8rem;
+}
+
+.mission p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .show-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .show-item {
+    width: 80%;
+    margin-bottom: 2rem;
+  }
+}
+
 @media (max-width: 600px) {
-  h1 {
+  .mission h1 {
     font-size: 2rem;
   }
 
-  nav {
-    gap: 1rem;
+  .mission h2, .mission h3 {
+    font-size: 1.6rem;
   }
 
-  .logo img {
-    max-width: 180px;
+  .show-item p {
+    font-size: 1rem;
   }
 }
 

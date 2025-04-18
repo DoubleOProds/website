@@ -1,3 +1,4 @@
+/* === Global Reset and Fonts === */
 * {
   margin: 0;
   padding: 0;
@@ -13,11 +14,14 @@ body {
   min-height: 100vh;
 }
 
+/* === Header Styling === */
 header {
   background-color: #ffffff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   padding-bottom: 1rem;
+  position: relative;
+  z-index: 1000;
 }
 
 .logo-wide {
@@ -30,6 +34,12 @@ header {
   width: auto;
   max-width: 100%;
   object-fit: contain;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 nav {
@@ -51,7 +61,7 @@ nav a:hover {
   color: #555555;
 }
 
-
+/* === Main Content Styling === */
 main {
   flex: 1;
   display: flex;
@@ -74,16 +84,11 @@ p {
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
+/* === Responsive === */
 @media (max-width: 600px) {
   h1 {
     font-size: 2rem;
@@ -92,8 +97,69 @@ p {
   nav a {
     margin-left: 1rem;
   }
+}
 
-  .logo img {
-    max-height: 40px;
+/* === TheLateNight Page Specific Styles === */
+body.latenight {
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+body.latenight header {
+  background-color: rgba(15, 23, 42, 0.95);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  padding: 1.5rem 2rem;
+  position: sticky;
+  top: 0;
+}
+
+body.latenight nav a {
+  color: #f8fafc;
+}
+
+body.latenight nav a:hover {
+  color: #38bdf8;
+}
+
+.background-wrapper {
+  background-image: url('Late Night Background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  min-height: 300vh;
+  width: 100%;
+}
+
+.content-section {
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.65);
+  border-radius: 1rem;
+  margin-top: 5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+body.latenight h1,
+body.latenight h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #f8fafc;
+}
+
+body.latenight p {
+  font-size: 1.2rem;
+  color: #cbd5e1;
+}
+
+@media (max-width: 600px) {
+  body.latenight h1,
+  body.latenight h2 {
+    font-size: 2rem;
+  }
+
+  .content-section {
+    padding: 2rem 1rem;
   }
 }
+

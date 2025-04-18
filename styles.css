@@ -112,7 +112,8 @@ main {
   }
 
   .show-item {
-    width: 80%;
+    width: auto;
+    height: 60px;
     margin-bottom: 2rem;
   }
 }

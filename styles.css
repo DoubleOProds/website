@@ -1,10 +1,10 @@
-/* === Global Reset and Fonts === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Body - Default Theme */
 body {
   font-family: 'Inter', sans-serif;
   background-color: #ffffff;
@@ -14,32 +14,25 @@ body {
   min-height: 100vh;
 }
 
-/* === Header Styling === */
+/* Header Shared Styles */
 header {
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   background-color: #ffffff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  padding-bottom: 1rem;
-  position: relative;
-  z-index: 1000;
-}
-
-.logo-wide {
-  width: 100%;
-  padding: 1rem 0;
-}
-
-.logo-wide img {
-  height: 60px;
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.logo img {
+  max-width: auto;
+  height: 75px;
 }
 
 nav {
@@ -47,7 +40,6 @@ nav {
   justify-content: center;
   flex-wrap: wrap;
   gap: 1.5rem;
-  padding-bottom: 0.5rem;
 }
 
 nav a {
@@ -61,7 +53,7 @@ nav a:hover {
   color: #555555;
 }
 
-/* === Main Content Styling === */
+/* Main Content */
 main {
   flex: 1;
   display: flex;
@@ -88,108 +80,18 @@ p {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* === Responsive === */
+/* Mobile Responsiveness */
 @media (max-width: 600px) {
   h1 {
     font-size: 2rem;
   }
 
-  nav a {
-    margin-left: 1rem;
-  }
-}
-
-/* === TheLateNight Page Specific Styles === */
-body.latenight {
-  background-color: #0f172a;
-  color: #f8fafc;
-}
-
-body.latenight header {
-  background-color: #ffffff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  padding-bottom: 1rem;
-  position: relative;
-  z-index: 1000;
-}
-
-.logo-wide {
-  width: 100%;
-  padding: 1rem 0;
-}
-
-.logo-wide img {
-  height: 60px;
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-body.latenight nav {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  padding-bottom: 0.5rem;
-}
-
-body.latenight nav a {
-  text-decoration: none;
-  color: #000000;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-body.latenight nav a:hover {
-  color: #555555;
-}
-
-.background-wrapper {
-  background-image: url('Late Night Background.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top;
-  min-height: 300vh;
-  width: 100%;
-}
-
-.content-section {
-  padding: 4rem 2rem;
-  max-width: 800px;
-  margin: 0 auto;
-  background-color: rgba(0, 0, 0, 0.65);
-  border-radius: 1rem;
-  margin-top: 5rem;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-}
-
-body.latenight h1,
-body.latenight h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: #f8fafc;
-}
-
-body.latenight p {
-  font-size: 1.2rem;
-  color: #cbd5e1;
-}
-
-@media (max-width: 600px) {
-  body.latenight h1,
-  body.latenight h2 {
-    font-size: 2rem;
+  nav {
+    gap: 1rem;
   }
 
-  .content-section {
-    padding: 2rem 1rem;
+  .logo img {
+    max-width: 180px;
   }
 }
 

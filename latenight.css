@@ -15,7 +15,7 @@ body {
   min-height: 100vh;
 }
 
-/* Header Shared Styles with Initial Blur */
+/* Header Shared Styles */
 header {
   padding: 1.5rem 2rem;
   display: flex;
@@ -25,12 +25,6 @@ header {
   background-color: #ffffff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  filter: blur(5px); /* Initial blur effect */
-  transition: filter 0.3s ease; /* Smooth transition for the blur effect */
-}
-
-header.scrolled {
-  filter: blur(0); /* Remove blur when scrolled */
 }
 
 .logo {
@@ -77,10 +71,10 @@ nav a:hover {
   padding: 4rem 2rem;
   max-width: 800px;
   margin: 0 auto;
-  background-color: rgba(54, 1, 63, 5); /* Fully transparent background */
+  background-color: rgba(54, 1, 63, 0.5); /* Transparent deep purple */
   border-radius: 1rem;
   margin-top: 5rem;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 3);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
   color: white; /* White text inside the transparent box */
 }
 
@@ -109,3 +103,4 @@ p {
     padding: 2rem 1rem;
   }
 }
+

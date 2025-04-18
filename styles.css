@@ -59,6 +59,7 @@ main {
   display: flex;
   justify-content: space-around;
   margin-top: 2rem;
+  flex-wrap: wrap; /* Helps with responsiveness */
 }
 
 /* Show Item Styling */
@@ -70,10 +71,12 @@ main {
   width: 45%;
   text-align: center;
   transition: transform 0.3s ease;
+  transform-origin: center center; /* Added to control scaling */
+  margin-bottom: 2rem; /* Added to prevent overlap */
 }
 
 .show-item:hover {
-  transform: scale(1.1);
+  transform: scale(1.05); /* Reduced scale to avoid covering content */
 }
 
 .show-item img {
@@ -94,7 +97,8 @@ main {
   margin-bottom: 1rem;
 }
 
-.mission h2, .mission h3 {
+.mission h2,
+.mission h3 {
   font-size: 1.8rem;
 }
 
@@ -112,8 +116,8 @@ main {
   }
 
   .show-item {
-    width: auto;
-    height: 20px;
+    width: 90%;
+    height: auto;
     margin-bottom: 2rem;
   }
 }
@@ -123,7 +127,8 @@ main {
     font-size: 2rem;
   }
 
-  .mission h2, .mission h3 {
+  .mission h2,
+  .mission h3 {
     font-size: 1.6rem;
   }
 
@@ -131,4 +136,5 @@ main {
     font-size: 1rem;
   }
 }
+
 

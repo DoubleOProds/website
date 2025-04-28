@@ -6,6 +6,21 @@
   <title>TheLateNight | Double O Productions</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="latenight.css" />
+  <style>
+    .video-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .video-wrapper iframe {
+      width: 90%;
+      max-width: 800px;
+      height: 450px;
+      border: none;
+      border-radius: 12px;
+    }
+  </style>
 </head>
 <body>
 
@@ -42,23 +57,22 @@
       </p>
     </section>
 
-    <!-- New YouTube Playlist Section -->
+    <!-- Playlist Section -->
     <section class="content-section">
       <h2>The Latest Show!</h2>
       <div class="video-wrapper">
-        <iframe width= auto height= "500" src="https://www.youtube.com/embed/videoseries?list=PL4hDM5wD96C9RaNYwXMK_wmRtoJV75SUf" 
-          title="YouTube playlist" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen>
+        <iframe src="https://www.youtube.com/embed/videoseries?list=PL4hDM5wD96C9RaNYwXMK_wmRtoJV75SUf"
+          title="YouTube Playlist" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
         </iframe>
       </div>
     </section>
 
+    <!-- Single Special Video Section -->
     <section class="content-section">
       <h2>Our Latest Special Show!</h2>
       <div class="video-wrapper">
-        <iframe width= auto height= "500" src="https://www.youtube.com/watch?v=sRQbLA71RQs&list=PL4hDM5wD96C9RaNYwXMK_wmRtoJV75SUf&index=3" 
-          title="YouTube Special" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen>
+        <iframe src="https://www.youtube.com/watch?v=sRQbLA71RQs&list=PL4hDM5wD96C9RaNYwXMK_wmRtoJV75SUf&index=3"
+          title="YouTube Special Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
         </iframe>
       </div>
     </section>
@@ -67,4 +81,3 @@
 
 </body>
 </html>
-

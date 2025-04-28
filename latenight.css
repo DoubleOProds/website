@@ -104,3 +104,28 @@ p {
   }
 }
 
+/* Center and style YouTube videos nicely */
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  max-width: 800px;
+  height: 450px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Make video responsive for smaller screens */
+@media (max-width: 600px) {
+  .video-wrapper iframe {
+    height: 250px;
+  }
+}
+
+

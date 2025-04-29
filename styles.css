@@ -148,8 +148,8 @@ main {
 .feature-row {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 2rem;
+  align-items: stretch;
+  gap: 4rem; /* ✅ Add spacing between boxes */
   margin-top: 3rem;
   flex-wrap: wrap;
 }
@@ -165,6 +165,7 @@ main {
   display: flex;
   align-items: center;
   transition: transform 0.3s ease;
+  width: 300px;
 }
 
 .feature-box:hover {
@@ -172,13 +173,14 @@ main {
 }
 
 .feature-img {
-  width: 200px;
+  width: 150px;
   height: auto;
   filter: grayscale(100%);
   transition: filter 0.5s ease;
   border-radius: 8px;
 }
 
+/* ✅ Image hover effect */
 .feature-box:hover .feature-img {
   filter: grayscale(0%);
 }
@@ -188,19 +190,27 @@ main {
   color: #000;
   font-weight: 600;
   font-size: 1.2rem;
+  flex: 1;
 }
 
+/* ✅ Image alignment */
+.left-img {
+  flex-direction: row;
+}
+
+.right-img {
+  flex-direction: row-reverse;
+}
+
+/* ✅ Responsive stacking */
 @media (max-width: 768px) {
   .feature-box {
-    flex-direction: column;
+    flex-direction: column !important;
     text-align: center;
+    width: 90%;
   }
 
   .feature-text {
     margin: 1rem 0 0;
   }
 }
-
-
-
-

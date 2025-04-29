@@ -56,8 +56,10 @@ nav a:hover {
 
 /* Main Section Styling */
 main {
+  position: relative;
   padding: 2rem;
   background-color: #ffffff;
+  min-height: 80vh;
 }
 
 /* Show Container */
@@ -143,12 +145,6 @@ main {
   }
 }
 
-/* Ensure main is a positioning context */
-main {
-  position: relative; /* Add this to anchor .feature elements properly */
-}
-
-/* Feature Sections */
 .feature {
   position: absolute;
   display: flex;
@@ -176,7 +172,7 @@ main {
 }
 
 .feature-img {
-  width: 20px;
+  width: 100px;
   height: auto;
   filter: grayscale(100%);
   transition: filter 0.5s ease;

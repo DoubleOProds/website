@@ -143,4 +143,57 @@ main {
   }
 }
 
+/* Ensure main is a positioning context */
+main {
+  position: relative; /* Add this to anchor .feature elements properly */
+}
+
+/* Feature Sections */
+.feature {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  max-width: 40%;
+  text-decoration: none;
+  z-index: 1;
+}
+
+.feature.top-left {
+  top: 2rem;
+  left: 2rem;
+}
+
+.feature.bottom-right {
+  bottom: 2rem;
+  right: 2rem;
+  flex-direction: row-reverse;
+}
+
+.feature-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.feature-img {
+  width: 200px;
+  height: auto;
+  filter: grayscale(100%);
+  transition: filter 0.5s ease;
+  border-radius: 8px;
+}
+
+.feature-img:hover {
+  filter: grayscale(0%);
+}
+
+.feature-text {
+  background-color: #e0e0e0;
+  padding: 1rem;
+  margin: 0 1rem;
+  border-radius: 8px;
+  color: #000;
+  font-weight: 600;
+}
+
 

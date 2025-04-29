@@ -176,7 +176,7 @@ main {
 }
 
 .feature-img {
-  width: 200px;
+  width: 20px;
   height: auto;
   filter: grayscale(100%);
   transition: filter 0.5s ease;

@@ -1,4 +1,4 @@
-* {
+make the text section transparent beige and the text colour Steel blue * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -58,8 +58,7 @@ nav a:hover {
 main {
   position: relative;
   padding: 2rem;
-  background-color: rgba(245, 245, 220, 0.6); /* Transparent beige */
-  color: steelblue; /* Steel blue text */
+  background-color: #ffffff;
   min-height: 80vh;
 }
 
@@ -68,7 +67,7 @@ main {
   display: flex;
   justify-content: space-around;
   margin-top: 2rem;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Helps with responsiveness */
 }
 
 /* Show Item Styling */
@@ -80,12 +79,12 @@ main {
   width: 45%;
   text-align: center;
   transition: transform 0.3s ease;
-  transform-origin: center center;
-  margin-bottom: 2rem;
+  transform-origin: center center; /* Added to control scaling */
+  margin-bottom: 2rem; /* Added to prevent overlap */
 }
 
 .show-item:hover {
-  transform: scale(1.05);
+  transform: scale(1.05); /* Reduced scale to avoid covering content */
 }
 
 .show-item img {
@@ -96,17 +95,11 @@ main {
 .show-item p {
   font-size: 1.2rem;
   padding: 1rem;
-  color: steelblue; /* Updated text color */
-  background-color: rgba(245, 245, 220, 0.6); /* Transparent beige */
+  color: #333;
+  background-color: #ffffff;
 }
 
 /* Additional Styles for Mission Section */
-.mission {
-  background-color: rgba(245, 245, 220, 0.6); /* Transparent beige */
-  color: steelblue; /* Steel blue text */
-  padding: 2rem;
-}
-
 .mission h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
@@ -119,7 +112,7 @@ main {
 
 .mission p {
   font-size: 1rem;
-  color: steelblue; /* Steel blue text */
+  color: #71797E;
   line-height: 1.6;
 }
 
@@ -167,8 +160,7 @@ main {
 }
 
 .feature-box {
-  background-color: rgba(245, 245, 220, 0.6); /* Transparent beige */
-  color: steelblue; /* Steel blue text */
+  background-color: #e0e0e0;
   border-radius: 10px;
   padding: 1rem;
   display: flex;
@@ -197,7 +189,7 @@ main {
 
 .feature-text {
   margin: 0 1rem;
-  color: steelblue; /* Steel blue text */
+  color: #000;
   font-weight: 600;
   font-size: 1.2rem;
   flex: 1;
@@ -217,6 +209,7 @@ main {
   opacity: 1;
   transform: translateY(0);
 }
+
 
 /* Responsive stacking */
 @media (max-width: 768px) {

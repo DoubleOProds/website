@@ -1,4 +1,4 @@
-/* latenight.css */
+/* onthelow.css */
 
 * {
   margin: 0;
@@ -9,13 +9,13 @@
 body {
   font-family: 'Inter', sans-serif;
   background-color: #ffffff;
-  color: #000000;
+  color: #222222;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* Header Shared Styles */
+/* Header */
 header {
   padding: 1.5rem 2rem;
   display: flex;
@@ -36,7 +36,7 @@ header {
   height: auto;
 }
 
-/* Nav styling */
+/* Navigation */
 nav {
   display: flex;
   justify-content: center;
@@ -47,64 +47,49 @@ nav {
 nav a {
   margin: 0 1rem;
   text-decoration: none;
-  color: #000000;
+  color: #222222;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 nav a:hover {
-  color: #38bdf8;
+  color: #ff6b6b; /* A bright salmon hover effect */
 }
 
-/* LateNight unique background */
+/* Background section */
 .background-wrapper {
-  background-image: url('OTLback.png'); /* Update the path as needed */
+  background-image: url('OTLback.png'); /* Ensure the image exists in your directory */
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: top;
+  background-position: center;
   min-height: 300vh;
   width: 100%;
 }
 
-/* Transparent deep purple content boxes */
+/* Content sections */
 .content-section {
   padding: 4rem 2rem;
   max-width: 800px;
   margin: 0 auto;
-  background-color: #F5F5DC; /* Transparent deep beige */
+  background-color: rgba(250, 240, 220, 0.8); /* Soft beige with transparency */
   border-radius: 1rem;
   margin-top: 5rem;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  color: white; /* White text inside the transparent box */
+  color: #222222;
 }
 
 h1, h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: white; /* White text for the headers */
+  color: #111111;
 }
 
 p {
   font-size: 1.2rem;
-  color: white; /* White text for paragraphs */
+  color: #222222;
 }
 
-/* Responsive layout */
-@media (max-width: 600px) {
-  h1, h2 {
-    font-size: 2rem;
-  }
-
-  nav a {
-    margin: 0 0.5rem;
-  }
-
-  .content-section {
-    padding: 2rem 1rem;
-  }
-}
-
-/* Center and style YouTube videos nicely */
+/* Video Styling */
 .video-wrapper {
   display: flex;
   justify-content: center;
@@ -121,10 +106,21 @@ p {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Make video responsive for smaller screens */
+/* Responsive Design */
 @media (max-width: 600px) {
+  h1, h2 {
+    font-size: 2rem;
+  }
+
+  nav a {
+    margin: 0 0.5rem;
+  }
+
+  .content-section {
+    padding: 2rem 1rem;
+  }
+
   .video-wrapper iframe {
     height: 250px;
   }
 }
-

@@ -58,7 +58,8 @@ nav a:hover {
 main {
   position: relative;
   padding: 2rem;
-  background-color: #ffffff;
+  background-color: rgba(245, 245, 220, 0.6); /* Transparent beige */
+  color: steelblue; /* Steel blue text */
   min-height: 80vh;
 }
 
@@ -67,7 +68,7 @@ main {
   display: flex;
   justify-content: space-around;
   margin-top: 2rem;
-  flex-wrap: wrap; /* Helps with responsiveness */
+  flex-wrap: wrap;
 }
 
 /* Show Item Styling */
@@ -79,12 +80,12 @@ main {
   width: 45%;
   text-align: center;
   transition: transform 0.3s ease;
-  transform-origin: center center; /* Added to control scaling */
-  margin-bottom: 2rem; /* Added to prevent overlap */
+  transform-origin: center center;
+  margin-bottom: 2rem;
 }
 
 .show-item:hover {
-  transform: scale(1.05); /* Reduced scale to avoid covering content */
+  transform: scale(1.05);
 }
 
 .show-item img {
@@ -95,11 +96,17 @@ main {
 .show-item p {
   font-size: 1.2rem;
   padding: 1rem;
-  color: #333;
-  background-color: #ffffff;
+  color: steelblue; /* Updated text color */
+  background-color: rgba(245, 245, 220, 0.6); /* Transparent beige */
 }
 
 /* Additional Styles for Mission Section */
+.mission {
+  background-color: rgba(245, 245, 220, 0.6); /* Transparent beige */
+  color: steelblue; /* Steel blue text */
+  padding: 2rem;
+}
+
 .mission h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
@@ -112,7 +119,7 @@ main {
 
 .mission p {
   font-size: 1rem;
-  color: #71797E;
+  color: steelblue; /* Steel blue text */
   line-height: 1.6;
 }
 
@@ -160,7 +167,8 @@ main {
 }
 
 .feature-box {
-  background-color: #e0e0e0;
+  background-color: rgba(245, 245, 220, 0.6); /* Transparent beige */
+  color: steelblue; /* Steel blue text */
   border-radius: 10px;
   padding: 1rem;
   display: flex;
@@ -189,7 +197,7 @@ main {
 
 .feature-text {
   margin: 0 1rem;
-  color: #000;
+  color: steelblue; /* Steel blue text */
   font-weight: 600;
   font-size: 1.2rem;
   flex: 1;
@@ -210,7 +218,6 @@ main {
   transform: translateY(0);
 }
 
-
 /* Responsive stacking */
 @media (max-width: 768px) {
   .feature-box {
@@ -222,4 +229,3 @@ main {
     margin: 1rem 0 0;
   }
 }
-

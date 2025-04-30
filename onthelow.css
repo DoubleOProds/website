@@ -1,4 +1,5 @@
-* {
+/* Global Reset and Box Sizing */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -96,7 +97,7 @@ main {
 .show-item p {
   font-size: 1.2rem;
   padding: 1rem;
-  color: steelblue; /* Updated text color */
+  color: steelblue; /* Steel blue text */
   background-color: rgba(245, 245, 220, 0.6); /* Transparent beige */
 }
 
@@ -229,4 +230,3 @@ main {
     margin: 1rem 0 0;
   }
 }
-

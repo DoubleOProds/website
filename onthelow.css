@@ -1,1 +1,131 @@
+/* latenight.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header Shared Styles */
+header {
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.logo {
+  margin-bottom: 0.5rem;
+}
+
+.logo img {
+  max-width: 250px;
+  height: auto;
+}
+
+/* Nav styling */
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #000000;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #38bdf8;
+}
+
+/* LateNight unique background */
+.background-wrapper {
+  background-image: url('Late Night Background.png'); /* Update the path as needed */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  min-height: 300vh;
+  width: 100%;
+}
+
+/* Transparent deep purple content boxes */
+.content-section {
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: rgba(54, 1, 63, 0.5); /* Transparent deep purple */
+  border-radius: 1rem;
+  margin-top: 5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  color: white; /* White text inside the transparent box */
+}
+
+h1, h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: white; /* White text for the headers */
+}
+
+p {
+  font-size: 1.2rem;
+  color: white; /* White text for paragraphs */
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+  h1, h2 {
+    font-size: 2rem;
+  }
+
+  nav a {
+    margin: 0 0.5rem;
+  }
+
+  .content-section {
+    padding: 2rem 1rem;
+  }
+}
+
+/* Center and style YouTube videos nicely */
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  max-width: 800px;
+  height: 450px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Make video responsive for smaller screens */
+@media (max-width: 600px) {
+  .video-wrapper iframe {
+    height: 250px;
+  }
+}
+
 

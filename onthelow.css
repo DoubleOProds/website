@@ -71,7 +71,7 @@ nav a:hover {
   padding: 4rem 2rem;
   max-width: 800px;
   margin: 0 auto;
-  background-color: rgba(54, 1, 63, 0.5); /* Transparent deep purple */
+  background-color: #F5F5DC; /* Transparent deep purple */
   border-radius: 1rem;
   margin-top: 5rem;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
@@ -86,7 +86,7 @@ h1, h2 {
 
 p {
   font-size: 1.2rem;
-  color: white; /* White text for paragraphs */
+  color: #F5F5DC; /* White text for paragraphs */
 }
 
 /* Responsive layout */

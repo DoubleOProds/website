@@ -1,4 +1,4 @@
-/* coolshow.css */
+/* latenight.css */
 
 * {
   margin: 0;
@@ -9,7 +9,7 @@
 body {
   font-family: 'Inter', sans-serif;
   background-color: #ffffff;
-  color: #0a2a2f; /* Dark slate text */
+  color: #000000;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -47,46 +47,46 @@ nav {
 nav a {
   margin: 0 1rem;
   text-decoration: none;
-  color: #0a2a2f; /* Dark slate text */
+  color: #000000;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 nav a:hover {
-  color: #2dd4bf; /* Soft teal highlight */
+  color: #38bdf8;
 }
 
-/* Background Image Wrapper */
+/* LateNight unique background */
 .background-wrapper {
-  background-image: url('OTLback.png'); /* Update with your image path */
+  background-image: url('OTLback.png'); /* Update the path as needed */
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: top;
   min-height: 300vh;
   width: 100%;
 }
 
-/* Transparent teal content boxes */
+/* Transparent deep purple content boxes */
 .content-section {
   padding: 4rem 2rem;
   max-width: 800px;
   margin: 0 auto;
-  background-color: rgba(13, 148, 136, 0.4); /* Transparent teal */
+  background-color: #F5F5DC; /* Transparent deep beige */
   border-radius: 1rem;
   margin-top: 5rem;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  color: #0a2a2f; /* Text inside box */
+  color: white; /* White text inside the transparent box */
 }
 
 h1, h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #0a2a2f;
+  color: white; /* White text for the headers */
 }
 
 p {
   font-size: 1.2rem;
-  color: #0a2a2f;
+  color: white; /* White text for paragraphs */
 }
 
 /* Responsive layout */
@@ -104,7 +104,7 @@ p {
   }
 }
 
-/* Center and style YouTube videos */
+/* Center and style YouTube videos nicely */
 .video-wrapper {
   display: flex;
   justify-content: center;
@@ -121,9 +121,10 @@ p {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Responsive video */
+/* Make video responsive for smaller screens */
 @media (max-width: 600px) {
   .video-wrapper iframe {
     height: 250px;
   }
 }
+

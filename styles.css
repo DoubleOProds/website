@@ -13,7 +13,6 @@ body {
   min-height: 100vh;
 }
 
-/* Header Styles */
 header {
   padding: 1.5rem 2rem;
   display: flex;
@@ -34,7 +33,6 @@ header {
   height: auto;
 }
 
-/* Nav styling */
 nav {
   display: flex;
   justify-content: center;
@@ -54,169 +52,116 @@ nav a:hover {
   color: #38bdf8;
 }
 
-/* Main Section Styling */
 main {
-  position: relative;
   padding: 0;
   background-color: #A4D19D;
-  min-height: 80vh;
 }
 
 /* Mission Section */
 .mission {
   text-align: center;
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, #e0f2fe, #f0f4f8);
-  color: #1f2937;
-  border-radius: 16px;
-  margin: 2rem auto;
-  max-width: 960px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .mission h1 {
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
-  font-weight: 700;
 }
 
 .mission p {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  color: #4b5563;
+  font-size: 1.1rem;
+  color: #71797E;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-/* Feature Section */
+/* Feature Columns */
 .feature-column {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
-  margin-top: 0;
+  margin-top: 2rem;
 }
 
 .feature-link {
+  text-decoration: none;
   width: 100%;
-  display: block;
 }
 
-/* Full-screen image feature blocks */
+/* Full-width, side-by-side banner sections */
 .feature-box {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 70vh;
+  overflow: hidden;
+  position: relative;
+  transition: background-color 0.3s ease;
 }
 
-/* Feature image styling */
 .feature-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  width: 60%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(100%);
-  transition: filter 0.5s ease, transform 0.5s ease;
-  z-index: 1;
+  transition: transform 0.5s ease;
 }
 
 .feature-box:hover .feature-img {
-  filter: grayscale(0%);
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
-/* Text overlay on feature image */
 .feature-text {
-  position: relative;
-  z-index: 2;
-  background-color: rgba(0, 0, 0, 0.4);
-  color: #fff;
+  width: 40%;
+  padding: 2rem;
+  color: #000;
   font-size: 2rem;
   font-weight: 600;
-  padding: 1.5rem 2rem;
-  border-radius: 10px;
   opacity: 0;
-  transition: opacity 0.6s ease;
-  text-align: center;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
+/* Fade in on hover */
 .feature-box:hover .feature-text {
   opacity: 1;
+  transform: translateY(0);
 }
 
-/* Show Container (if still used elsewhere) */
-.show-container {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 2rem;
-  flex-wrap: wrap;
+/* Image position modifiers */
+.left-img {
+  flex-direction: row;
 }
 
-.show-item {
-  background-color: #A4D19D;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-  width: 45%;
-  text-align: center;
-  transition: transform 0.3s ease;
-  transform-origin: center center;
-  margin-bottom: 2rem;
+.right-img {
+  flex-direction: row-reverse;
 }
 
-.show-item:hover {
-  transform: scale(1.05);
+/* Visibility on scroll (optional if using JS intersection observer) */
+.feature-box.visible .feature-text {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.show-item img {
-  width: 100%;
-  height: auto;
-}
-
-.show-item p {
-  font-size: 1.2rem;
-  padding: 1rem;
-  color: #333;
-  background-color: #A4D19D;
-}
-
-/* Responsive Layout */
+/* Responsive layout */
 @media (max-width: 768px) {
-  .show-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .show-item {
-    width: 90%;
-    height: auto;
-    margin-bottom: 2rem;
-  }
-
   .feature-box {
-    height: 60vh;
+    flex-direction: column !important;
+    min-height: auto;
+  }
+
+  .feature-img {
+    width: 100%;
+    height: 300px;
   }
 
   .feature-text {
-    font-size: 1.2rem;
-    padding: 1rem 1.5rem;
-  }
-
-  .mission h1 {
-    font-size: 2rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .mission h1 {
-    font-size: 1.8rem;
-  }
-
-  .feature-text {
-    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    opacity: 1;
+    transform: translateY(0);
+    padding: 1.5rem;
   }
 }

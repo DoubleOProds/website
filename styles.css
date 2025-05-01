@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #A4D19D;
+  background-color: #758B63;
   color: #333;
   display: flex;
   flex-direction: column;
@@ -58,7 +58,7 @@ nav a:hover {
 main {
   position: relative;
   padding: 2rem;
-  background-color: #A4D19D;
+  background-color: #758B63;
   min-height: 80vh;
 }
 
@@ -72,7 +72,7 @@ main {
 
 /* Show Item Styling */
 .show-item {
-  background-color: #A4D19D;
+  background-color: #758B63;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
@@ -96,7 +96,7 @@ main {
   font-size: 1.2rem;
   padding: 1rem;
   color: #333;
-  background-color: #A4D19D;
+  background-color: #758B63;
 }
 
 /* Additional Styles for Mission Section */

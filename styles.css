@@ -222,3 +222,43 @@ main {
     margin: 1rem 0 0;
   }
 }
+
+.hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #e0f2fe, #f0f4f8);
+  color: #1f2937;
+  border-radius: 16px;
+  margin: 2rem auto;
+  max-width: 960px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  color: #4b5563;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: #38bdf8;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #0ea5e9;
+}
+

@@ -91,6 +91,34 @@
   document.querySelectorAll('.feature-box').forEach(box => {
     observer.observe(box);
   });
+
+  const wheelContainer = document.querySelector('.wheel-container');
+
+  let scrollAmount = 0;
+  const scrollStep = 1; // pixels per frame
+  const delay = 10; // ms between scrolls
+
+  function autoScroll() {
+    if (wheelContainer.scrollWidth - wheelContainer.clientWidth === scrollAmount) {
+      scrollAmount = 0;
+      wheelContainer.scrollTo({
+        left: scrollAmount,
+        behavior: 'instant'
+      });
+    } else {
+      scrollAmount += scrollStep;
+      wheelContainer.scrollTo({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+    setTimeout(autoScroll, delay);
+  }
+
+  // Start auto-scrolling after page load
+  window.addEventListener('load', () => {
+    if (wheelContainer) autoScroll();
+  });
 </script>
 </body>
 </html>

@@ -268,3 +268,6 @@ main {
   font-weight: 600;
 }
 
+.wheel-container:hover {
+  animation-play-state: paused;
+}

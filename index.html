@@ -114,34 +114,41 @@
   document.querySelectorAll('.feature-box').forEach(box => {
     observer.observe(box);
   });
-
-
+  
   const wheelContainer = document.querySelector('.wheel-container');
 
   let scrollAmount = 0;
-  const scrollStep = 1; // pixels per frame
-  const delay = 50; // ms between scrolls
+  const scrollStep = 1; // Slower = smaller number
+  const delay = 20; // Slower = higher number
+  let scrollTimeout; // Store timeout ID
 
   function autoScroll() {
-    if (wheelContainer.scrollWidth - wheelContainer.clientWidth === scrollAmount) {
+    if (!wheelContainer) return;
+
+    if (scrollAmount >= wheelContainer.scrollWidth - wheelContainer.clientWidth) {
       scrollAmount = 0;
-      wheelContainer.scrollTo({
-        left: scrollAmount,
-        behavior: 'instant'
-      });
     } else {
       scrollAmount += scrollStep;
-      wheelContainer.scrollTo({
-        left: scrollAmount,
-        behavior: 'smooth'
-      });
     }
-    setTimeout(autoScroll, delay);
+
+    wheelContainer.scrollTo({
+      left: scrollAmount,
+      behavior: 'smooth'
+    });
+
+    scrollTimeout = setTimeout(autoScroll, delay);
   }
 
-  // Start auto-scrolling after page load
+  function stopScroll() {
+    clearTimeout(scrollTimeout);
+  }
+
   window.addEventListener('load', () => {
-    if (wheelContainer) autoScroll();
+    autoScroll();
+
+    // Pause on hover
+    wheelContainer.addEventListener('mouseenter', stopScroll);
+    wheelContainer.addEventListener('mouseleave', autoScroll);
   });
 </script>
 </body>

@@ -241,7 +241,7 @@ main {
 
 .wheel-item {
   flex: 0 0 auto;
-  width: 200px;
+  width: 70px;
   scroll-snap-align: start;
   text-align: center;
   text-decoration: none;
@@ -250,7 +250,7 @@ main {
 }
 
 .wheel-item img {
-  width: 100%;
+  width: 60px;
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

@@ -222,3 +222,49 @@ main {
     margin: 1rem 0 0;
   }
 }
+
+/* Scrolling Wheel Styles */
+.scrolling-wheel {
+  padding: 2rem 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.wheel-container {
+  display: flex;
+  gap: 2rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.wheel-item {
+  flex: 0 0 auto;
+  width: 200px;
+  scroll-snap-align: start;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  transition: transform 0.3s ease;
+}
+
+.wheel-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: grayscale(80%);
+}
+
+.wheel-item:hover img {
+  transform: scale(1.05);
+  filter: grayscale(0%);
+}
+
+.wheel-item span {
+  display: block;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}

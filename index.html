@@ -115,37 +115,34 @@
     observer.observe(box);
   });
 
-  <script>
+
   const wheelContainer = document.querySelector('.wheel-container');
 
-  let scrollInterval;
-  const scrollStep = 0.5; // Slower speed
-  const delay = 20; // Delay between scrolls
+  let scrollAmount = 0;
+  const scrollStep = 1; // pixels per frame
+  const delay = 50; // ms between scrolls
 
-  function startAutoScroll() {
-    scrollInterval = setInterval(() => {
-      if (wheelContainer.scrollLeft >= wheelContainer.scrollWidth - wheelContainer.clientWidth) {
-        wheelContainer.scrollLeft = 0; // reset to beginning
-      } else {
-        wheelContainer.scrollLeft += scrollStep;
-      }
-    }, delay);
+  function autoScroll() {
+    if (wheelContainer.scrollWidth - wheelContainer.clientWidth === scrollAmount) {
+      scrollAmount = 0;
+      wheelContainer.scrollTo({
+        left: scrollAmount,
+        behavior: 'instant'
+      });
+    } else {
+      scrollAmount += scrollStep;
+      wheelContainer.scrollTo({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+    setTimeout(autoScroll, delay);
   }
 
-  function stopAutoScroll() {
-    clearInterval(scrollInterval);
-  }
-
+  // Start auto-scrolling after page load
   window.addEventListener('load', () => {
-    startAutoScroll();
-
-    // Pause on hover
-    wheelContainer.addEventListener('mouseenter', stopAutoScroll);
-    wheelContainer.addEventListener('mouseleave', startAutoScroll);
+    if (wheelContainer) autoScroll();
   });
-</script>
-
-
 </script>
 </body>
 </html>

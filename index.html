@@ -114,11 +114,8 @@
   document.querySelectorAll('.feature-box').forEach(box => {
     observer.observe(box);
   });
-  // Start auto-scrolling after page load
-  window.addEventListener('load', () => {
-    if (wheelContainer) autoScroll();
-  });
 
+  <script>
   const wheelContainer = document.querySelector('.wheel-container');
 
   let scrollInterval;
@@ -146,6 +143,8 @@
     wheelContainer.addEventListener('mouseenter', stopAutoScroll);
     wheelContainer.addEventListener('mouseleave', startAutoScroll);
   });
+</script>
+
 
 </script>
 </body>

@@ -114,34 +114,39 @@
   document.querySelectorAll('.feature-box').forEach(box => {
     observer.observe(box);
   });
-
-  const wheelContainer = document.querySelector('.wheel-container');
-
-  let scrollAmount = 0;
-  const scrollStep = 1; // pixels per frame
-  const delay = 10; // ms between scrolls
-
-  function autoScroll() {
-    if (wheelContainer.scrollWidth - wheelContainer.clientWidth === scrollAmount) {
-      scrollAmount = 0;
-      wheelContainer.scrollTo({
-        left: scrollAmount,
-        behavior: 'instant'
-      });
-    } else {
-      scrollAmount += scrollStep;
-      wheelContainer.scrollTo({
-        left: scrollAmount,
-        behavior: 'smooth'
-      });
-    }
-    setTimeout(autoScroll, delay);
-  }
-
   // Start auto-scrolling after page load
   window.addEventListener('load', () => {
     if (wheelContainer) autoScroll();
   });
+
+  const wheelContainer = document.querySelector('.wheel-container');
+
+  let scrollInterval;
+  const scrollStep = 0.5; // Slower speed
+  const delay = 20; // Delay between scrolls
+
+  function startAutoScroll() {
+    scrollInterval = setInterval(() => {
+      if (wheelContainer.scrollLeft >= wheelContainer.scrollWidth - wheelContainer.clientWidth) {
+        wheelContainer.scrollLeft = 0; // reset to beginning
+      } else {
+        wheelContainer.scrollLeft += scrollStep;
+      }
+    }, delay);
+  }
+
+  function stopAutoScroll() {
+    clearInterval(scrollInterval);
+  }
+
+  window.addEventListener('load', () => {
+    startAutoScroll();
+
+    // Pause on hover
+    wheelContainer.addEventListener('mouseenter', stopAutoScroll);
+    wheelContainer.addEventListener('mouseleave', startAutoScroll);
+  });
+
 </script>
 </body>
 </html>

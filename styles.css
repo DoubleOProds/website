@@ -228,7 +228,7 @@ main {
   padding: 2rem 1rem;
   overflow-x: auto;
   white-space: nowrap;
-  background: #f8f8f8;
+  background-color: #e0e0e0;
 }
 
 .wheel-container {

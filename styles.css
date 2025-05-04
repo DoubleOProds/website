@@ -223,26 +223,25 @@ main {
   }
 }
 
-/* Scrolling Wheel Styles */
+/* === Scrolling Wheel Styles === */
 .scrolling-wheel {
   padding: 2rem 1rem;
   overflow-x: auto;
-  overflow-y: hidden;
+  white-space: nowrap;
+  background: #f8f8f8;
 }
 
 .wheel-container {
   display: flex;
   gap: 2rem;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
   overflow-x: auto;
+  scroll-behavior: smooth;
   padding-bottom: 1rem;
 }
 
 .wheel-item {
   flex: 0 0 auto;
-  width: 70px;
-  scroll-snap-align: start;
+  width: 200px;
   text-align: center;
   text-decoration: none;
   color: #000;
@@ -250,12 +249,12 @@ main {
 }
 
 .wheel-item img {
-  width: 60px;
+  width: 100%;
   height: auto;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, filter 0.3s ease;
   filter: grayscale(80%);
+  transition: transform 0.3s ease, filter 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .wheel-item:hover img {
@@ -268,3 +267,4 @@ main {
   margin-top: 0.5rem;
   font-weight: 600;
 }
+

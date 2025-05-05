@@ -137,15 +137,18 @@
   let scrollStep = 1;
   let delay = 20;
   let scrollTimeout;
+  let isHovered = false;
+  let isUserScrolling = false;
+  let userScrollTimer;
 
   function autoScroll() {
     if (!wheelContainer) return;
 
-    wheelContainer.scrollLeft += scrollStep;
-
-    // Reset to start when reaching the end
-    if (wheelContainer.scrollLeft + wheelContainer.clientWidth >= wheelContainer.scrollWidth) {
+    // If at or near the end, reset to start
+    if (wheelContainer.scrollLeft + wheelContainer.clientWidth >= wheelContainer.scrollWidth - 1) {
       wheelContainer.scrollLeft = 0;
+    } else {
+      wheelContainer.scrollLeft += scrollStep;
     }
 
     scrollTimeout = setTimeout(autoScroll, delay);
@@ -155,10 +158,7 @@
     clearTimeout(scrollTimeout);
   }
 
-  let isHovered = false;
-  let isUserScrolling = false;
-  let userScrollTimer;
-
+  // Handle user manual scroll
   wheelContainer.addEventListener('scroll', () => {
     if (!isHovered) {
       isUserScrolling = true;
@@ -170,6 +170,7 @@
     }
   });
 
+  // Pause scroll on hover
   wheelContainer.addEventListener('mouseenter', () => {
     isHovered = true;
     stopScroll();
@@ -184,6 +185,5 @@
     autoScroll();
   });
 </script>
-
 </body>
 </html>

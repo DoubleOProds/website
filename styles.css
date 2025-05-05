@@ -292,13 +292,6 @@ main {
   transition: filter 0.3s ease;
 }
 
-.thumb-wrapper iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
-}
-
 .thumb-wrapper:hover img {
   filter: grayscale(0%);
 }
@@ -313,7 +306,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: 700;
   font-size: 1.5rem;
   opacity: 0;

@@ -271,3 +271,40 @@ main {
 .wheel-container:hover {
   animation-play-state: paused;
 }
+
+.thumb-wrapper {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.thumb-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: grayscale(80%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.thumb-wrapper:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+.description {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.thumb-wrapper:hover .description {
+  opacity: 1;
+}
+

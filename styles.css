@@ -288,10 +288,6 @@ main {
   display: block;
 }
 
-.thumb-wrapper:hover img {
-  filter: grayscale(0%);
-}
-
 .description {
   position: absolute;
   top: 0;

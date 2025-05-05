@@ -134,10 +134,6 @@
   
   const wheelContainer = document.querySelector('.wheel-container');
 
-  // Duplicate children for seamless looping
-  const originalContent = wheelContainer.innerHTML;
-  wheelContainer.innerHTML += originalContent;
-
   let scrollStep = 1;
   let delay = 20;
   let scrollTimeout;
@@ -145,11 +141,10 @@
   function autoScroll() {
     if (!wheelContainer) return;
 
-    // Advance scroll
     wheelContainer.scrollLeft += scrollStep;
 
-    // If we've scrolled past the halfway point, reset to start
-    if (wheelContainer.scrollLeft >= wheelContainer.scrollWidth / 2) {
+    // Reset to start when reaching the end
+    if (wheelContainer.scrollLeft + wheelContainer.clientWidth >= wheelContainer.scrollWidth) {
       wheelContainer.scrollLeft = 0;
     }
 
@@ -160,7 +155,6 @@
     clearTimeout(scrollTimeout);
   }
 
-  // Reset scrollTimeout when user scrolls manually
   let isHovered = false;
   let isUserScrolling = false;
   let userScrollTimer;
@@ -190,5 +184,6 @@
     autoScroll();
   });
 </script>
+
 </body>
 </html>

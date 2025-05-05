@@ -134,55 +134,30 @@
   
   const wheelContainer = document.querySelector('.wheel-container');
 
-  let scrollStep = 1;
-  let delay = 20;
-  let scrollTimeout;
-  let isHovered = false;
-  let isUserScrolling = false;
-  let userScrollTimer;
+  let scrollAmount = 0;
+  const scrollStep = 1; // pixels per frame
+  const delay = 10; // ms between scrolls
 
   function autoScroll() {
-    if (!wheelContainer) return;
-
-    // If at or near the end, reset to start
-    if (wheelContainer.scrollLeft + wheelContainer.clientWidth >= wheelContainer.scrollWidth - 1) {
-      wheelContainer.scrollLeft = 0;
+    if (wheelContainer.scrollWidth - wheelContainer.clientWidth === scrollAmount) {
+      scrollAmount = 0;
+      wheelContainer.scrollTo({
+        left: scrollAmount,
+        behavior: 'instant'
+      });
     } else {
-      wheelContainer.scrollLeft += scrollStep;
+      scrollAmount += scrollStep;
+      wheelContainer.scrollTo({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
     }
-
-    scrollTimeout = setTimeout(autoScroll, delay);
+    setTimeout(autoScroll, delay);
   }
 
-  function stopScroll() {
-    clearTimeout(scrollTimeout);
-  }
-
-  // Handle user manual scroll
-  wheelContainer.addEventListener('scroll', () => {
-    if (!isHovered) {
-      isUserScrolling = true;
-      clearTimeout(userScrollTimer);
-      userScrollTimer = setTimeout(() => {
-        isUserScrolling = false;
-        if (!isHovered) autoScroll();
-      }, 200);
-    }
-  });
-
-  // Pause scroll on hover
-  wheelContainer.addEventListener('mouseenter', () => {
-    isHovered = true;
-    stopScroll();
-  });
-
-  wheelContainer.addEventListener('mouseleave', () => {
-    isHovered = false;
-    if (!isUserScrolling) autoScroll();
-  });
-
+  // Start auto-scrolling after page load
   window.addEventListener('load', () => {
-    autoScroll();
+    if (wheelContainer) autoScroll();
   });
 </script>
 </body>

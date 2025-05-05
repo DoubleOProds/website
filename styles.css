@@ -10,11 +10,11 @@ h1 {
   color: #000;
 }
 
-shows-section {
+.shows-section {
   background-color: #A7C7E7; /* Light Blue for the shows section */
 }
 
-music-section {
+.music-section {
   background-color: #FF746C; 
 }
 

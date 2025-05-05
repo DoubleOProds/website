@@ -242,8 +242,8 @@ main {
 
 .wheel-item {
   flex: 0 0 auto;
-  width: 300px;
-  height: 200px;
+  width: 400px;
+  height: 225px;
   text-decoration: none;
   position: relative;
   border-radius: 12px;
@@ -251,6 +251,7 @@ main {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
   transition: transform 0.3s ease;
 }
+
 
 .wheel-item img {
   width: 100%;

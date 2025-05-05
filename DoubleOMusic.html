@@ -61,6 +61,9 @@
       cursor: pointer;
       text-decoration: none;
       color: inherit;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .album img {
@@ -83,9 +86,10 @@
     .tracklist {
       position: absolute;
       top: 100%;
-      left: 0;
-      right: 0;
-      background-color: rgba(0, 0, 0, 0.85);
+      width: 100%;
+      max-height: 180px; /* approx. for 5 songs */
+      overflow-y: auto;
+      background-color: rgba(0, 0, 0, 0.9);
       color: white;
       padding: 1rem;
       border-radius: 0 0 12px 12px;
@@ -93,7 +97,7 @@
       visibility: hidden;
       transform: translateY(-10px);
       transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
-      z-index: 5;
+      z-index: 10;
       text-align: left;
     }
 
@@ -110,12 +114,33 @@
     }
 
     .tracklist li {
-      padding: 0.3rem 0;
+      padding: 0.4rem 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .tracklist li:last-child {
       border-bottom: none;
+    }
+
+    /* Add scrollbar styling for better look (optional) */
+    .tracklist::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .tracklist::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.3);
+      border-radius: 3px;
+    }
+
+    .tracklist::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    @media (max-width: 600px) {
+      .album {
+        width: 100%;
+        max-width: 300px;
+      }
     }
   </style>
 </head>
@@ -137,35 +162,24 @@
     <h1>Albums</h1>
     <div class="show-container">
 
-      <!-- Album Example -->
-      <a href="https://open.spotify.com/album/6bGqViIUr1tLJGqx5i3e9n" target="_blank" class="album">
+      <!-- Album Block -->
+      <a href="https://open.spotify.com/album/yourAlbumID" target="_blank" class="album">
         <img src="images/LateNightLogo.png" alt="Album Cover">
-        <div class="album-title">Double O</div>
+        <div class="album-title">Amber Notes</div>
         <div class="tracklist">
           <ul>
-            <li>1. Intro</li>
-            <li>2. Night Vibes</li>
-            <li>3. Interlude</li>
-            <li>4. Moonlight</li>
-            <li>5. Finale</li>
+            <li>1. As if</li>
+            <li>2. I could</li>
+            <li>3. find someone</li>
+            <li>4. more beautiful.</li>
+            <li>5. (Amber Notes)</li>
+            <li>6. I'll forever</li>
+            <li>7. hold on</li>
+            <li>8. 2</li>
+            <li>7. your face.</li>
           </ul>
         </div>
       </a>
-
-      <!-- Add more albums below as needed -->
-      <!--
-      <a href="SPOTIFY_LINK" target="_blank" class="album">
-        <img src="ALBUM_IMAGE_PATH" alt="Album Cover">
-        <div class="album-title">Album Title</div>
-        <div class="tracklist">
-          <ul>
-            <li>Song 1</li>
-            <li>Song 2</li>
-            ...
-          </ul>
-        </div>
-      </a>
-      -->
 
     </div>
   </section>
@@ -173,5 +187,3 @@
 
 </body>
 </html>
-
-

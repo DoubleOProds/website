@@ -135,20 +135,20 @@
   const wheelContainer = document.querySelector('.wheel-container');
 
   let scrollAmount = 0;
-  const scrollStep = 2; // Adjust speed here
-  const delay = 10;
+  const scrollStep = 2; // Speed of scrolling, adjust for your needs
+  const delay = 10; // Delay between scrolls, adjust for smoother/rougher scroll
   let scrollTimeout;
   let isHovering = false;
 
   function autoScroll() {
     if (!wheelContainer || isHovering) return;
 
-    // Get current scroll position and add scroll step
+    // Update scrollAmount based on the current position and scroll step
     scrollAmount = wheelContainer.scrollLeft + scrollStep;
 
-    // If we reach the end, reset smoothly (but without jamming)
+    // If the scroll reaches the end, reset it to the start smoothly
     if (scrollAmount >= wheelContainer.scrollWidth) {
-      scrollAmount = 0; // Reset back to 0
+      scrollAmount = 0; // Reset to the start
     }
 
     wheelContainer.scrollTo({
@@ -171,27 +171,28 @@
   window.addEventListener('load', () => {
     if (!wheelContainer) return;
 
-    // Initialize scroll position
+    // Initialize scroll position and start the auto scroll
     scrollAmount = wheelContainer.scrollLeft;
     startAutoScroll();
 
-    // Sync on manual scroll
+    // Listen for manual scroll and continue auto-scroll from that point
     wheelContainer.addEventListener('scroll', () => {
       scrollAmount = wheelContainer.scrollLeft;
     });
 
-    // Pause scrolling when hovering
+    // Pause the scroll when the user hovers over the wheel
     wheelContainer.addEventListener('mouseenter', () => {
       isHovering = true;
       stopAutoScroll();
     });
 
-    // Resume scrolling when mouse leaves
+    // Resume the scroll when the user moves the mouse away
     wheelContainer.addEventListener('mouseleave', () => {
       isHovering = false;
       startAutoScroll();
     });
   });
 </script>
+
 </body>
 </html>

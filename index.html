@@ -135,18 +135,20 @@
   const wheelContainer = document.querySelector('.wheel-container');
 
   let scrollAmount = 0;
-  let scrollStep = 2; // Adjust speed
-  let delay = 10;
+  const scrollStep = 2; // Adjust speed here
+  const delay = 10;
   let scrollTimeout;
   let isHovering = false;
 
   function autoScroll() {
     if (!wheelContainer || isHovering) return;
 
+    // Get current scroll position and add scroll step
     scrollAmount = wheelContainer.scrollLeft + scrollStep;
 
-    if (scrollAmount >= wheelContainer.scrollWidth - wheelContainer.clientWidth) {
-      scrollAmount = 0;
+    // If we reach the end, reset smoothly (but without jamming)
+    if (scrollAmount >= wheelContainer.scrollWidth) {
+      scrollAmount = 0; // Reset back to 0
     }
 
     wheelContainer.scrollTo({
@@ -169,7 +171,7 @@
   window.addEventListener('load', () => {
     if (!wheelContainer) return;
 
-    // Start scroll immediately
+    // Initialize scroll position
     scrollAmount = wheelContainer.scrollLeft;
     startAutoScroll();
 
@@ -178,19 +180,18 @@
       scrollAmount = wheelContainer.scrollLeft;
     });
 
-    // Pause on hover
+    // Pause scrolling when hovering
     wheelContainer.addEventListener('mouseenter', () => {
       isHovering = true;
       stopAutoScroll();
     });
 
+    // Resume scrolling when mouse leaves
     wheelContainer.addEventListener('mouseleave', () => {
       isHovering = false;
       startAutoScroll();
     });
   });
 </script>
-
-
 </body>
 </html>

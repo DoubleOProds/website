@@ -238,12 +238,12 @@ main {
   scroll-behavior: smooth;
   padding-bottom: 1rem;
   align-items: center;
-  height: 300px; /* Vertically larger wheel */
+  height: 460px; /* Increased to match video height */
 }
 
 .wheel-item {
   flex: 0 0 auto;
-  width: 360px; /* Horizontally larger */
+  width: 800px; /* Wider item to match embedded videos */
   text-align: center;
   text-decoration: none;
   color: #000;
@@ -278,9 +278,9 @@ main {
 .thumb-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9; /* Matches YouTube video aspect */
-  overflow: hidden;
+  height: 100%;
   border-radius: 12px;
+  overflow: hidden;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -290,6 +290,13 @@ main {
   object-fit: cover;
   filter: grayscale(80%);
   transition: filter 0.3s ease;
+}
+
+.thumb-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
 }
 
 .thumb-wrapper:hover img {
@@ -306,12 +313,13 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #000;
+  color: #FFFFFF;
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   opacity: 0;
   transition: opacity 0.3s ease;
   border-radius: 12px;
+  z-index: 2;
 }
 
 .thumb-wrapper:hover .description {

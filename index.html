@@ -138,28 +138,26 @@
   let delay = 10; // ms between scrolls
   let autoScrollTimeout;
   let isUserScrolling = false;
+  let isHovering = false;
   let scrollAmount = 0;
 
   function autoScroll() {
-    if (!wheelContainer) return;
+    if (!wheelContainer || isUserScrolling || isHovering) return;
 
-    if (!isUserScrolling) {
-      // Update scroll amount based on actual current scrollLeft
-      scrollAmount = wheelContainer.scrollLeft;
+    scrollAmount = wheelContainer.scrollLeft;
 
-      if (scrollAmount >= wheelContainer.scrollWidth - wheelContainer.clientWidth) {
-        scrollAmount = 0;
-        wheelContainer.scrollTo({
-          left: scrollAmount,
-          behavior: 'instant'
-        });
-      } else {
-        scrollAmount += scrollStep;
-        wheelContainer.scrollTo({
-          left: scrollAmount,
-          behavior: 'smooth'
-        });
-      }
+    if (scrollAmount >= wheelContainer.scrollWidth - wheelContainer.clientWidth) {
+      scrollAmount = 0;
+      wheelContainer.scrollTo({
+        left: scrollAmount,
+        behavior: 'instant'
+      });
+    } else {
+      scrollAmount += scrollStep;
+      wheelContainer.scrollTo({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
     }
 
     autoScrollTimeout = setTimeout(autoScroll, delay);
@@ -172,7 +170,7 @@
     setTimeout(() => {
       isUserScrolling = false;
       autoScroll(); // Resume
-    }, 2000); // 2 second pause after user scroll
+    }, 2000); // Pause 2 seconds after user scroll
   }
 
   window.addEventListener('load', () => {
@@ -180,20 +178,21 @@
 
     autoScroll();
 
-    // Listen for manual scrolls
+    // Pause on manual scroll
     wheelContainer.addEventListener('scroll', pauseAutoScrollTemporarily);
 
-    // Optional: pause on hover
+    // Pause on hover
     wheelContainer.addEventListener('mouseenter', () => {
-      isUserScrolling = true;
+      isHovering = true;
       clearTimeout(autoScrollTimeout);
     });
 
     wheelContainer.addEventListener('mouseleave', () => {
-      isUserScrolling = false;
+      isHovering = false;
       autoScroll();
     });
   });
 </script>
+
 </body>
 </html>

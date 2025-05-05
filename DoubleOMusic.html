@@ -86,19 +86,25 @@
       position: absolute;
       top: 100%;
       width: 100%;
-      max-height: 150px; /* approx. for 5 songs */
+      max-height: 180px;
       overflow-y: auto;
       background-color: rgba(0, 0, 0, 0.9);
       color: white;
       padding: 1rem;
-      border-radius: 0 0 12px 12px;
+      border-radius: 0 0 12px 12px; /* Keep rounded bottom corners */
       opacity: 0;
       visibility: hidden;
       transform: translateY(-10px);
       transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
       z-index: 10;
       text-align: left;
+      overflow-x: hidden;
+      box-sizing: border-box;
+      scrollbar-width: thin;
+      scrollbar-color: #ccc transparent;
+      mask-image: radial-gradient(white 99%, transparent 100%); /* Helps clip the content inside the rounded box in some browsers */
     }
+
 
     .album:hover .tracklist {
       opacity: 1;

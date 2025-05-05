@@ -238,7 +238,7 @@ main {
   scroll-behavior: smooth;
   padding-bottom: 1rem;
   align-items: center;
-  height: 460px; /* Increased to match video height */
+  height: auto; /* Increased to match video height */
 }
 
 .wheel-item {

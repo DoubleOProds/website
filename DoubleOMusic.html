@@ -51,11 +51,11 @@
     .show-container {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 2rem;
     }
 
-    .album {
+    .album, .single {
       position: relative;
       width: 200px;
       cursor: pointer;
@@ -66,19 +66,18 @@
       align-items: center;
     }
 
-    .album img {
+    .album img, .single img {
       width: 100%;
-      border-radius: 12px;
+      border-radius: 0;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s;
     }
 
     .album:hover img {
       transform: scale(1.005);
-      border-radius: 4px;
     }
 
-    .album-title {
+    .album-title, .single-title {
       margin-top: 0.5rem;
       font-size: 1.1rem;
       font-weight: 600;
@@ -93,7 +92,7 @@
       background-color: rgba(0, 0, 0, 0.9);
       color: white;
       padding: 1rem;
-      border-radius: 0 0 12px 12px; /* Keep rounded bottom corners */
+      border-radius: 0 0 12px 12px;
       opacity: 0;
       visibility: hidden;
       transform: translateY(-10px);
@@ -104,9 +103,7 @@
       box-sizing: border-box;
       scrollbar-width: thin;
       scrollbar-color: #ccc transparent;
-      mask-image: radial-gradient(white 99%, transparent 100%); /* Helps clip the content inside the rounded box in some browsers */
     }
-
 
     .album:hover .tracklist {
       opacity: 1;
@@ -129,7 +126,6 @@
       border-bottom: none;
     }
 
-    /* Add scrollbar styling for better look (optional) */
     .tracklist::-webkit-scrollbar {
       width: 6px;
     }
@@ -144,10 +140,18 @@
     }
 
     @media (max-width: 600px) {
-      .album {
+      .album, .single {
         width: 100%;
         max-width: 300px;
       }
+
+      .show-container {
+        justify-content: center;
+      }
+    }
+
+    .singles-section {
+      margin-top: 4rem;
     }
   </style>
 </head>
@@ -166,13 +170,13 @@
 
 <main class="music-section">
   <section>
-    <h1>Albums</h1>
+    <h1>Albums & EPs</h1>
     <div class="show-container">
-
-      <!-- Album Block -->
+      <!-- Album 1 -->
       <a href="https://open.spotify.com/album/yourAlbumID" target="_blank" class="album">
         <div class="album-title">Amber Notes</div>
-        <img src="images/AMBER NOTES ALBUM COVER.jpg" alt="AN Album Cover">
+        <p>(2024)</p>
+        <img src="images/AMBER NOTES ALBUM COVER.jpg" alt="Amber Notes Album Cover">
         <div class="tracklist">
           <ul>
             <li>1. As if</li>
@@ -183,11 +187,43 @@
             <li>6. I'll forever</li>
             <li>7. hold on</li>
             <li>8. 2</li>
-            <li>7. your face.</li>
+            <li>9. your face.</li>
           </ul>
         </div>
       </a>
 
+      <!-- Album 2 -->
+      <a href="https://open.spotify.com/album/anotherAlbumID" target="_blank" class="album">
+        <div class="album-title">My World EP I</div>
+        <img src="images/purple_dreams_cover.jpg" alt="Purple Dreams Album Cover">
+        <div class="tracklist">
+          <ul>
+            <li>1. Fade In</li>
+            <li>2. Midnight Blue</li>
+            <li>3. Violet Eyes</li>
+            <li>4. On Repeat</li>
+            <li>5. Out of Reach</li>
+            <li>6. Dreamstate</li>
+          </ul>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="singles-section">
+    <h1>Singles</h1>
+    <div class="show-container">
+      <!-- Single 1 -->
+      <a href="https://open.spotify.com/track/singleID" target="_blank" class="single">
+        <img src="images/single_cover1.jpg" alt="Single Cover">
+        <div class="single-title">5 minute replies</div>
+      </a>
+
+      <!-- Single 2 -->
+      <a href="https://open.spotify.com/track/singleID2" target="_blank" class="single">
+        <img src="images/single_cover2.jpg" alt="Single Cover">
+        <div class="single-title">cya,lya,bye</div>
+      </a>
     </div>
   </section>
 </main>

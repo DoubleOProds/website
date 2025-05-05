@@ -134,24 +134,25 @@
   
   const wheelContainer = document.querySelector('.wheel-container');
 
+  // Clone the items to make the scroll loop
+  const items = wheelContainer.children;
+  const clone = wheelContainer.innerHTML;
+  wheelContainer.innerHTML += clone;
+
   let scrollAmount = 0;
-  const scrollStep = 1; // Slower = smaller number
-  const delay = 20; // Slower = higher number
-  let scrollTimeout; // Store timeout ID
+  const scrollStep = 1; // pixels per frame
+  const delay = 20;     // ms between scrolls
+  let scrollTimeout;
 
   function autoScroll() {
-    if (!wheelContainer) return;
+    scrollAmount += scrollStep;
+    wheelContainer.scrollLeft = scrollAmount;
 
-    if (scrollAmount >= wheelContainer.scrollWidth - wheelContainer.clientWidth) {
+    // Reset scroll without flicker when reaching half (original content end)
+    if (scrollAmount >= wheelContainer.scrollWidth / 2) {
       scrollAmount = 0;
-    } else {
-      scrollAmount += scrollStep;
+      wheelContainer.scrollLeft = 0;
     }
-
-    wheelContainer.scrollTo({
-      left: scrollAmount,
-      behavior: 'smooth'
-    });
 
     scrollTimeout = setTimeout(autoScroll, delay);
   }
@@ -162,8 +163,6 @@
 
   window.addEventListener('load', () => {
     autoScroll();
-
-    // Pause on hover
     wheelContainer.addEventListener('mouseenter', stopScroll);
     wheelContainer.addEventListener('mouseleave', autoScroll);
   });

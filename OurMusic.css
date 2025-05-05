@@ -1,1 +1,120 @@
+/* Basic Reset and Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff; /* Set background color */
+  color: #000000; /* Default text color */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Full width background for the page */
+.main-background {
+  background-color: #A7C7E7; /* Set background color for the entire page */
+  width: 100%;
+  min-height: 100%; /* Ensure full height */
+  padding-top: 4rem; /* Optional padding for spacing */
+}
+
+/* Header Styles */
+header {
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.logo img {
+  max-width: 250px;
+  height: auto;
+}
+
+/* Navigation Styles */
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #000000;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #38bdf8;
+}
+
+/* Content Section with full width color */
+.content-section {
+  padding: 4rem 2rem;
+  background-color: rgba(54, 1, 63, 0.5); /* Transparent deep purple */
+  color: white; /* White text */
+  border-radius: 1rem;
+  margin: 2rem auto;
+  max-width: 1000px; /* Limit width */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+h1, h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+p {
+  font-size: 1.2rem;
+  color: white;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  h1, h2 {
+    font-size: 2rem;
+  }
+
+  .content-section {
+    padding: 2rem 1rem;
+  }
+
+  nav a {
+    margin: 0 0.5rem;
+  }
+}
+
+/* YouTube video styling */
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  max-width: 800px;
+  height: 450px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 600px) {
+  .video-wrapper iframe {
+    height: 250px;
+  }
+}

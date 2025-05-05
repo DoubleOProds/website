@@ -134,22 +134,22 @@
   
   const wheelContainer = document.querySelector('.wheel-container');
 
-  // Duplicate content to create seamless scroll loop
-  const clone = wheelContainer.innerHTML;
-  wheelContainer.innerHTML += clone;
+  // Duplicate children for seamless looping
+  const originalContent = wheelContainer.innerHTML;
+  wheelContainer.innerHTML += originalContent;
 
-  let scrollAmount = 0;
-  const scrollStep = 1;
-  const delay = 20;
+  let scrollStep = 1;
+  let delay = 20;
   let scrollTimeout;
 
   function autoScroll() {
-    scrollAmount = wheelContainer.scrollLeft + scrollStep;
-    wheelContainer.scrollLeft = scrollAmount;
+    if (!wheelContainer) return;
 
-    // Reset to start when halfway through duplicated content
-    if (scrollAmount >= wheelContainer.scrollWidth / 2) {
-      scrollAmount = 0;
+    // Advance scroll
+    wheelContainer.scrollLeft += scrollStep;
+
+    // If we've scrolled past the halfway point, reset to start
+    if (wheelContainer.scrollLeft >= wheelContainer.scrollWidth / 2) {
       wheelContainer.scrollLeft = 0;
     }
 
@@ -160,15 +160,34 @@
     clearTimeout(scrollTimeout);
   }
 
-  // When user scrolls manually, update scrollAmount so autoScroll continues smoothly
+  // Reset scrollTimeout when user scrolls manually
+  let isHovered = false;
+  let isUserScrolling = false;
+  let userScrollTimer;
+
   wheelContainer.addEventListener('scroll', () => {
-    scrollAmount = wheelContainer.scrollLeft;
+    if (!isHovered) {
+      isUserScrolling = true;
+      clearTimeout(userScrollTimer);
+      userScrollTimer = setTimeout(() => {
+        isUserScrolling = false;
+        if (!isHovered) autoScroll();
+      }, 200);
+    }
+  });
+
+  wheelContainer.addEventListener('mouseenter', () => {
+    isHovered = true;
+    stopScroll();
+  });
+
+  wheelContainer.addEventListener('mouseleave', () => {
+    isHovered = false;
+    if (!isUserScrolling) autoScroll();
   });
 
   window.addEventListener('load', () => {
     autoScroll();
-    wheelContainer.addEventListener('mouseenter', stopScroll);
-    wheelContainer.addEventListener('mouseleave', autoScroll);
   });
 </script>
 </body>

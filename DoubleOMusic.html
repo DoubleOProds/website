@@ -1,1 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DoubleO Music | Double O Productions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="Favricon.png" type="image/png" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fff;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      padding: 1.5rem 2rem;
+      text-align: center;
+      background-color: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo img {
+      max-width: 250px;
+      height: auto;
+    }
+
+    nav {
+      margin-top: 1rem;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #38bdf8;
+    }
+
+    .music-section {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .show-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .album {
+      position: relative;
+      width: 200px;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .album img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+    }
+
+    .album:hover img {
+      transform: scale(1.05);
+    }
+
+    .album-title {
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .tracklist {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.85);
+      color: white;
+      padding: 1rem;
+      border-radius: 0 0 12px 12px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+      z-index: 5;
+      text-align: left;
+    }
+
+    .album:hover .tracklist {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .tracklist ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .tracklist li {
+      padding: 0.3rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .tracklist li:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="images/dubsprods.jpg" alt="Double O Productions Logo" />
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="OurShows.html">Our Shows</a>
+    <a href="OurTeam.html">Our Team</a>
+  </nav>
+</header>
+
+<main class="music-section">
+  <section>
+    <h1>Albums</h1>
+    <div class="show-container">
+
+      <!-- Album Example -->
+      <a href="https://open.spotify.com/album/6bGqViIUr1tLJGqx5i3e9n" target="_blank" class="album">
+        <img src="images/LateNightLogo.png" alt="Album Cover">
+        <div class="album-title">Double O</div>
+        <div class="tracklist">
+          <ul>
+            <li>1. Intro</li>
+            <li>2. Night Vibes</li>
+            <li>3. Interlude</li>
+            <li>4. Moonlight</li>
+            <li>5. Finale</li>
+          </ul>
+        </div>
+      </a>
+
+      <!-- Add more albums below as needed -->
+      <!--
+      <a href="SPOTIFY_LINK" target="_blank" class="album">
+        <img src="ALBUM_IMAGE_PATH" alt="Album Cover">
+        <div class="album-title">Album Title</div>
+        <div class="tracklist">
+          <ul>
+            <li>Song 1</li>
+            <li>Song 2</li>
+            ...
+          </ul>
+        </div>
+      </a>
+      -->
+
+    </div>
+  </section>
+</main>
+
+</body>
+</html>
+
 

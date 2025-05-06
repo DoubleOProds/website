@@ -21,24 +21,68 @@
     </nav>
   </header>
 
-  
-  <main class="mission music-section">
-    <section>
-      <h1>Our Music</h1>
-      <div class="show-container">
-        <!-- First Show Block -->
-        <div class="show-item">
-          <a href="DoubleOMusic.html">
-            <img src="images/doubleO Pic.png" alt="Me"/>
-            <p>Double O</p>
-          </a>
-        </div>
+  <style>
+  .feature-img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    filter: grayscale(100%);
+    transition: filter 0.3s, transform 0.3s;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
 
-        
-      </div>
-    </section>
-  </main>
+  .feature-img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.01);
+  }
 
+  .artist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    width: 200px;
+  }
+
+  .artist-name {
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .show-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  @media (max-width: 600px) {
+    .artist {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .show-container {
+      justify-content: center;
+    }
+  }
+</style>
+
+<main class="music-section">
+  <section>
+    <h1>Our Artists</h1>
+    <div class="show-container">
+      <a href="DoubleOMusic.html" class="artist">
+        <img src="images/doubleO Pic.png" alt="Double O" class="feature-img">
+        <div class="artist-name">Double O</div>
+      </a>
+      <!-- Add more artists here -->
+    </div>
+  </section>
+</main>
 </body>
 </html>
 

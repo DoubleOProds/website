@@ -16,32 +16,57 @@
       padding: 0;
     }
 
-    header {
-      padding: 1.5rem 2rem;
-      text-align: center;
-      background-color: #fff;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  header {
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: center;
+    font-size: 100px;
+    align-items: center;
+    flex-direction: column;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
     }
 
-    .logo img {
-      max-width: 250px;
-      height: auto;
+  .logo {
+    margin-bottom: 0.5rem;
     }
 
-    nav {
-      margin-top: 1rem;
+  .logo img {
+    width: 700px;
+    height: auto;
+    }
+
+/* Nav styling */
+  nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
     }
 
     nav a {
       margin: 0 1rem;
       text-decoration: none;
-      color: #000;
-      font-weight: 500;
+      color: #000000;
+      font-size: 45px;
+      font-weight: 800;
+      transition: color 0.3s ease;
+    }
+
+    nav p {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #000000;
+      font-size: 45px;
+      font-weight: 800;
+      transition: color 0.3s ease;
     }
 
     nav a:hover {
       color: #38bdf8;
     }
+
 
     .music-section {
       padding: 2rem;

@@ -58,7 +58,7 @@ nav a:hover {
 
 /* Background section */
 .background-wrapper {
-  background-image: url('images/DOTLback.png'); /* Ensure the image exists in your directory */
+  background-image: url('images/TheDOTL.png'); /* Ensure the image exists in your directory */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

@@ -66,6 +66,15 @@ nav a {
   transition: color 0.3s ease;
 }
 
+nav p {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #000000;
+  font-size: 45px;
+  font-weight: 800;
+  transition: color 0.3s ease;
+}
+
 nav a:hover {
   color: #38bdf8;
 }

@@ -13,7 +13,7 @@
 @media (max-width: 480px) {
 .logo img {
   width: 100%;
-  max-width: 300px;
+  max-width: 200px;
   height: auto;
 }
 
@@ -24,25 +24,27 @@ header {
 }
 
 /* Navigation - Mobile Friendly */
+
   nav {
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;
-    gap: 0.2rem;
     padding: 0 0.5rem;
-    overflow-x: auto;
   }
 
   nav a,
   nav p {
-    font-size: 0.75rem;
-    padding: 0.3rem 0.4rem;
+    font-size: 0.75rem; /* Shrink font to fit */
+    margin: 0 0.25rem;  /* Reduce space between links */
     white-space: nowrap;
   }
 
-  nav::-webkit-scrollbar {
-    display: none; /* hide scrollbar for mobile aesthetic */
+  /* Optional: shrink the separators if they're using | in an element */
+  nav span.separator {
+    margin: 0 0.25rem;
   }
+}
+
 
 
 

@@ -23,16 +23,22 @@ header {
 }
 
 /* Navigation - Mobile Friendly */
-nav {
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
+  nav {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;         /* Enables horizontal scroll */
+    white-space: nowrap;      /* Prevents wrapping */
+    gap: 0.5rem;
+    padding-bottom: 0.5rem;   /* Extra space for scroll */
+  }
 
-nav a,
-nav p {
-  font-size: 1.2rem;
-}
+  nav a,
+  nav p {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.5rem;
+    flex: 0 0 auto;            /* Prevent shrinking */
+  }
+
 
 /* Scrolling Wheel - Horizontal Scroll on Mobile */
 .scrolling-wheel {

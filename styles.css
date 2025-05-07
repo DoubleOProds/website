@@ -72,37 +72,6 @@ nav {
   font-size: 1.25rem;
 }
 
-/* Mobile adjustments */
-@media (max-width: 768px) {
-.logo img {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-}
-
-/* Responsive Header */
-header {
-  padding: 1rem;
-  font-size: 1.5rem;
-}
-
-  nav {
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;         /* Enables horizontal scroll */
-    white-space: nowrap;      /* Prevents wrapping */
-    gap: 0.5rem;
-    padding-bottom: 0.5rem;   /* Extra space for scroll */
-  }
-
-  nav a,
-  nav p {
-    font-size: 0.9rem;
-    padding: 0.3rem 0.5rem;
-    flex: 0 0 auto;            /* Prevent shrinking */
-  }
-}
-
 nav a {
   margin: 0 1rem;
   text-decoration: none;

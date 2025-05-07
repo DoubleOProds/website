@@ -10,6 +10,19 @@ h1 {
   color: #000;
   text-decoration: underline;
 }
+@media (max-width: 600px) {
+  h1, h2 {
+    font-size: 2rem;
+  }
+
+  nav a {
+    margin: 0 0.5rem;
+  }
+
+  .content-section {
+    padding: 2rem 1rem;
+  }
+}
 
 .shows-section {
   background-color: #A7C7E7; /* Light Blue for the shows section */

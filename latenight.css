@@ -138,5 +138,30 @@ p {
     height: 250px;
   }
 }
+@media (max-width: 768px) {
+.logo img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+/* Responsive Header */
+header {
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+/* Navigation - Mobile Friendly */
+nav {
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+nav a,
+nav p {
+  font-size: 1.2rem;
+}
+}
 
 

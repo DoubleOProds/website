@@ -153,15 +153,17 @@ header {
 
 /* Navigation - Mobile Friendly */
 nav {
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
+    flex-direction: row; /* keep horizontal layout */
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap; /* allow wrapping if necessary */
+  }
 
-nav a,
-nav p {
-  font-size: 1.2rem;
-}
+  nav a,
+  nav p {
+    font-size: 0.9rem; /* smaller text */
+    padding: 0.3rem 0.5rem; /* tighter spacing */
+  }
 }
 
 

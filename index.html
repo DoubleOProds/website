@@ -8,6 +8,68 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="DO favicon.png">
 </head>
+  <style>
+    /* Responsive Logo */
+.logo img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+/* Responsive Header */
+header {
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+/* Navigation - Mobile Friendly */
+nav {
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+nav a,
+nav p {
+  font-size: 1.2rem;
+}
+
+/* Scrolling Wheel - Horizontal Scroll on Mobile */
+.scrolling-wheel {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 1rem;
+}
+
+.wheel-container {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+
+.wheel-item {
+  min-width: 200px;
+  scroll-snap-align: start;
+}
+
+/* Feature Columns Responsive */
+.feature-box {
+  flex-direction: column;
+  text-align: center;
+}
+
+.feature-img {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 1rem;
+}
+
+.feature-text {
+  font-size: 1.1rem;
+}   
+  </style>
 <body>
 
    <header>

@@ -23,17 +23,47 @@ h1 {
     height: auto;
   }
 
+  @media (max-width: 400px) {
   nav {
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 0.5rem;
-    flex-direction: column;
   }
 
-  nav a,
+  /* Hide separators on mobile */
   nav p {
-    font-size: 1.1rem;
-    padding: 0.25rem 0.5rem;
-    margin: 0.2rem 0;
+    display: none;
   }
+
+  /* Style links to take equal width and center */
+  nav a {
+    flex: 1 1 30%; /* roughly 3 items per row */
+    text-align: center;
+    padding: 0.5rem 0;
+    box-sizing: border-box;
+  }
+
+  /* Order first 3 links to row 1 */
+  nav a:nth-child(1) {
+    order: 1;
+  }
+  nav a:nth-child(3) {
+    order: 2;
+  }
+  nav a:nth-child(5) {
+    order: 3;
+  }
+
+  /* Order last 2 links to row 2 */
+  nav a:nth-child(7) {
+    order: 4;
+    flex-basis: 45%; /* wider since only 2 items */
+  }
+  nav a:nth-child(9) {
+    order: 5;
+    flex-basis: 45%;
+  }
+}
 
   .show-item {
     width: 100%;

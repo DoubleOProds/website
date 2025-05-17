@@ -10,6 +10,7 @@ h1 {
   color: #000;
   text-decoration: underline;
 }
+
 @media (max-width: 600px) {
   h1, h2 {
     font-size: 2rem;

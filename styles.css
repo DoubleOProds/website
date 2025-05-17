@@ -5,6 +5,55 @@
   box-sizing: border-box;
 }
 
+@media (max-width: 768px) {
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 90%;
+    list-style: none;
+  }
+
+  nav ul li {
+    flex: 1 1 30%; /* Roughly 3 per row */
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  nav ul li:not(:last-child)::after {
+    content: "|";
+    margin-left: 8px;
+    color: black;
+  }
+
+  /* Fix vertical spacing if needed */
+  nav ul li:nth-child(4)::after,
+  nav ul li:nth-child(5)::after {
+    content: "";
+  }
+
+  /* Spinner mobile fix - ensure transforms apply */
+  .spinner {
+    display: block;
+    margin: 20px auto;
+    width: 50px;
+    height: 50px;
+    border: 5px solid #ccc;
+    border-top-color: #333;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+}
+
+
 body {
   font-family: 'Inter', sans-serif;
   background-color: #ffffff;

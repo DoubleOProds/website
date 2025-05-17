@@ -42,16 +42,18 @@ nav {
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 0.5rem;
+  max-width: 100%;
 }
 
 nav a,
 nav p {
-  margin: 0 1rem;
+  margin: 0.5rem 1rem;
   text-decoration: none;
   color: #000000;
   font-size: 45px;
   font-weight: 800;
   transition: color 0.3s ease;
+  white-space: nowrap;
 }
 
 nav a:hover {
@@ -205,9 +207,9 @@ main {
 /* === Scrolling Wheel === */
 .scrolling-wheel {
   padding: 2rem 1rem;
-  overflow-x: auto;
-  white-space: nowrap;
   background-color: #e0e0e0;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .wheel-container {
@@ -217,6 +219,7 @@ main {
   scroll-behavior: smooth;
   padding-bottom: 2rem;
   align-items: center;
+  -webkit-overflow-scrolling: touch;
 }
 
 .wheel-item {
@@ -248,10 +251,6 @@ main {
   margin-top: 0.75rem;
   font-weight: 600;
   font-size: 1rem;
-}
-
-.wheel-container:hover {
-  animation-play-state: paused;
 }
 
 .thumb-wrapper {
@@ -321,16 +320,16 @@ main {
   }
 
   nav {
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 0.5rem;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   nav a,
   nav p {
-    font-size: 0.9rem;
-    padding: 0.3rem 0.5rem;
+    font-size: 1.1rem;
+    margin: 0.5rem 1rem;
+    flex: 0 0 calc(33.33% - 2rem); /* Roughly 3 per row */
+    text-align: center;
   }
 
   .show-container {
@@ -340,7 +339,6 @@ main {
 
   .show-item {
     width: 90%;
-    height: auto;
     margin-bottom: 2rem;
   }
 
@@ -351,6 +349,17 @@ main {
 
   .feature-text {
     margin: 1rem 0 0;
+  }
+
+  .wheel-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 1rem 0;
+  }
+
+  .wheel-item {
+    width: 300px;
+    height: auto;
   }
 }
 

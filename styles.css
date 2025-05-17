@@ -1,55 +1,8 @@
+/* Reset and Base Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-h1 {
-  text-align: center;
-  margin: 0 auto;  /* This ensures it's centered horizontally */
-  color: #000;
-  text-decoration: underline;
-}
-
-@media (max-width: 600px) {
-  .video-wrapper iframe {
-    height: 250px;
-  }
-}
-@media (max-width: 768px) {
-.logo img {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-}
-
-/* Responsive Header */
-header {
-  padding: 1rem;
-  font-size: 1.5rem;
-}
-
-/* Navigation - Mobile Friendly */
-nav {
-    flex-direction: row; /* keep horizontal layout */
-    justify-content: space-between;
-    gap: 0.5rem;
-    flex-wrap: wrap; /* allow wrapping if necessary */
-  }
-
-  nav a,
-  nav p {
-    font-size: 0.9rem; /* smaller text */
-    padding: 0.3rem 0.5rem; /* tighter spacing */
-  }
-}
-
-.shows-section {
-  background-color: #A7C7E7; /* Light Blue for the shows section */
-}
-
-.music-section {
-  background-color: #FF746C; 
 }
 
 body {
@@ -61,7 +14,7 @@ body {
   min-height: 100vh;
 }
 
-/* Header Styles */
+/* === Header & Navigation === */
 header {
   padding: 1.5rem 2rem;
   display: flex;
@@ -83,24 +36,15 @@ header {
   height: auto;
 }
 
+/* Navigation Styling */
 nav {
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
-  font-size: 1.25rem;
+  margin-top: 0.5rem;
 }
 
-nav a {
-  margin: 0 1rem;
-  text-decoration: none;
-  color: #000000;
-  font-size: 45px;
-  font-weight: 800;
-  transition: color 0.3s ease;
-}
-
+nav a,
 nav p {
   margin: 0 1rem;
   text-decoration: none;
@@ -114,7 +58,17 @@ nav a:hover {
   color: #38bdf8;
 }
 
-/* Main Section Styling */
+/* Optional Background Image */
+.background-wrapper {
+  background-image: url('images/Late Night Background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  min-height: 300vh;
+  width: 100%;
+}
+
+/* === Main Content Layout === */
 main {
   position: relative;
   padding: 2rem;
@@ -122,15 +76,23 @@ main {
   min-height: 80vh;
 }
 
-/* Show Container */
+/* === Sections === */
+.shows-section {
+  background-color: #A7C7E7;
+}
+
+.music-section {
+  background-color: #FF746C;
+}
+
+/* Show Grid */
 .show-container {
   display: flex;
   justify-content: space-around;
   margin-top: 2rem;
-  flex-wrap: wrap; /* Helps with responsiveness */
+  flex-wrap: wrap;
 }
 
-/* Show Item Styling */
 .show-item {
   background-color: #ffffff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -139,12 +101,12 @@ main {
   width: 45%;
   text-align: center;
   transition: transform 0.3s ease;
-  transform-origin: center center; /* Added to control scaling */
-  margin-bottom: 2rem; /* Added to prevent overlap */
+  transform-origin: center center;
+  margin-bottom: 2rem;
 }
 
 .show-item:hover {
-  transform: scale(1.05); /* Reduced scale to avoid covering content */
+  transform: scale(1.05);
 }
 
 .show-item img {
@@ -159,7 +121,7 @@ main {
   background-color: #ffffff;
 }
 
-/* Additional Styles for Mission Section */
+/* === Mission Section === */
 .mission h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
@@ -176,35 +138,7 @@ main {
   line-height: 1.6;
 }
 
-/* Responsive Layout */
-@media (max-width: 768px) {
-  .show-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .show-item {
-    width: 90%;
-    height: auto;
-    margin-bottom: 2rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .mission h1 {
-    font-size: 2rem;
-  }
-
-  .mission h2,
-  .mission h3 {
-    font-size: 1.6rem;
-  }
-
-  .show-item p {
-    font-size: 1rem;
-  }
-}
-
+/* === Feature Columns === */
 .feature-column {
   display: flex;
   flex-direction: column;
@@ -255,7 +189,6 @@ main {
   flex: 1;
 }
 
-/* Image alignment based on class */
 .left-img {
   flex-direction: row;
 }
@@ -264,26 +197,12 @@ main {
   flex-direction: row-reverse;
 }
 
-/* Visible state */
 .feature-box.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-
-/* Responsive stacking */
-@media (max-width: 768px) {
-  .feature-box {
-    flex-direction: column !important;
-    text-align: center;
-  }
-
-  .feature-text {
-    margin: 1rem 0 0;
-  }
-}
-
-/* === Scrolling Wheel Styles === */
+/* === Scrolling Wheel === */
 .scrolling-wheel {
   padding: 2rem 1rem;
   overflow-x: auto;
@@ -311,7 +230,6 @@ main {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
   transition: transform 0.3s ease;
 }
-
 
 .wheel-item img {
   width: 100%;
@@ -372,3 +290,85 @@ main {
   opacity: 1;
 }
 
+/* === Video Wrapper === */
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  max-width: 800px;
+  height: 450px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 768px) {
+  .logo img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+
+  header {
+    padding: 1rem;
+    font-size: 1.5rem;
+  }
+
+  nav {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  nav a,
+  nav p {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .show-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .show-item {
+    width: 90%;
+    height: auto;
+    margin-bottom: 2rem;
+  }
+
+  .feature-box {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .feature-text {
+    margin: 1rem 0 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .video-wrapper iframe {
+    height: 250px;
+  }
+
+  .mission h1 {
+    font-size: 2rem;
+  }
+
+  .mission h2,
+  .mission h3 {
+    font-size: 1.6rem;
+  }
+
+  .show-item p {
+    font-size: 1rem;
+  }
+}

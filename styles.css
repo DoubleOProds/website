@@ -1,19 +1,19 @@
-/* Global Reset */
+/* GLOBAL RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Typography */
+/* HEADER */
 h1 {
   text-align: center;
-  margin: 0 auto;  /* Center horizontally */
+  margin: 0 auto;  /* This ensures it's centered horizontally */
   color: #000;
   text-decoration: underline;
 }
 
-/* Body */
+/* BODY & FONT */
 body {
   font-family: 'Inter', sans-serif;
   background-color: #ffffff;
@@ -23,12 +23,12 @@ body {
   min-height: 100vh;
 }
 
-/* Header */
+/* HEADER STYLES */
 header {
   padding: 1.5rem 2rem;
   display: flex;
   justify-content: center;
-  font-size: 4.5rem; /* Reduced from 100px for mobile scaling */
+  font-size: 100px;  /* Keep big on desktop */
   align-items: center;
   flex-direction: column;
   background-color: #ffffff;
@@ -41,23 +41,21 @@ header {
 }
 
 .logo img {
-  width: 90vw; /* Responsive width */
-  max-width: 700px;
+  width: 700px; /* Keep big on desktop */
   height: auto;
 }
 
-/* Show Items */
+/* SHOW ITEM */
 .show-item {
-  width: 100%;
-  max-width: 600px;
-  margin: 1rem auto;
   background-color: #ffffff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
+  width: 45%; /* two column on desktop */
   text-align: center;
   transition: transform 0.3s ease;
   transform-origin: center center;
+  margin-bottom: 2rem;
 }
 
 .show-item:hover {
@@ -70,43 +68,52 @@ header {
 }
 
 .show-item p {
-  font-size: 1rem;
-  padding: 0.75rem 1rem;
+  font-size: 1.2rem;
+  padding: 1rem;
   color: #333;
   background-color: #ffffff;
-  line-height: 1.4;
 }
 
-/* Mission Section */
+/* MISSION SECTION */
 .mission h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  text-align: center;
 }
 
 .mission h2,
 .mission h3 {
   font-size: 1.8rem;
-  text-align: center;
 }
 
 .mission p {
   font-size: 1rem;
   color: #71797E;
   line-height: 1.6;
-  max-width: 600px;
-  margin: 0 auto 2rem;
-  padding: 0 1rem;
 }
 
-/* Feature Box */
+/* MAIN SECTION */
+main {
+  position: relative;
+  padding: 2rem;
+  background-color: #ffffff;
+  min-height: 80vh;
+}
+
+/* SHOW CONTAINER */
+.show-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+/* FEATURE BOX */
 .feature-column {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4rem;
-  margin-top: 4rem;
-  padding: 0 1rem;
+  gap: 5rem;
+  margin-top: 5rem;
 }
 
 .feature-link {
@@ -125,12 +132,6 @@ header {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s ease;
-  flex-wrap: nowrap;
-}
-
-.feature-box.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .feature-box:hover {
@@ -138,13 +139,11 @@ header {
 }
 
 .feature-img {
-  width: 150px;
-  max-width: 40vw;
+  width: 200px;
   height: auto;
   filter: grayscale(100%);
   transition: filter 0.5s ease;
   border-radius: 8px;
-  flex-shrink: 0;
 }
 
 .feature-box:hover .feature-img {
@@ -155,12 +154,10 @@ header {
   margin: 0 1rem;
   color: #000;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   flex: 1;
-  text-align: left;
 }
 
-/* Image alignment */
 .left-img {
   flex-direction: row;
 }
@@ -169,7 +166,12 @@ header {
   flex-direction: row-reverse;
 }
 
-/* Wheel / Scrolling Section */
+.feature-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* SCROLLING WHEEL */
 .scrolling-wheel {
   padding: 2rem 1rem;
   overflow-x: auto;
@@ -179,18 +181,17 @@ header {
 
 .wheel-container {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding-bottom: 1.5rem;
+  padding-bottom: 2rem;
   align-items: center;
 }
 
 .wheel-item {
   flex: 0 0 auto;
-  width: 90vw;
-  max-width: 400px;
-  height: auto;
+  width: 400px;
+  height: 225px;
   text-decoration: none;
   position: relative;
   border-radius: 12px;
@@ -199,36 +200,42 @@ header {
   transition: transform 0.3s ease;
 }
 
-.wheel-item:hover {
-  transform: scale(1.03);
-}
-
 .wheel-item img {
   width: 100%;
   height: auto;
   border-radius: 10px;
   transition: transform 0.3s ease, filter 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  object-fit: cover;
 }
 
 .wheel-item:hover img {
-  transform: scale(1.05);
+  transform: scale(1.005);
 }
 
 .wheel-item span {
   display: block;
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
   font-weight: 600;
   font-size: 1rem;
-  text-align: center;
 }
 
 .wheel-container:hover {
   animation-play-state: paused;
 }
 
-/* Description overlay */
+.thumb-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.thumb-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .description {
   position: absolute;
   top: 0;
@@ -252,54 +259,64 @@ header {
   opacity: 1;
 }
 
-/* Responsive Layouts */
+/* SECTIONS BACKGROUND COLORS */
+.shows-section {
+  background-color: #A7C7E7; /* Light Blue */
+}
 
-/* Tablets and smaller */
-@media (max-width: 768px) {
-  header {
-    font-size: 3.5rem;
-    padding: 1.2rem 1rem;
-  }
+.music-section {
+  background-color: #FF746C; /* Pinkish Red */
+}
 
-  .show-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .show-item {
-    width: 90%;
-    max-width: 500px;
-  }
-
-  .feature-box {
-    flex-direction: column !important;
-    text-align: center;
-  }
-
-  .feature-text {
-    margin: 1rem 0 0;
+/* VIDEO IFRAME RESPONSIVENESS */
+@media (max-width: 600px) {
+  .video-wrapper iframe {
+    height: 250px;
   }
 }
 
-/* Portrait Mobile (small devices) */
+/* ===== RESPONSIVE FOR MOBILE PORTRAIT (MAX WIDTH 480px) ===== */
 @media (max-width: 480px) {
+  /* Header keeps flex & column, but font-size reduces */
   header {
-    font-size: 2.5rem;
+    font-size: 50px; /* smaller but still big and clear */
     padding: 1rem;
   }
 
+  /* Logo image scales down nicely */
   .logo img {
-    width: 100vw;
+    width: 100%;
     max-width: 300px;
+    height: auto;
   }
 
+  /* Show container stacks vertically with full width */
+  .show-container {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  /* Show items take almost full width */
+  .show-item {
+    width: 95%;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Show item paragraph smaller font */
+  .show-item p {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+
+  /* Mission text scales down for readability */
   .mission h1 {
     font-size: 1.8rem;
   }
 
   .mission h2,
   .mission h3 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
   .mission p {
@@ -307,62 +324,36 @@ header {
     padding: 0 1rem;
   }
 
-  .show-item p {
-    font-size: 0.9rem;
-    padding: 0.75rem;
-  }
-
-  .show-item {
-    width: 95%;
-    max-width: none;
+  /* Feature boxes stack vertically and center align */
+  .feature-box {
+    flex-direction: column !important;
+    text-align: center;
+    padding: 1rem;
   }
 
   .feature-img {
-    width: 80vw;
     max-width: 200px;
-    margin: 0 auto 1rem;
+    margin: 0 auto 1rem auto;
   }
 
   .feature-text {
     font-size: 1rem;
-    margin: 0 auto;
-    text-align: center;
+    margin: 0;
   }
 
-  .feature-box {
-    padding: 1rem 0.5rem;
-  }
-
+  /* Wheel items shrink to fit screen */
   .wheel-item {
     width: 90vw;
+    height: auto;
   }
 
   .wheel-item span {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
-}
 
-/* Video iframe adjustment for mobile */
-@media (max-width: 600px) {
-  .video-wrapper iframe {
-    height: 250px;
-    width: 100%;
+  /* Description text smaller */
+  .description {
+    font-size: 0.9rem;
+    padding: 0.5rem;
   }
-}
-
-/* Section background colors */
-.shows-section {
-  background-color: #A7C7E7; /* Light Blue */
-}
-
-.music-section {
-  background-color: #FF746C;
-}
-
-/* Main Section */
-main {
-  position: relative;
-  padding: 2rem 1rem;
-  background-color: #ffffff;
-  min-height: 80vh;
 }

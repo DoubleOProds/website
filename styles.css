@@ -314,6 +314,21 @@ main {
   }
 }
 
+@media (max-width: 600px) {
+  h1, h2 {
+    font-size: 2rem;
+  }
+
+  nav a {
+    margin: 0 0.5rem;
+  }
+
+  .content-section {
+    padding: 2rem 1rem;
+  }
+}
+
+
 @media (max-width: 768px) {
 .logo img {
   width: 100%;

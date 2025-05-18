@@ -314,20 +314,36 @@ main {
   }
 }
 
-/* ===== RESPONSIVE FOR MOBILE PORTRAIT (MAX WIDTH 480px) ===== */
-@media (max-width: 480px) {
-  /* Header keeps flex & column, but font-size reduces */
-  header {
-    font-size: 50px; /* smaller but still big and clear */
-    padding: 1rem;
+@media (max-width: 768px) {
+.logo img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+/* Responsive Header */
+header {
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+/* Navigation - Mobile Friendly */
+nav {
+    flex-direction: row; /* keep horizontal layout */
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap; /* allow wrapping if necessary */
   }
 
-  /* Logo image scales down nicely */
-  .logo img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
+  nav a,
+  nav p {
+    font-size: 0.9rem; /* smaller text */
+    padding: 0.3rem 0.5rem; /* tighter spacing */
   }
+}
+
+/* ===== RESPONSIVE FOR MOBILE PORTRAIT (MAX WIDTH 480px) ===== */
+@media (max-width: 480px) {
 
   /* Show container stacks vertically with full width */
   .show-container {

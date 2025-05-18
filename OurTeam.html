@@ -3,18 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Team | Double O Productions</title>
+  <title>Our Shows | Double O Productions</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="DO favicon.png">
 </head>
-  <style>
-    .show-item img {
-      width: auto;
-      height: 200px;
-      border-radius: 0.5px; 
-    }
-  </style>
 <body>
 
   <header>
@@ -30,26 +23,70 @@
     </nav>
   </header>
 
+  <style>
+  .feature-img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    filter: grayscale(100%);
+    transition: filter 0.3s, transform 0.3s;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
 
-  <main class="team-section">
+  .feature-img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.01);
+  }
+
+  h1, h2 {
+      text-decoration: underline;
+      }
+
+  .artist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    width: 200px;
+  }
+
+  .artist-name {
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .show-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  @media (max-width: 600px) {
+    .artist {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .show-container {
+      justify-content: center;
+    }
+  }
+</style>
+
+<main class="team-section">
+  <h1>Our Team</h1>
   <section>
-    <h1>Our Team</h1>
     <div class="show-container">
-      <div class="show-item">
-          <img src="images/DoubleO Pic.JPG" alt="Me" />
-          <p>Founder/CEO</p>
-      </div>
-
-      <!-- Second Show Block -->
-      <div class="show-item">
-        <a href="OnTheLow.html">
-          <img src="images/dotlbogo.png" alt="On The Low Show" />
-          <p>Double O On The Low</p>
-        </a>
-      </div>
+      <a href="DoubleOMusic.html" class="artist">
+        <img src="images/doubleO Pic.png" alt="Double O" class="feature-img">
+        <div class="artist-name">Founder/CEO</div>
+      </a>
     </div>
   </section>
-  </main>
-
+</main>
 </body>
 </html>

@@ -308,6 +308,10 @@ main {
   background-color: #FF746C; /* Pinkish Red */
 }
 
+.team-section {
+  background-color: #FFEEBC; /* Pinkish Red */
+}
+
 /* VIDEO IFRAME RESPONSIVENESS */
 @media (max-width: 600px) {
   .video-wrapper iframe {

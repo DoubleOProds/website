@@ -23,9 +23,63 @@
     </nav>
   </header>
 
+   <style>
+  .feature-img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    filter: grayscale(100%);
+    transition: filter 0.3s, transform 0.3s;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .feature-img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.01);
+  }
+
+  h1, h2 {
+      text-decoration: underline;
+      }
+
+  .artist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    width: 200px;
+  }
+
+  .artist-name {
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .show-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  @media (max-width: 600px) {
+    .artist {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .show-container {
+      justify-content: center;
+    }
+  }
+</style>
+
 
   <main>
-    <section class="mission">
+    <section>
       <h1>Our Merch</h1>
       <h1>
         <br>

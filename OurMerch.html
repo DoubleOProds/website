@@ -70,33 +70,44 @@
 
     /* Lightbox overlay for enlarged rotating image */
     #lightbox {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.85);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease-in-out;
-    }
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  visibility: hidden;
+}
 
-    #lightbox.visible {
-      opacity: 1;
-      pointer-events: all;
-    }
+#lightbox.visible {
+  opacity: 1;
+  pointer-events: all;
+  visibility: visible;
+}
 
-    #lightbox-img {
-      max-width: 90%;
-      max-height: 90%;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-      border-radius: 12px;
-      transition: transform 0.3s ease-in-out;
-    }
+#lightbox-img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  transform: scale(0.98);
+}
+
+#lightbox.visible #lightbox-img {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+
+    
   </style>
 </head>
 <body>
@@ -145,41 +156,47 @@
   </div>
 
   <script>
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
-    const imageIntervals = [];
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
 
-    document.querySelectorAll('.image-rotator').forEach((rotator, i) => {
-      const images = JSON.parse(rotator.dataset.images);
-      const imgElement = rotator.querySelector('img');
-      let index = 0;
+  document.querySelectorAll('.image-rotator').forEach((rotator, i) => {
+    const images = JSON.parse(rotator.dataset.images);
+    const imgElement = rotator.querySelector('img');
+    let index = 0;
 
-      // Start rotation
-      const interval = setInterval(() => {
-        index = (index + 1) % images.length;
-        imgElement.src = images[index];
+    // Start rotation
+    const rotate = () => {
+      index = (index + 1) % images.length;
+      imgElement.src = images[index];
 
-        // If this image is active in the lightbox, sync it
-        if (lightbox.dataset.source === String(i)) {
-          lightboxImg.src = images[index];
-        }
-      }, 2000);
+      // If this rotator is active in the lightbox
+      if (lightbox.dataset.source === String(i)) {
+        lightboxImg.src = images[index];
+      }
+    };
 
-      imageIntervals.push(interval);
+    // Set first image
+    imgElement.src = images[0];
+    let interval = setInterval(rotate, 2000);
 
-      // Show enlarged version on hover
-      rotator.addEventListener('mouseenter', () => {
-        lightboxImg.src = imgElement.src;
-        lightbox.dataset.source = i;
+    // Hover - open lightbox
+    rotator.addEventListener('mouseenter', () => {
+      // Set source only once to current image
+      lightboxImg.src = imgElement.src;
+      lightbox.dataset.source = i;
+
+      // Delay the show slightly to reduce flicker
+      setTimeout(() => {
         lightbox.classList.add('visible');
-      });
-
-      // Hide on hover out
-      rotator.addEventListener('mouseleave', () => {
-        lightbox.classList.remove('visible');
-        lightbox.dataset.source = "";
-      });
+      }, 100);
     });
-  </script>
+
+    // Hover out - close lightbox
+    rotator.addEventListener('mouseleave', () => {
+      lightbox.classList.remove('visible');
+      lightbox.dataset.source = "";
+    });
+  });
+</script>
 </body>
 </html>

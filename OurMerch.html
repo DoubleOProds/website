@@ -7,6 +7,97 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="DO favicon.png">
+
+  <style>
+    .feature-img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      filter: grayscale(100%);
+      transition: filter 0.3s, transform 0.3s;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .feature-img:hover {
+      filter: grayscale(0%);
+      transform: scale(1.01);
+    }
+
+    h1, h2 {
+      text-decoration: underline;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .artist {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+      width: 200px;
+    }
+
+    .artist-name {
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .show-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .artist {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .show-container {
+        justify-content: center;
+      }
+    }
+
+    .image-rotator img {
+      transition: opacity 0.5s ease-in-out;
+      cursor: pointer;
+    }
+
+    /* Lightbox overlay for enlarged rotating image */
+    #lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    #lightbox.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    #lightbox-img {
+      max-width: 90%;
+      max-height: 90%;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      transition: transform 0.3s ease-in-out;
+    }
+  </style>
 </head>
 <body>
 
@@ -23,107 +114,72 @@
     </nav>
   </header>
 
-   <style>
-  .feature-img {
-    width: 100%;
-    max-width: 200px;
-    height: auto;
-    filter: grayscale(100%);
-    transition: filter 0.3s, transform 0.3s;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  }
-
-  .feature-img:hover {
-    filter: grayscale(0%);
-    transform: scale(1.01);
-  }
-
-  h1, h2 {
-      text-decoration: underline;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      }
-
-  .artist {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-    width: 200px;
-  }
-
-  .artist-name {
-    margin-top: 0.5rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-  }
-
-  .show-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 2rem;
-    padding: 2rem;
-  }
-
-  @media (max-width: 600px) {
-    .artist {
-      width: 100%;
-      max-width: 300px;
-    }
-
-    .show-container {
-      justify-content: center;
-    }
-  }
-
-.image-rotator img {
-  transition: opacity 0.5s ease-in-out;
-}
-</style>
-
-
   <main class="merch-section">
-  <section>
-    <h1>Our Merch</h1>
-    <div class="show-container">
+    <section>
+      <h1>Our Merch</h1>
+      <div class="show-container">
 
-      <!-- Product 1 -->
-      <a href="https://www.etsy.com/uk/listing/4334699313/limited-edition-classic-doubleo-white?ls=r&ref=hp_rv-4&content_source=1f7d5e65fec60cc075b7f9c7185dae75%253Aceb28e350f344e36ac150dc7507ea7fe842fe67d&logging_key=1f7d5e65fec60cc075b7f9c7185dae75%3Aceb28e350f344e36ac150dc7507ea7fe842fe67d" class="artist" target="_blank">
-        <div class="image-rotator" data-images='["images/White Tee Front.jpg", "images/White Tee Back.jpg"]'>
-          <img src="images/White Tee Front.jpg" alt="Item 1" class="feature-img">
-        </div>
-        <div class="artist-name">Classic DoubleO White Tee</div>
-      </a>
+        <!-- Product 1 -->
+        <a href="https://www.etsy.com/uk/listing/4334699313/limited-edition-classic-doubleo-white?ls=r&ref=hp_rv-4&content_source=1f7d5e65fec60cc075b7f9c7185dae75%253Aceb28e350f344e36ac150dc7507ea7fe842fe67d&logging_key=1f7d5e65fec60cc075b7f9c7185dae75%3Aceb28e350f344e36ac150dc7507ea7fe842fe67d" class="artist" target="_blank">
+          <div class="image-rotator" data-images='["images/White Tee Front.jpg", "images/White Tee Back.jpg"]'>
+            <img src="images/White Tee Front.jpg" alt="Item 1" class="feature-img">
+          </div>
+          <div class="artist-name">Classic DoubleO White Tee</div>
+        </a>
 
-      <!-- Product 2 -->
-      <a href="https://www.etsy.com/uk/listing/4334688177/limited-edition-doubleo-productions?ls=r&ref=hp_rv-5&content_source=1f7d5e65fec60cc075b7f9c7185dae75%253Ad317fc67655921d5984b45d6b775f2dfc1a0d446&logging_key=1f7d5e65fec60cc075b7f9c7185dae75%3Ad317fc67655921d5984b45d6b775f2dfc1a0d446" class="artist" target="_blank">
-        <div class="image-rotator" data-images='["images/Front, Black.jpg", "images/Back, Black.jpg"]'>
-          <img src="images/Front, Black.jpg" alt="Item 1" class="feature-img">
-        </div>
-        <div class="artist-name">Classic DoubleO Long Sleeve Black Top</div>
-      </a>
-      
+        <!-- Product 2 -->
+        <a href="https://www.etsy.com/uk/listing/4334688177/limited-edition-doubleo-productions?ls=r&ref=hp_rv-5&content_source=1f7d5e65fec60cc075b7f9c7185dae75%253Ad317fc67655921d5984b45d6b775f2dfc1a0d446&logging_key=1f7d5e65fec60cc075b7f9c7185dae75%3Ad317fc67655921d5984b45d6b775f2dfc1a0d446" class="artist" target="_blank">
+          <div class="image-rotator" data-images='["images/Front, Black.jpg", "images/Back, Black.jpg"]'>
+            <img src="images/Front, Black.jpg" alt="Item 2" class="feature-img">
+          </div>
+          <div class="artist-name">Classic DoubleO Long Sleeve Black Top</div>
+        </a>
 
-    </div>
-  </section>
-</main>
+      </div>
+    </section>
+  </main>
 
+  <!-- Lightbox Overlay -->
+  <div id="lightbox" class="hidden">
+    <img id="lightbox-img" src="" alt="Expanded Image">
+  </div>
 
+  <script>
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const imageIntervals = [];
+
+    document.querySelectorAll('.image-rotator').forEach((rotator, i) => {
+      const images = JSON.parse(rotator.dataset.images);
+      const imgElement = rotator.querySelector('img');
+      let index = 0;
+
+      // Start rotation
+      const interval = setInterval(() => {
+        index = (index + 1) % images.length;
+        imgElement.src = images[index];
+
+        // If this image is active in the lightbox, sync it
+        if (lightbox.dataset.source === String(i)) {
+          lightboxImg.src = images[index];
+        }
+      }, 2000);
+
+      imageIntervals.push(interval);
+
+      // Show enlarged version on hover
+      rotator.addEventListener('mouseenter', () => {
+        lightboxImg.src = imgElement.src;
+        lightbox.dataset.source = i;
+        lightbox.classList.add('visible');
+      });
+
+      // Hide on hover out
+      rotator.addEventListener('mouseleave', () => {
+        lightbox.classList.remove('visible');
+        lightbox.dataset.source = "";
+      });
+    });
+  </script>
 </body>
 </html>
-
-<script>
-  document.querySelectorAll('.image-rotator').forEach(rotator => {
-    const images = JSON.parse(rotator.dataset.images);
-    const imgElement = rotator.querySelector('img');
-    let index = 0;
-
-    setInterval(() => {
-      index = (index + 1) % images.length;
-      imgElement.src = images[index];
-    }, 2000); // Rotate every 2 seconds
-  });
-</script>
-

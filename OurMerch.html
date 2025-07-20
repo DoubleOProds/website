@@ -158,45 +158,55 @@
   <script>
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
+  let activeRotator = null;
 
   document.querySelectorAll('.image-rotator').forEach((rotator, i) => {
     const images = JSON.parse(rotator.dataset.images);
     const imgElement = rotator.querySelector('img');
     let index = 0;
 
-    // Start rotation
-    const rotate = () => {
+    // Initial image
+    imgElement.src = images[0];
+
+    // Rotate images
+    setInterval(() => {
       index = (index + 1) % images.length;
       imgElement.src = images[index];
 
-      // If this rotator is active in the lightbox
+      // Update lightbox if it's active
       if (lightbox.dataset.source === String(i)) {
         lightboxImg.src = images[index];
       }
-    };
+    }, 2000);
 
-    // Set first image
-    imgElement.src = images[0];
-    let interval = setInterval(rotate, 2000);
-
-    // Hover - open lightbox
+    // Hover in: show lightbox
     rotator.addEventListener('mouseenter', () => {
-      // Set source only once to current image
       lightboxImg.src = imgElement.src;
-      lightbox.dataset.source = i;
-
-      // Delay the show slightly to reduce flicker
-      setTimeout(() => {
-        lightbox.classList.add('visible');
-      }, 100);
-    });
-
-    // Hover out - close lightbox
-    rotator.addEventListener('mouseleave', () => {
-      lightbox.classList.remove('visible');
-      lightbox.dataset.source = "";
+      lightbox.dataset.source = String(i);
+      lightbox.classList.add('visible');
+      activeRotator = rotator;
     });
   });
+
+  // Listen globally to mouse movement to detect when we leave the rotator
+  document.addEventListener('mousemove', (e) => {
+    if (!activeRotator) return;
+
+    const rect = activeRotator.getBoundingClientRect();
+    const within =
+      e.clientX >= rect.left &&
+      e.clientX <= rect.right &&
+      e.clientY >= rect.top &&
+      e.clientY <= rect.bottom;
+
+    if (!within) {
+      lightbox.classList.remove('visible');
+      lightbox.dataset.source = "";
+      activeRotator = null;
+    }
+  });
 </script>
+
+  
 </body>
 </html>

@@ -77,6 +77,10 @@
       justify-content: center;
     }
   }
+
+.image-rotator img {
+  transition: opacity 0.5s ease-in-out;
+}
 </style>
 
 
@@ -84,19 +88,43 @@
   <section>
     <h1>Our Merch</h1>
     <div class="show-container">
+
+      <!-- Product 1 -->
       <a href="https://www.etsy.com/uk/listing/4334699313/limited-edition-classic-doubleo-white?ls=r&ref=hp_rv-4&content_source=1f7d5e65fec60cc075b7f9c7185dae75%253Aceb28e350f344e36ac150dc7507ea7fe842fe67d&logging_key=1f7d5e65fec60cc075b7f9c7185dae75%3Aceb28e350f344e36ac150dc7507ea7fe842fe67d" class="artist" target="_blank">
-        <img src="images/item1.jpg" alt="Item 1" class="feature-img">
+        <div class="image-rotator" data-images='["images/item1.jpg", "images/item1b.jpg"]'>
+          <img src="images/item1.jpg" alt="Item 1" class="feature-img">
+        </div>
         <div class="artist-name">Limited Edition Classic DoubleO White Tee</div>
       </a>
+
+      <!-- Product 2 -->
       <a href="https://www.etsy.com/listing/YOURITEM2" class="artist" target="_blank">
-        <img src="images/item2.jpg" alt="Item 2" class="feature-img">
+        <div class="image-rotator" data-images='["images/item2.jpg", "images/item2b.jpg"]'>
+          <img src="images/item2.jpg" alt="Item 2" class="feature-img">
+        </div>
         <div class="artist-name">Band Tee</div>
       </a>
-      <!-- Add more items -->
-      
+
+      <!-- Add more items in the same format -->
+
     </div>
   </section>
 </main>
 
+
 </body>
 </html>
+
+<script>
+  document.querySelectorAll('.image-rotator').forEach(rotator => {
+    const images = JSON.parse(rotator.dataset.images);
+    const imgElement = rotator.querySelector('img');
+    let index = 0;
+
+    setInterval(() => {
+      index = (index + 1) % images.length;
+      imgElement.src = images[index];
+    }, 2000); // Rotate every 2 seconds
+  });
+</script>
+

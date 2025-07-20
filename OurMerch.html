@@ -69,10 +69,7 @@
     }
 
     /* Lightbox overlay for enlarged rotating image */
-    #lightbox {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease-in-out;
+#lightbox {
   position: fixed;
   top: 0;
   left: 0;
@@ -83,13 +80,16 @@
   align-items: center;
   justify-content: center;
   z-index: 999;
+  opacity: 0;
+  pointer-events: none; /* ⛔ blocks interaction when visible */
+  transition: opacity 0.3s ease-in-out;
   visibility: hidden;
 }
 
 #lightbox.visible {
   opacity: 1;
-  pointer-events: all;
   visibility: visible;
+  pointer-events: none; /* ✅ stays non-blocking even when visible */
 }
 
 #lightbox-img {
@@ -99,14 +99,13 @@
   transition: transform 0.3s ease, opacity 0.3s ease;
   opacity: 0;
   transform: scale(0.98);
+  pointer-events: none; /* ✅ also non-blocking */
 }
 
 #lightbox.visible #lightbox-img {
   opacity: 1;
   transform: scale(1.05);
 }
-
-
     
   </style>
 </head>

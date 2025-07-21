@@ -70,9 +70,9 @@ nav a:hover {
 li {
   margin: 0 1rem;
   text-decoration: none;
-  color: #000000;
-  font-size: 45px;
+  font-size: 1.2rem;
   font-weight: 800;
+  color: white;
   transition: color 0.3s ease;
 }
 

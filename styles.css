@@ -302,14 +302,17 @@ main {
 /* SECTIONS BACKGROUND COLORS */
 .shows-section {
   background-color: #A7C7E7; /* Light Blue */
+  font-color: #FFFFFF;
 }
 
 .music-section {
   background-color: #800080; /* Purple */
+  font-color: #FFFFFF;
 }
 
 .merch-section {
   background-color: #2E6F40; /* Green */
+  font-color: #FFFFFF;
 }
 
 .team-section {

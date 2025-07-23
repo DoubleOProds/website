@@ -124,70 +124,29 @@
     </a>
   </div>
 </main>
-
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.2 });
+const wheelContainer = document.querySelector('.wheel-container');
+const scrollStep = 1;       // Smoothness of scroll
+let isHovering = false;
 
-  document.querySelectorAll('.feature-box').forEach(box => {
-    observer.observe(box);
-  });
-
-  const wheelContainer = document.querySelector('.wheel-container');
-  let scrollAmount = 0;
-  const scrollStep = 2;
-  const delay = 10;
-  let scrollTimeout;
-  let isHovering = false;
-
-  function autoScroll() {
-    if (!wheelContainer || isHovering) return;
-
-    const maxScroll = wheelContainer.scrollWidth - wheelContainer.clientWidth;
-
-    if (wheelContainer.scrollLeft + scrollStep >= maxScroll) {
-      wheelContainer.scrollTo({ left: 0, behavior: 'smooth' });
-      scrollAmount = 0;
+function autoScroll() {
+  if (!isHovering) {
+    // If at end, go back to start
+    if (wheelContainer.scrollLeft + wheelContainer.clientWidth >= wheelContainer.scrollWidth) {
+      wheelContainer.scrollLeft = 0;
     } else {
-      scrollAmount = wheelContainer.scrollLeft + scrollStep;
-      wheelContainer.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+      wheelContainer.scrollLeft += scrollStep;
     }
-
-    scrollTimeout = setTimeout(autoScroll, delay);
   }
+  requestAnimationFrame(autoScroll); // smoother browser-native loop
+}
 
-  function startAutoScroll() {
-    clearTimeout(scrollTimeout);
-    autoScroll();
-  }
+wheelContainer.addEventListener('mouseenter', () => isHovering = true);
+wheelContainer.addEventListener('mouseleave', () => isHovering = false);
 
-  function stopAutoScroll() {
-    clearTimeout(scrollTimeout);
-  }
-
-  window.addEventListener('load', () => {
-    scrollAmount = wheelContainer.scrollLeft;
-    startAutoScroll();
-
-    wheelContainer.addEventListener('scroll', () => {
-      scrollAmount = wheelContainer.scrollLeft;
-    });
-
-    wheelContainer.addEventListener('mouseenter', () => {
-      isHovering = true;
-      stopAutoScroll();
-    });
-
-    wheelContainer.addEventListener('mouseleave', () => {
-      isHovering = false;
-      startAutoScroll();
-    });
-  });
+window.addEventListener('load', () => {
+  autoScroll();
+});
 </script>
 
 

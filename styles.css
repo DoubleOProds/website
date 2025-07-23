@@ -301,22 +301,22 @@ main {
 
 /* SECTIONS BACKGROUND COLORS */
 .shows-section {
-  background-color: #A7C7E7; /* Light Blue */
+  background-color: #F3E4F1; /* Light Blue */
   font-color: #FFFFFF;
 }
 
 .music-section {
-  background-color: #800080; /* Purple */
+  background-color: #F4DACD; /* Purple */
   font-color: #FFFFFF;
 }
 
 .merch-section {
-  background-color: #2E6F40; /* Green */
+  background-color: #D5EBDA; /* Green */
   font-color: #FFFFFF;
 }
 
 .team-section {
-  background-color: #FFEEBC; /* Pinkish Red */
+  background-color: #FAFAEB; /* Pinkish Red */
 }
 
 /* VIDEO IFRAME RESPONSIVENESS */

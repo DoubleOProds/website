@@ -232,17 +232,25 @@
   });
 
   // Listen globally to mouse movement to detect when we leave the rotator
-  document.addEventListener('mousemove', (e) => {
+    document.addEventListener('mousemove', (e) => {
     if (!activeRotator) return;
 
-    const rect = activeRotator.getBoundingClientRect();
-    const within =
-      e.clientX >= rect.left &&
-      e.clientX <= rect.right &&
-      e.clientY >= rect.top &&
-      e.clientY <= rect.bottom;
+    const rotatorRect = activeRotator.getBoundingClientRect();
+    const lightboxRect = lightbox.getBoundingClientRect();
 
-    if (!within) {
+    const withinRotator =
+      e.clientX >= rotatorRect.left &&
+      e.clientX <= rotatorRect.right &&
+      e.clientY >= rotatorRect.top &&
+      e.clientY <= rotatorRect.bottom;
+
+    const withinLightbox =
+      e.clientX >= lightboxRect.left &&
+      e.clientX <= lightboxRect.right &&
+      e.clientY >= lightboxRect.top &&
+      e.clientY <= lightboxRect.bottom;
+
+    if (!withinRotator && !withinLightbox) {
       lightbox.classList.remove('visible');
       lightbox.dataset.source = "";
       activeRotator = null;

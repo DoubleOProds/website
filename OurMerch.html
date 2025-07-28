@@ -202,6 +202,7 @@
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
   let activeRotator = null;
+  let lockPreview = false;
 
   document.querySelectorAll('.image-rotator').forEach((rotator, i) => {
     const images = JSON.parse(rotator.dataset.images);
@@ -222,41 +223,47 @@
       }
     }, 2000);
 
-    // Hover in: show lightbox
+    // Hover in: show lightbox if no one else is being previewed
     rotator.addEventListener('mouseenter', () => {
+      if (lockPreview) return; // prevent switching to another product
+
+      activeRotator = rotator;
       lightboxImg.src = imgElement.src;
       lightbox.dataset.source = String(i);
       lightbox.classList.add('visible');
-      activeRotator = rotator;
+      lockPreview = true;
     });
   });
 
-  // Listen globally to mouse movement to detect when we leave the rotator
-    document.addEventListener('mousemove', (e) => {
+  // Utility to check if point is within a given rectangle with optional buffer
+  function isInside(rect, x, y, buffer = 20) {
+    return (
+      x >= rect.left - buffer &&
+      x <= rect.right + buffer &&
+      y >= rect.top - buffer &&
+      y <= rect.bottom + buffer
+    );
+  }
+
+  // Detect when the mouse leaves both the rotator and lightbox (with buffer)
+  document.addEventListener('mousemove', (e) => {
     if (!activeRotator) return;
 
     const rotatorRect = activeRotator.getBoundingClientRect();
     const lightboxRect = lightbox.getBoundingClientRect();
 
-    const withinRotator =
-      e.clientX >= rotatorRect.left &&
-      e.clientX <= rotatorRect.right &&
-      e.clientY >= rotatorRect.top &&
-      e.clientY <= rotatorRect.bottom;
+    const overRotator = isInside(rotatorRect, e.clientX, e.clientY, 10);
+    const overLightbox = isInside(lightboxRect, e.clientX, e.clientY, 10);
 
-    const withinLightbox =
-      e.clientX >= lightboxRect.left &&
-      e.clientX <= lightboxRect.right &&
-      e.clientY >= lightboxRect.top &&
-      e.clientY <= lightboxRect.bottom;
-
-    if (!withinRotator && !withinLightbox) {
+    if (!overRotator && !overLightbox) {
       lightbox.classList.remove('visible');
       lightbox.dataset.source = "";
       activeRotator = null;
+      lockPreview = false;
     }
   });
 </script>
+
 
   
 </body>

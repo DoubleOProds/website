@@ -7,35 +7,62 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="DO favicon.png">
-</head>
-<body>
-
-   <header>
-    <div class="logo">
-      <img src="images/dubsprods.jpg" alt="Double O Productions Logo" />
-    </div>
-    <nav>
-      <a href="index.html">Home</a> <p> | </p>
-      <a href="OurShows.html">Our Shows</a> <p> | </p>
-      <a href="OurMusic.html">Our Music</a> <p> | </p>
-      <a href="OurMerch.html">Our Store</a> <p> | </p>
-      <a href="OurTeam.html">Our Team</a>
-    </nav>
-  </header>
   <style>
     h1, h2 {
       text-decoration: underline;
       font-size: 2.5rem;
       margin-bottom: 1rem;
-      }
+    }
+
+    .wheel-container {
+      display: flex;
+      gap: 1rem;
+      overflow: hidden;
+      scroll-behavior: smooth;
+    }
+
+    .wheel-item {
+      flex: 0 0 auto;
+    }
+
+    .feature-img {
+      width: 100%;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .hidden-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hidden-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
   </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="images/dubsprods.jpg" alt="Double O Productions Logo" />
+  </div>
+  <nav>
+    <a href="index.html">Home</a> <p> | </p>
+    <a href="OurShows.html">Our Shows</a> <p> | </p>
+    <a href="OurMusic.html">Our Music</a> <p> | </p>
+    <a href="OurMerch.html">Our Store</a> <p> | </p>
+    <a href="OurTeam.html">Our Team</a>
+  </nav>
+</header>
 
 <main>
   <h1>Some of our productions</h1>
   <br>
   <section class="scrolling-wheel">
-  <div class="wheel-container">
-    <a href="https://www.youtube.com/watch?v=sRQbLA71RQs" class="wheel-item" target="_blank">
+    <div class="wheel-container hidden-scrollbar">
+      
+      <!-- YouTube thumbnails -->
+      <a href="https://www.youtube.com/watch?v=sRQbLA71RQs" class="wheel-item" target="_blank">
       <div class="thumb-wrapper">
         <img src="https://img.youtube.com/vi/sRQbLA71RQs/hqdefault.jpg" alt="Video 2" />
         <div class="description">Watch our Latest Special</div>
@@ -90,9 +117,8 @@
         <div class="description">Watch The Forest Remastered</div>
       </div>
     </a>
-  </div>
-</section>
-
+    </div>
+  </section>
 
   <div class="feature-column">
     <a href="OurShows.html" class="feature-link">
@@ -104,21 +130,21 @@
 
     <a href="OurMusic.html" class="feature-link">
       <div class="feature-box right-img">
-        <img src="images/Music Producing.JPG" alt="Feature 1" class="feature-img" />
+        <img src="images/Music Producing.JPG" alt="Feature 2" class="feature-img" />
         <div class="feature-text">Explore Our Music</div>
       </div>
     </a>
 
     <a href="OurMerch.html" class="feature-link">
       <div class="feature-box left-img">
-        <img src="images/OurMerch.JPG" alt="Feature 1" class="feature-img" />
+        <img id="merch-image" src="images/OurMerch.JPG" alt="Feature 3" class="feature-img" />
         <div class="feature-text">Explore Our Merchandise</div>
       </div>
     </a>
 
     <a href="OurTeam.html" class="feature-link">
       <div class="feature-box right-img">
-        <img src="images/OurTeam.JPG" alt="Feature 2" class="feature-img" />
+        <img src="images/OurTeam.JPG" alt="Feature 4" class="feature-img" />
         <div class="feature-text">Meet the Team</div>
       </div>
     </a>
@@ -126,6 +152,7 @@
 </main>
 
 <script>
+  // Intersection animation
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -137,30 +164,27 @@
   document.querySelectorAll('.feature-box').forEach(box => {
     observer.observe(box);
   });
-  
-  const wheelContainer = document.querySelector('.wheel-container');
 
+  // Auto-scrolling wheel
+  const wheelContainer = document.querySelector('.wheel-container');
   let scrollAmount = 1;
-  const scrollStep = 3; // Speed of scrolling, adjust for your needs
-  const delay = 10; // Delay between scrolls, adjust for smoother/rougher scroll
+  const scrollStep = 1;
+  const delay = 20;
   let scrollTimeout;
   let isHovering = false;
 
   function autoScroll() {
     if (!wheelContainer || isHovering) return;
 
-    // Update scrollAmount based on the current position and scroll step
     scrollAmount = wheelContainer.scrollLeft + scrollStep;
 
-    // If the scroll reaches the end, reset it to the start smoothly
-    if (scrollAmount >= wheelContainer.scrollWidth) {
-      scrollAmount = 0; // Reset to the start
+    // Looping logic
+    if (scrollAmount >= wheelContainer.scrollWidth - wheelContainer.clientWidth) {
+      wheelContainer.scrollLeft = 0;
+      scrollAmount = 0;
+    } else {
+      wheelContainer.scrollLeft = scrollAmount;
     }
-
-    wheelContainer.scrollTo({
-      left: scrollAmount,
-      behavior: 'smooth'
-    });
 
     scrollTimeout = setTimeout(autoScroll, delay);
   }
@@ -176,28 +200,44 @@
 
   window.addEventListener('load', () => {
     if (!wheelContainer) return;
-
-    // Initialize scroll position and start the auto scroll
     scrollAmount = wheelContainer.scrollLeft;
     startAutoScroll();
 
-    // Listen for manual scroll and continue auto-scroll from that point
     wheelContainer.addEventListener('scroll', () => {
       scrollAmount = wheelContainer.scrollLeft;
     });
 
-    // Pause the scroll when the user hovers over the wheel
     wheelContainer.addEventListener('mouseenter', () => {
       isHovering = true;
       stopAutoScroll();
     });
 
-    // Resume the scroll when the user moves the mouse away
     wheelContainer.addEventListener('mouseleave', () => {
       isHovering = false;
       startAutoScroll();
     });
   });
+
+  // Merch image slideshow
+  const merchImages = [
+    "images/OurMerch.JPG",
+    "images/OurMerch2.JPG",
+    "images/OurMerch3.JPG",
+    "images/OurMerch4.JPG"
+  ];
+  let merchIndex = 0;
+  const merchImageElement = document.getElementById("merch-image");
+
+  function cycleMerchImages() {
+    merchIndex = (merchIndex + 1) % merchImages.length;
+    merchImageElement.style.opacity = 0;
+    setTimeout(() => {
+      merchImageElement.src = merchImages[merchIndex];
+      merchImageElement.style.opacity = 1;
+    }, 300);
+  }
+
+  setInterval(cycleMerchImages, 3000); // Change every 3 seconds
 </script>
 
 </body>

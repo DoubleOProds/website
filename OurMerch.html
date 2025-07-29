@@ -200,64 +200,42 @@
    <script>
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
-  let activeRotator = null;
+
   let currentImages = [];
   let imageIndex = 0;
   let intervalId = null;
 
-  document.querySelectorAll('.image-rotator').forEach((rotator) => {
-    const images = JSON.parse(rotator.dataset.images);
-    const imgElement = rotator.querySelector('img');
+  function startLightbox(images) {
+    currentImages = images;
+    imageIndex = 0;
+    lightboxImg.src = currentImages[0];
+    lightbox.classList.add('visible');
 
-    rotator.addEventListener('mouseenter', () => {
-      activeRotator = rotator;
-      currentImages = images;
-      imageIndex = 0;
-      imgElement.src = currentImages[0];
-
-      intervalId = setInterval(() => {
-        imageIndex = (imageIndex + 1) % currentImages.length;
-        imgElement.src = currentImages[imageIndex];
-        lightboxImg.src = currentImages[imageIndex];
-      }, 2000);
-
-      lightboxImg.src = currentImages[0];
-      lightbox.classList.add('visible');
-    });
-
-    rotator.addEventListener('mouseleave', () => {
-      // Delay a bit so we can detect if mouse moved to preview
-      setTimeout(() => {
-        if (!isHoveringPreview()) {
-          closeLightbox();
-        }
-      }, 100);
-    });
-  });
-
-  lightboxImg.addEventListener('mouseleave', () => {
-    // Delay in case mouse is quickly moving between merch and preview
-    setTimeout(() => {
-      if (!isHoveringPreview()) {
-        closeLightbox();
-      }
-    }, 100);
-  });
-
-  function isHoveringPreview() {
-    const hovered = document.querySelector(':hover');
-    return (
-      hovered &&
-      (hovered.closest('.image-rotator') || hovered === lightboxImg)
-    );
+    clearInterval(intervalId);
+    intervalId = setInterval(() => {
+      imageIndex = (imageIndex + 1) % currentImages.length;
+      lightboxImg.src = currentImages[imageIndex];
+    }, 2000);
   }
 
-  function closeLightbox() {
+  function stopLightbox() {
     lightbox.classList.remove('visible');
-    activeRotator = null;
     clearInterval(intervalId);
   }
+
+  document.querySelectorAll('.image-rotator').forEach(rotator => {
+    const images = JSON.parse(rotator.dataset.images);
+
+    rotator.addEventListener('mouseenter', () => {
+      startLightbox(images);
+    });
+  });
+
+  lightbox.addEventListener('mouseleave', () => {
+    stopLightbox();
+  });
 </script>
+
 
 </body>
 </html>

@@ -140,27 +140,24 @@
 
   const wheelContainer = document.querySelector('.wheel-container');
 
-  let scrollAmount = 0;
-  const scrollStep = 2; // Adjust for desired speed
-  const delay = 15; // Adjust for smoothness
+  const scrollStep = 2; // speed of scroll
+  const delay = 15;     // delay between each scroll step
   let scrollTimeout;
   let isHovering = false;
 
   function autoScroll() {
     if (!wheelContainer || isHovering) return;
 
-    scrollAmount = wheelContainer.scrollLeft + scrollStep;
+    const maxScroll = wheelContainer.scrollWidth - wheelContainer.clientWidth;
+    const currentScroll = wheelContainer.scrollLeft;
 
-    if (scrollAmount >= (wheelContainer.scrollWidth - wheelContainer.clientWidth)) {
-      // Instantly reset to the start (no smooth behavior to make it "bounce")
+    // Check if at (or very near) the end
+    if (currentScroll >= maxScroll - scrollStep) {
+      // QUICK jump back to start
       wheelContainer.scrollTo({ left: 0, behavior: 'auto' });
-      scrollAmount = 0;
     } else {
-      // Scroll forward smoothly
-      wheelContainer.scrollTo({
-        left: scrollAmount,
-        behavior: 'smooth'
-      });
+      // Smooth scroll forward
+      wheelContainer.scrollBy({ left: scrollStep, behavior: 'smooth' });
     }
 
     scrollTimeout = setTimeout(autoScroll, delay);
@@ -178,12 +175,7 @@
   window.addEventListener('load', () => {
     if (!wheelContainer) return;
 
-    scrollAmount = wheelContainer.scrollLeft;
     startAutoScroll();
-
-    wheelContainer.addEventListener('scroll', () => {
-      scrollAmount = wheelContainer.scrollLeft;
-    });
 
     wheelContainer.addEventListener('mouseenter', () => {
       isHovering = true;
@@ -196,6 +188,7 @@
     });
   });
 </script>
+
 
 
 

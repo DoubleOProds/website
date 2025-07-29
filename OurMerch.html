@@ -81,7 +81,7 @@
   justify-content: center;
   z-index: 999;
   opacity: 0;
-  pointer-events: none; /* ⛔ blocks interaction when visible */
+  pointer-events: auto; /* ⛔ blocks interaction when visible */
   transition: opacity 0.3s ease-in-out;
   visibility: hidden;
 }
@@ -202,69 +202,53 @@
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
   let activeRotator = null;
-  let lockPreview = false;
+  let currentImages = [];
+  let imageIndex = 0;
+  let intervalId = null;
 
+  // Setup rotators
   document.querySelectorAll('.image-rotator').forEach((rotator, i) => {
     const images = JSON.parse(rotator.dataset.images);
     const imgElement = rotator.querySelector('img');
-    let index = 0;
 
-    // Initial image
-    imgElement.src = images[0];
-
-    // Rotate images
-    setInterval(() => {
-      index = (index + 1) % images.length;
-      imgElement.src = images[index];
-
-      // Update lightbox if it's active
-      if (lightbox.dataset.source === String(i)) {
-        lightboxImg.src = images[index];
-      }
-    }, 2000);
-
-    // Hover in: show lightbox if no one else is being previewed
     rotator.addEventListener('mouseenter', () => {
-      if (lockPreview) return; // prevent switching to another product
-
       activeRotator = rotator;
-      lightboxImg.src = imgElement.src;
-      lightbox.dataset.source = String(i);
+      currentImages = images;
+      imageIndex = 0;
+      imgElement.src = currentImages[0];
+
+      // Start rotation
+      intervalId = setInterval(() => {
+        imageIndex = (imageIndex + 1) % currentImages.length;
+        imgElement.src = currentImages[imageIndex];
+        lightboxImg.src = currentImages[imageIndex];
+      }, 2000);
+
+      // Show lightbox
+      lightboxImg.src = currentImages[0];
       lightbox.classList.add('visible');
-      lockPreview = true;
+    });
+
+    rotator.addEventListener('mouseleave', () => {
+      // Wait briefly to see if they enter lightbox
+      setTimeout(() => {
+        if (!lightbox.matches(':hover')) {
+          closeLightbox();
+        }
+      }, 200);
     });
   });
 
-  // Utility to check if point is within a given rectangle with optional buffer
-  function isInside(rect, x, y, buffer = 20) {
-    return (
-      x >= rect.left - buffer &&
-      x <= rect.right + buffer &&
-      y >= rect.top - buffer &&
-      y <= rect.bottom + buffer
-    );
-  }
-
-  // Detect when the mouse leaves both the rotator and lightbox (with buffer)
-  document.addEventListener('mousemove', (e) => {
-    if (!activeRotator) return;
-
-    const rotatorRect = activeRotator.getBoundingClientRect();
-    const lightboxRect = lightbox.getBoundingClientRect();
-
-    const overRotator = isInside(rotatorRect, e.clientX, e.clientY, 10);
-    const overLightbox = isInside(lightboxRect, e.clientX, e.clientY, 10);
-
-    if (!overRotator && !overLightbox) {
-      lightbox.classList.remove('visible');
-      lightbox.dataset.source = "";
-      activeRotator = null;
-      lockPreview = false;
-    }
+  // Lightbox hover leave
+  lightbox.addEventListener('mouseleave', () => {
+    closeLightbox();
   });
+
+  function closeLightbox() {
+    lightbox.classList.remove('visible');
+    activeRotator = null;
+    clearInterval(intervalId);
+  }
 </script>
-
-
-  
 </body>
 </html>

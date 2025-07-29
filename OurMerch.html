@@ -197,52 +197,67 @@
     <img id="lightbox-img" src="" alt="Expanded Image">
   </div>
 
-  <script>
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
-    let activeRotator = null;
-    let currentImages = [];
-    let imageIndex = 0;
-    let intervalId = null;
+   <script>
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  let activeRotator = null;
+  let currentImages = [];
+  let imageIndex = 0;
+  let intervalId = null;
 
-    document.querySelectorAll('.image-rotator').forEach((rotator, i) => {
-      const images = JSON.parse(rotator.dataset.images);
-      const imgElement = rotator.querySelector('img');
+  document.querySelectorAll('.image-rotator').forEach((rotator) => {
+    const images = JSON.parse(rotator.dataset.images);
+    const imgElement = rotator.querySelector('img');
 
-      rotator.addEventListener('mouseenter', () => {
-        activeRotator = rotator;
-        currentImages = images;
-        imageIndex = 0;
-        imgElement.src = currentImages[0];
+    rotator.addEventListener('mouseenter', () => {
+      activeRotator = rotator;
+      currentImages = images;
+      imageIndex = 0;
+      imgElement.src = currentImages[0];
 
-        intervalId = setInterval(() => {
-          imageIndex = (imageIndex + 1) % currentImages.length;
-          imgElement.src = currentImages[imageIndex];
-          lightboxImg.src = currentImages[imageIndex];
-        }, 2000);
+      intervalId = setInterval(() => {
+        imageIndex = (imageIndex + 1) % currentImages.length;
+        imgElement.src = currentImages[imageIndex];
+        lightboxImg.src = currentImages[imageIndex];
+      }, 2000);
 
-        lightboxImg.src = currentImages[0];
-        lightbox.classList.add('visible');
-      });
-
-      rotator.addEventListener('mouseleave', () => {
-        setTimeout(() => {
-          if (!lightbox.matches(':hover')) {
-            closeLightbox();
-          }
-        }, 150);
-      });
+      lightboxImg.src = currentImages[0];
+      lightbox.classList.add('visible');
     });
 
-    lightbox.addEventListener('mouseleave', () => {
-      closeLightbox();
+    rotator.addEventListener('mouseleave', () => {
+      // Delay a bit so we can detect if mouse moved to preview
+      setTimeout(() => {
+        if (!isHoveringPreview()) {
+          closeLightbox();
+        }
+      }, 100);
     });
+  });
 
-    function closeLightbox() {
-      lightbox.classList.remove('visible');
-      activeRotator = null;
-      clearInterval(intervalId);
-    }
-  </script>
+  lightboxImg.addEventListener('mouseleave', () => {
+    // Delay in case mouse is quickly moving between merch and preview
+    setTimeout(() => {
+      if (!isHoveringPreview()) {
+        closeLightbox();
+      }
+    }, 100);
+  });
+
+  function isHoveringPreview() {
+    const hovered = document.querySelector(':hover');
+    return (
+      hovered &&
+      (hovered.closest('.image-rotator') || hovered === lightboxImg)
+    );
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('visible');
+    activeRotator = null;
+    clearInterval(intervalId);
+  }
+</script>
+
 </body>
 </html>

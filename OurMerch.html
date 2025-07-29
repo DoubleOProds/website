@@ -29,25 +29,28 @@
       margin-bottom: 1rem;
     }
 
-    .preview-box {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-10px);
-  background: #fff;
-  border: 2px solid #000;
-  padding: 6px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-  display: none;
-  z-index: 50;
-  max-width: 200px;
-}
-
-.preview-box img {
+    #preview-box {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border: 3px solid black;
+      padding: 12px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      display: none;
+      z-index: 1000;
+      max-width: 400px;
+      max-height: 90vh;
+    }
+  
+  #preview-box img {
   width: 100%;
-  border-radius: 6px;
-}
+  height: auto;
+  border-radius: 12px;
+  }
+
 
 
     .artist {
@@ -223,49 +226,60 @@
     <img id="lightbox-img" src="" alt="Expanded Image">
   </div>
 
-   <script>
+  <script>
+  const previewBox = document.getElementById('preview-box');
+  const previewImg = document.getElementById('preview-img');
+
   let rotationInterval;
+  let currentImages = [];
+  let currentIndex = 0;
+  let isPreviewActive = false;
 
+  function startPreview(images) {
+    currentImages = images;
+    currentIndex = 0;
+    previewImg.src = currentImages[0];
+    previewBox.style.display = 'block';
+
+    rotationInterval = setInterval(() => {
+      currentIndex = (currentIndex + 1) % currentImages.length;
+      previewImg.src = currentImages[currentIndex];
+    }, 2000);
+  }
+
+  function stopPreview() {
+    previewBox.style.display = 'none';
+    clearInterval(rotationInterval);
+  }
+
+  // Setup event listeners for all merch items
   document.querySelectorAll('.image-rotator').forEach(rotator => {
-    const previewBox = rotator.querySelector('.preview-box');
-    const previewImg = previewBox.querySelector('img');
     const images = JSON.parse(rotator.dataset.images);
-    let index = 0;
 
-    // Show preview
     rotator.addEventListener('mouseenter', () => {
-      previewImg.src = images[0];
-      index = 0;
-      previewBox.style.display = 'block';
-
-      rotationInterval = setInterval(() => {
-        index = (index + 1) % images.length;
-        previewImg.src = images[index];
-      }, 2000);
+      startPreview(images);
     });
 
-    // Only hide when mouse leaves the preview box
-    previewBox.addEventListener('mouseleave', () => {
-      previewBox.style.display = 'none';
-      clearInterval(rotationInterval);
-    });
-
-    // Prevent flicker if moving quickly from image to box
     rotator.addEventListener('mouseleave', (e) => {
-      const to = e.relatedTarget;
-      if (!previewBox.contains(to)) {
-        setTimeout(() => {
-          if (!previewBox.matches(':hover')) {
-            previewBox.style.display = 'none';
-            clearInterval(rotationInterval);
-          }
-        }, 100);
-      }
+      setTimeout(() => {
+        if (!previewBox.matches(':hover')) {
+          stopPreview();
+        }
+      }, 100);
     });
+  });
+
+  // Hide when leaving preview box
+  previewBox.addEventListener('mouseleave', () => {
+    stopPreview();
   });
 </script>
 
 
+
+<div id="preview-box">
+  <img id="preview-img" src="" alt="Preview Image">
+</div>
 
 </body>
 </html>

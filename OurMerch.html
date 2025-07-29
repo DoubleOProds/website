@@ -29,30 +29,6 @@
       margin-bottom: 1rem;
     }
 
-    #preview-box {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      border: 3px solid black;
-      padding: 12px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-      display: none;
-      z-index: 1000;
-      max-width: 900px;
-      max-height: auto;
-    }
-  
-  #preview-box img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  }
-
-
-
     .artist {
       display: flex;
       flex-direction: column;
@@ -105,7 +81,7 @@
       justify-content: center;
       z-index: 999;
       opacity: 0;
-      pointer-events: auto;
+      pointer-events: none; /* ⛔ blocks interaction when visible */
       transition: opacity 0.3s ease-in-out;
       visibility: hidden;
     }
@@ -113,7 +89,7 @@
     #lightbox.visible {
       opacity: 1;
       visibility: visible;
-      pointer-events: auto;
+      pointer-events: none; /* ✅ stays non-blocking even when visible */
     }
 
     #lightbox-img {
@@ -123,7 +99,7 @@
       transition: transform 0.3s ease, opacity 0.3s ease;
       opacity: 0;
       transform: scale(0.98);
-      pointer-events: none;
+      pointer-events: none; /* ✅ also non-blocking */
     }
 
     #lightbox.visible #lightbox-img {
@@ -153,34 +129,31 @@
       <div class="show-container">
 
         <!-- Product 1 -->
-        <a href="https://www.etsy.com/uk/listing/4334699313/limited-edition-classic-doubleo-white" class="artist" target="_blank">
+        <a href="https://www.etsy.com/uk/listing/4334699313/limited-edition-classic-doubleo-white?ls=r&ref=hp_rv-4&content_source=1f7d5e65fec60cc075b7f9c7185dae75%253Aceb28e350f344e36ac150dc7507ea7fe842fe67d&logging_key=1f7d5e65fec60cc075b7f9c7185dae75%3Aceb28e350f344e36ac150dc7507ea7fe842fe67d" class="artist" target="_blank">
           <div class="image-rotator" data-images='["images/White Tee Front.jpg", "images/White Tee Back.jpg"]'>
             <img src="images/White Tee Front.jpg" alt="Item 1" class="feature-img">
-            <div class="preview-box"><img></div>
           </div>
           <div class="artist-name">Classic DoubleO White Tee (£19.14)</div>
         </a>
 
         <!-- Product 2 -->
-        <a href="https://www.etsy.com/uk/listing/4334688177/limited-edition-doubleo-productions" class="artist" target="_blank">
+        <a href="https://www.etsy.com/uk/listing/4334688177/limited-edition-doubleo-productions?ls=r&ref=hp_rv-5&content_source=1f7d5e65fec60cc075b7f9c7185dae75%253Ad317fc67655921d5984b45d6b775f2dfc1a0d446&logging_key=1f7d5e65fec60cc075b7f9c7185dae75%3Ad317fc67655921d5984b45d6b775f2dfc1a0d446" class="artist" target="_blank">
           <div class="image-rotator" data-images='["images/Front, Black.jpg", "images/Back, Black.jpg"]'>
             <img src="images/Front, Black.jpg" alt="Item 2" class="feature-img">
-            <div class="preview-box"><img></div>
           </div>
           <div class="artist-name">Classic DoubleO Long Sleeve Black Top (£31.98)</div>
         </a>
 
         <!-- Product 3 -->
-        <a href="https://www.etsy.com/uk/listing/4334733430/the-classic-doubleo-beanie" class="artist" target="_blank">
+        <a href="https://www.etsy.com/uk/listing/4334733430/the-classic-doubleo-beanie?ref=shop_home_active_3&logging_key=bf92dee04fe5dea3fea546352690899cbe527a2b%3A4334733430" class="artist" target="_blank">
           <div class="image-rotator" data-images='["images/Front, Black Hat.jpg", "images/Front, Dark Navy.jpg", "images/Front, Dark Green.jpg"]'>
             <img src="images/Front, Black Hat.jpg" alt="Item 3" class="feature-img">
-            <div class="preview-box"><img></div>
           </div>
           <div class="artist-name">Classic DoubleO Beanie (£25.06)</div>
         </a>
 
         <!-- Product 4 -->
-        <a href="https://www.etsy.com/uk/listing/4334770129/doubleo-official-amber-notes-tee" class="artist" target="_blank">
+        <a href="https://www.etsy.com/uk/listing/4334770129/doubleo-official-amber-notes-tee?ref=shop_home_active_2&logging_key=02a8362e47e8a383f1c5c4d92beeba135b17708e%3A4334770129" class="artist" target="_blank">
           <div class="image-rotator" data-images='[
             "images/colours/Front, Black AN.png",
             "images/colours/Back, Black AN.png",
@@ -193,13 +166,12 @@
             "images/colours/Daisy AN.png"
             ]'>
             <img src="images/AmberNotes/Front, Black-2.jpg" alt="Item 4" class="feature-img">
-            <div class="preview-box"><img></div>
           </div>
           <div class="artist-name">DoubleO Official Amber Notes Tee (£28.32)</div>
         </a>
 
         <!-- Product 5 -->
-        <a href="https://www.etsy.com/uk/listing/4337283915/doubleo-official-my-world-tee" class="artist" target="_blank">
+        <a href="https://www.etsy.com/uk/listing/4337283915/doubleo-official-my-world-tee?ref=shop_home_active_1&logging_key=954573db5b88fd0ded5e8939e5638521e42654e1%3A4337283915" class="artist" target="_blank">
           <div class="image-rotator" data-images='[
             "images/colours/Front, Black MW.png",
             "images/colours/Back, Black MW.png",
@@ -212,7 +184,6 @@
             "images/colours/Graphite Heather MW.png"
             ]'>
             <img src="images/AmberNotes/Front, Black-3.jpg" alt="Item 5" class="feature-img">
-            <div class="preview-box"><img></div>
           </div>
           <div class="artist-name">DoubleO Official My World Tee (£28.32)</div>
         </a>
@@ -222,64 +193,61 @@
   </main>
 
   <!-- Lightbox Overlay -->
-  <div id="lightbox">
+  <div id="lightbox" class="hidden">
     <img id="lightbox-img" src="" alt="Expanded Image">
   </div>
 
   <script>
-  const previewBox = document.getElementById('preview-box');
-  const previewImg = document.getElementById('preview-img');
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    let activeRotator = null;
 
-  let rotationInterval;
-  let currentImages = [];
-  let currentIndex = 0;
-  let isPreviewActive = false;
+    document.querySelectorAll('.image-rotator').forEach((rotator, i) => {
+      const images = JSON.parse(rotator.dataset.images);
+      const imgElement = rotator.querySelector('img');
+      let index = 0;
 
-  function startPreview(images) {
-    currentImages = images;
-    currentIndex = 0;
-    previewImg.src = currentImages[0];
-    previewBox.style.display = 'block';
+      // Initial image
+      imgElement.src = images[0];
 
-    rotationInterval = setInterval(() => {
-      currentIndex = (currentIndex + 1) % currentImages.length;
-      previewImg.src = currentImages[currentIndex];
-    }, 2000);
-  }
+      // Rotate images
+      setInterval(() => {
+        index = (index + 1) % images.length;
+        imgElement.src = images[index];
 
-  function stopPreview() {
-    previewBox.style.display = 'none';
-    clearInterval(rotationInterval);
-  }
-
-  // Setup event listeners for all merch items
-  document.querySelectorAll('.image-rotator').forEach(rotator => {
-    const images = JSON.parse(rotator.dataset.images);
-
-    rotator.addEventListener('mouseenter', () => {
-      startPreview(images);
-    });
-
-    rotator.addEventListener('mouseleave', (e) => {
-      setTimeout(() => {
-        if (!previewBox.matches(':hover')) {
-          stopPreview();
+        // Update lightbox if it's active
+        if (lightbox.dataset.source === String(i)) {
+          lightboxImg.src = images[index];
         }
-      }, 100);
+      }, 2000);
+
+      // Hover in: show lightbox
+      rotator.addEventListener('mouseenter', () => {
+        lightboxImg.src = imgElement.src;
+        lightbox.dataset.source = String(i);
+        lightbox.classList.add('visible');
+        activeRotator = rotator;
+      });
     });
-  });
 
-  // Hide when leaving preview box
-  previewBox.addEventListener('mouseleave', () => {
-    stopPreview();
-  });
-</script>
+    // Listen globally to mouse movement to detect when we leave the rotator
+    document.addEventListener('mousemove', (e) => {
+      if (!activeRotator) return;
 
+      const rect = activeRotator.getBoundingClientRect();
+      const within =
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom;
 
-
-<div id="preview-box">
-  <img id="preview-img" src="" alt="Preview Image">
-</div>
+      if (!within) {
+        lightbox.classList.remove('visible');
+        lightbox.dataset.source = "";
+        activeRotator = null;
+      }
+    });
+  </script>
 
 </body>
 </html>

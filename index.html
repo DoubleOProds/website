@@ -141,7 +141,6 @@
   const wheelContainer = document.querySelector('.wheel-container');
 
   let scrollAmount = 0;
-  let direction = 1; // 1 for forward, -1 for backward
   const scrollStep = 2; // Adjust for desired speed
   const delay = 15; // Adjust for smoothness
   let scrollTimeout;
@@ -150,21 +149,19 @@
   function autoScroll() {
     if (!wheelContainer || isHovering) return;
 
-    scrollAmount = wheelContainer.scrollLeft + (scrollStep * direction);
+    scrollAmount = wheelContainer.scrollLeft + scrollStep;
 
-    // Bounce logic: reverse direction if at either end
     if (scrollAmount >= (wheelContainer.scrollWidth - wheelContainer.clientWidth)) {
-      direction = -1; // Change direction to left
-      scrollAmount = wheelContainer.scrollLeft; // prevent overshoot
-    } else if (scrollAmount <= 0) {
-      direction = 1; // Change direction to right
+      // Instantly reset to the start (no smooth behavior to make it "bounce")
+      wheelContainer.scrollTo({ left: 0, behavior: 'auto' });
       scrollAmount = 0;
+    } else {
+      // Scroll forward smoothly
+      wheelContainer.scrollTo({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
     }
-
-    wheelContainer.scrollTo({
-      left: scrollAmount,
-      behavior: 'smooth'
-    });
 
     scrollTimeout = setTimeout(autoScroll, delay);
   }
@@ -199,6 +196,7 @@
     });
   });
 </script>
+
 
 
 </body>

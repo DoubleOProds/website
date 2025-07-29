@@ -44,16 +44,7 @@ nav {
   margin-top: 0.5rem;
 }
 
-nav a {
-  margin: 0 1rem;
-  text-decoration: none;
-  color: #000000;
-  font-size: 45px;
-  font-weight: 800;
-  transition: color 0.3s ease;
-}
-
-nav p {
+nav a, nav p {
   margin: 0 1rem;
   text-decoration: none;
   color: #000000;
@@ -66,22 +57,12 @@ nav a:hover {
   color: #38bdf8;
 }
 
-/* HEADER */
+/* HEADINGS */
 h1 {
   text-align: center;
-  margin: 0 auto;  /* This ensures it's centered horizontally */
+  margin: 0 auto;
   color: #000;
   text-decoration: underline;
-}
-
-/* BODY & FONT */
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: #ffffff;
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 }
 
 /* SHOW ITEM */
@@ -90,7 +71,7 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
-  width: 45%; /* two column on desktop */
+  width: 45%;
   text-align: center;
   transition: transform 0.3s ease;
   transform-origin: center center;
@@ -119,8 +100,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.mission h2,
-.mission h3 {
+.mission h2, .mission h3 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
 }
@@ -226,6 +206,14 @@ main {
   scroll-behavior: smooth;
   padding-bottom: 2rem;
   align-items: center;
+
+  /* HIDE SCROLLBAR */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.wheel-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
 }
 
 .wheel-item {
@@ -257,10 +245,6 @@ main {
   margin-top: 0.75rem;
   font-weight: 600;
   font-size: 1rem;
-}
-
-.wheel-container:hover {
-  animation-play-state: paused;
 }
 
 .thumb-wrapper {
@@ -299,114 +283,64 @@ main {
   opacity: 1;
 }
 
-/* SECTIONS BACKGROUND COLORS */
-.shows-section {
-  background-color: #F3E4F1; /* Light Blue */
-  font-color: #FFFFFF;
-}
+/* BACKGROUND COLORS */
+.shows-section { background-color: #F3E4F1; }
+.music-section { background-color: #F4DACD; }
+.merch-section { background-color: #D5EBDA; }
+.team-section  { background-color: #FAFAEB; }
 
-.music-section {
-  background-color: #F4DACD; /* Purple */
-  font-color: #FFFFFF;
-}
-
-.merch-section {
-  background-color: #D5EBDA; /* Green */
-  font-color: #FFFFFF;
-}
-
-.team-section {
-  background-color: #FAFAEB; /* Pinkish Red */
-}
-
-/* VIDEO IFRAME RESPONSIVENESS */
-@media (max-width: 600px) {
-  .video-wrapper iframe {
-    height: 250px;
-  }
-}
-
-@media (max-width: 600px) {
-  h1, h2 {
-    font-size: 2rem;
-  }
-
-  nav a {
-    margin: 0 0.5rem;
-  }
-
-  .content-section {
-    padding: 2rem 1rem;
-  }
-}
-
-
+/* RESPONSIVENESS */
 @media (max-width: 768px) {
-.logo img {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-}
+  .logo img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
 
-/* Responsive Header */
-header {
-  padding: 1rem;
-  font-size: 1.5rem;
-}
+  header {
+    padding: 1rem;
+    font-size: 1.5rem;
+  }
 
-/* Navigation - Mobile Friendly */
-nav {
-    flex-direction: row; /* keep horizontal layout */
+  nav {
+    flex-direction: row;
     justify-content: space-between;
     gap: 0.5rem;
-    flex-wrap: wrap; /* allow wrapping if necessary */
+    flex-wrap: wrap;
   }
 
   nav a,
   nav p {
-    font-size: 0.9rem; /* smaller text */
-    padding: 0.3rem 0.5rem; /* tighter spacing */
+    font-size: 0.9rem;
+    padding: 0.3rem 0.5rem;
   }
 }
 
-/* ===== RESPONSIVE FOR MOBILE PORTRAIT (MAX WIDTH 480px) ===== */
 @media (max-width: 480px) {
-
-  /* Show container stacks vertically with full width */
   .show-container {
     flex-direction: column;
     align-items: center;
     margin-top: 1rem;
   }
 
-  /* Show items take almost full width */
   .show-item {
     width: 95%;
     margin-bottom: 1.5rem;
   }
 
-  /* Show item paragraph smaller font */
   .show-item p {
     font-size: 1rem;
     padding: 0.75rem;
   }
 
-  /* Mission text scales down for readability */
-  .mission h1 {
-    font-size: 1.8rem;
-  }
-
-  .mission h2,
-  .mission h3 {
-    font-size: 1.4rem;
-  }
+  .mission h1 { font-size: 1.8rem; }
+  .mission h2, .mission h3 { font-size: 1.4rem; }
 
   .mission p {
     font-size: 0.9rem;
     padding: 0 1rem;
   }
 
-  /* Feature boxes stack vertically and center align */
   .feature-box {
     flex-direction: column !important;
     text-align: center;
@@ -423,7 +357,6 @@ nav {
     margin: 0;
   }
 
-  /* Wheel items shrink to fit screen */
   .wheel-item {
     width: 90vw;
     height: auto;
@@ -433,70 +366,8 @@ nav {
     font-size: 0.9rem;
   }
 
-  /* Description text smaller */
   .description {
     font-size: 0.9rem;
     padding: 0.5rem;
   }
-
-  /* === ENHANCED RESPONSIVE SCROLLING WHEEL === */
-
-.scrolling-wheel {
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-  padding: 1rem 0;
-  background-color: #e0e0e0;
-}
-
-.wheel-container {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 1rem;
-  scroll-behavior: smooth;
-  padding: 0 1rem;
-  scroll-snap-type: x mandatory;
-}
-
-.wheel-item {
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-  width: 250px;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.thumb-wrapper {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.thumb-wrapper img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 10px;
-}
-
-.description {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  color: #000;
-}
-
-/* Mobile-First Adjustments */
-@media (max-width: 600px) {
-  .wheel-item {
-    width: 70vw;
-  }
-
-  .description {
-    font-size: 0.9rem;
-  }
-}
-
 }

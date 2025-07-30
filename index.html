@@ -254,8 +254,19 @@
   const wheelContainer = document.querySelector('.wheel-container');
 
   let scrollAmount = 1;
-  const scrollStep = 3; // Speed of scrolling, adjust for your needs
-  const delay = 10; // Delay between scrolls, adjust for smoother/rougher scroll
+  let scrollStep;
+  let delay;
+
+  if (window.innerWidth <= 768) {
+    // Mobile: faster scroll
+      scrollStep = 5;
+      delay = 5;
+    } else {
+    // Desktop: normal scroll
+      scrollStep = 3;
+      delay = 10;
+    }
+   // Delay between scrolls, adjust for smoother/rougher scroll
   let scrollTimeout;
   let isHovering = false;
 

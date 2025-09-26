@@ -38,7 +38,6 @@
   <section class="scrolling-wheel">
     <div class="wheel-container">
       <?php
-        // Use full YouTube links here
         $videos = [
           ["https://www.youtube.com/watch?v=sRQbLA71RQs", "Watch our Latest Special"],
           ["https://www.youtube.com/watch?v=e1SoPrrRNZ4", "Watch the Return"],
@@ -50,13 +49,18 @@
           ["https://www.youtube.com/watch?v=5ae8YJssXC8", "Watch The Forest Remastered"]
         ];
 
-        // Function to extract YouTube ID from full link
+        // Extract YouTube ID from full link
         function getYouTubeID($url) {
-          parse_str(parse_url($url, PHP_URL_QUERY), $params);
-          return $params['v'] ?? '';
+          if (preg_match('/youtu\.be\/([^\?&]+)/', $url, $matches)) {
+            return $matches[1];
+          }
+          if (preg_match('/v=([^\?&]+)/', $url, $matches)) {
+            return $matches[1];
+          }
+          return '';
         }
 
-        // Repeat twice for seamless looping
+        // Duplicate list twice for infinite scrolling
         for ($i = 0; $i < 2; $i++) {
           foreach ($videos as $video) {
             $id = getYouTubeID($video[0]);
@@ -140,7 +144,7 @@
 
     scrollAmount = wheelContainer.scrollLeft + scrollStep;
 
-    // Loop back seamlessly when past half (because we duplicated videos)
+    // Reset at halfway point (since we duplicated videos)
     if (scrollAmount >= wheelContainer.scrollWidth / 2) {
       scrollAmount = 0;
     }

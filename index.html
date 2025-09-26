@@ -36,45 +36,49 @@
 
   <!-- Scrolling Wheel -->
   <section class="scrolling-wheel">
-    <div class="wheel-container">
-      <?php
-        $videos = [
-          ["https://www.youtube.com/watch?v=sRQbLA71RQs", "Watch our Latest Special"],
-          ["https://www.youtube.com/watch?v=e1SoPrrRNZ4", "Watch the Return"],
-          ["https://www.youtube.com/watch?v=ph2Y7eqvH38", "Watch our smuj. interview"],
-          ["https://www.youtube.com/watch?v=wHPNlsUuJO0", "Watch Our Current Favourite Show"],
-          ["https://www.youtube.com/watch?v=gtVyuOc3oCE", "Watch Our Diva Down Interview"],
-          ["https://www.youtube.com/watch?v=lE5AFE4_b3k", "Watch Our Favourite Music Video"],
-          ["https://www.youtube.com/watch?v=YOmu1wIRr9I", "Watch 5 minute reples"],
-          ["https://www.youtube.com/watch?v=5ae8YJssXC8", "Watch The Forest Remastered"]
-        ];
+  <div class="wheel-container">
+    <?php
+      // Full YouTube links + titles
+      $videos = [
+        ["https://www.youtube.com/watch?v=sRQbLA71RQs", "Watch our Latest Special"],
+        ["https://www.youtube.com/watch?v=e1SoPrrRNZ4", "Watch the Return"],
+        ["https://www.youtube.com/watch?v=ph2Y7eqvH38", "Watch our smuj. interview"],
+        ["https://www.youtube.com/watch?v=wHPNlsUuJO0", "Watch Our Current Favourite Show"],
+        ["https://www.youtube.com/watch?v=gtVyuOc3oCE", "Watch Our Diva Down Interview"],
+        ["https://www.youtube.com/watch?v=lE5AFE4_b3k", "Watch Our Favourite Music Video"],
+        ["https://www.youtube.com/watch?v=YOmu1wIRr9I", "Watch 5 minute reples"],
+        ["https://www.youtube.com/watch?v=5ae8YJssXC8", "Watch The Forest Remastered"]
+      ];
 
-        // Extract YouTube ID from full link
-        function getYouTubeID($url) {
-          if (preg_match('/youtu\.be\/([^\?&]+)/', $url, $matches)) {
-            return $matches[1];
-          }
-          if (preg_match('/v=([^\?&]+)/', $url, $matches)) {
-            return $matches[1];
-          }
-          return '';
+      // Function to extract YouTube ID
+      function getYouTubeID($url) {
+        if (preg_match('/youtu\.be\/([^\?&]+)/', $url, $matches)) {
+          return $matches[1];
         }
+        if (preg_match('/v=([^\?&]+)/', $url, $matches)) {
+          return $matches[1];
+        }
+        return '';
+      }
 
-        // Duplicate list twice for infinite scrolling
-        for ($i = 0; $i < 2; $i++) {
-          foreach ($videos as $video) {
-            $id = getYouTubeID($video[0]);
-            echo '<a href="' . $video[0] . '" class="wheel-item" target="_blank">
+      // Repeat twice for infinite scroll effect
+      for ($i = 0; $i < 2; $i++) {
+        foreach ($videos as $video) {
+          $id = getYouTubeID($video[0]);
+          if ($id) {
+            echo '<a href="' . htmlspecialchars($video[0]) . '" class="wheel-item" target="_blank">
                     <div class="thumb-wrapper">
                       <img src="https://img.youtube.com/vi/' . $id . '/hqdefault.jpg" alt="Video Thumbnail" />
-                      <div class="description">' . $video[1] . '</div>
+                      <div class="description">' . htmlspecialchars($video[1]) . '</div>
                     </div>
                   </a>';
           }
         }
-      ?>
-    </div>
-  </section>
+      }
+    ?>
+  </div>
+</section>
+
 
   <!-- Features Section -->
   <div class="feature-column">

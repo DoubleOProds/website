@@ -38,23 +38,31 @@
   <section class="scrolling-wheel">
     <div class="wheel-container">
       <?php
+        // Use full YouTube links here
         $videos = [
-          ["sRQbLA71RQs", "Watch our Latest Special"],
-          ["e1SoPrrRNZ4", "Watch the Return"],
-          ["ph2Y7eqvH38", "Watch our smuj. interview"],
-          ["wHPNlsUuJO0", "Watch Our Current Favourite Show"],
-          ["gtVyuOc3oCE", "Watch Our Diva Down Interview"],
-          ["lE5AFE4_b3k", "Watch Our Favourite Music Video"],
-          ["YOmu1wIRr9I", "Watch 5 minute reples"],
-          ["5ae8YJssXC8", "Watch The Forest Remastered"]
+          ["https://www.youtube.com/watch?v=sRQbLA71RQs", "Watch our Latest Special"],
+          ["https://www.youtube.com/watch?v=e1SoPrrRNZ4", "Watch the Return"],
+          ["https://www.youtube.com/watch?v=ph2Y7eqvH38", "Watch our smuj. interview"],
+          ["https://www.youtube.com/watch?v=wHPNlsUuJO0", "Watch Our Current Favourite Show"],
+          ["https://www.youtube.com/watch?v=gtVyuOc3oCE", "Watch Our Diva Down Interview"],
+          ["https://www.youtube.com/watch?v=lE5AFE4_b3k", "Watch Our Favourite Music Video"],
+          ["https://www.youtube.com/watch?v=YOmu1wIRr9I", "Watch 5 minute reples"],
+          ["https://www.youtube.com/watch?v=5ae8YJssXC8", "Watch The Forest Remastered"]
         ];
 
-        // Repeat twice for smooth looping
+        // Function to extract YouTube ID from full link
+        function getYouTubeID($url) {
+          parse_str(parse_url($url, PHP_URL_QUERY), $params);
+          return $params['v'] ?? '';
+        }
+
+        // Repeat twice for seamless looping
         for ($i = 0; $i < 2; $i++) {
           foreach ($videos as $video) {
-            echo '<a href="https://www.youtube.com/watch?v=' . $video[0] . '" class="wheel-item" target="_blank">
+            $id = getYouTubeID($video[0]);
+            echo '<a href="' . $video[0] . '" class="wheel-item" target="_blank">
                     <div class="thumb-wrapper">
-                      <img src="https://img.youtube.com/vi/' . $video[0] . '/hqdefault.jpg" alt="Video Thumbnail" />
+                      <img src="https://img.youtube.com/vi/' . $id . '/hqdefault.jpg" alt="Video Thumbnail" />
                       <div class="description">' . $video[1] . '</div>
                     </div>
                   </a>';

@@ -284,10 +284,11 @@ main {
 }
 
 /* BACKGROUND COLORS */
-.shows-section { background-color: #F3E4F1; }
+.games-section { background-color: #F3E4F1; }
 .music-section { background-color: #F4DACD; }
 .merch-section { background-color: #D5EBDA; }
 .team-section  { background-color: #FAFAEB; }
+.shows-section  { background-color: #E5F3FD; }
 
 /* RESPONSIVENESS */
 

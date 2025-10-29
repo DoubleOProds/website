@@ -176,6 +176,7 @@ main {
   font-weight: 600;
   font-size: 1.2rem;
   flex: 1;
+  justify-content: center;
 }
 
 .left-img {

@@ -1,0 +1,168 @@
+/* latenight.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header Shared Styles */
+header {
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: center;
+  font-size: 100px;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.logo {
+  margin-bottom: 0.5rem;
+}
+
+.logo img {
+  width: 700px;
+  height: auto;
+}
+
+/* Nav styling */
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #000000;
+  font-size: 45px;
+  font-weight: 800;
+  transition: color 0.3s ease;
+}
+
+nav p {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #000000;
+  font-size: 45px;
+  font-weight: 800;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #white;
+}
+
+/* LateNight unique background */
+.background-wrapper {
+  background-image: url('');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  min-height: 300vh;
+  width: 100%;
+}
+
+/* Transparent deep purple content boxes */
+.content-section {
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: rgba(54, 1, 63, 0.5); /* Transparent deep purple */
+  border-radius: 1rem;
+  margin-top: 5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  color: white; /* White text inside the transparent box */
+}
+
+h1, h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: white; /* White text for the headers */
+}
+
+p {
+  font-size: 1.5rem;
+  color: white; /* White text for paragraphs */
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+  h1, h2 {
+    font-size: 2rem;
+  }
+
+  nav a {
+    margin: 0 0.5rem;
+  }
+
+  .content-section {
+    padding: 2rem 1rem;
+  }
+}
+
+/* Center and style YouTube videos nicely */
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  max-width: 800px;
+  height: 450px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Make video responsive for smaller screens */
+@media (max-width: 600px) {
+  .video-wrapper iframe {
+    height: 250px;
+  }
+}
+@media (max-width: 768px) {
+.logo img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+/* Responsive Header */
+header {
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+/* Navigation - Mobile Friendly */
+nav {
+    flex-direction: row; /* keep horizontal layout */
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap; /* allow wrapping if necessary */
+  }
+
+  nav a,
+  nav p {
+    font-size: 0.9rem; /* smaller text */
+    padding: 0.3rem 0.5rem; /* tighter spacing */
+  }
+}
+

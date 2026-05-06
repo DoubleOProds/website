@@ -81,25 +81,25 @@
       justify-content: center;
       z-index: 999;
       opacity: 0;
-      pointer-events: none; /* ⛔ blocks interaction when visible */
-      transition: opacity 0.3s ease-in-out;
+      pointer-events: none;
+      transition: opacity 1s ease-in-out;
       visibility: hidden;
     }
 
     #lightbox.visible {
       opacity: 1;
       visibility: visible;
-      pointer-events: none; /* ✅ stays non-blocking even when visible */
+      pointer-events: none;
     }
 
     #lightbox-img {
       max-width: 90%;
       max-height: 90%;
       border-radius: 12px;
-      transition: transform 0.3s ease, opacity 0.3s ease;
+      transition: transform 1s ease, opacity 1s ease;
       opacity: 0;
       transform: scale(0.98);
-      pointer-events: none; /* ✅ also non-blocking */
+      pointer-events: none; 
     }
 
     #lightbox.visible #lightbox-img {
@@ -133,7 +133,7 @@
           <div class="image-rotator" data-images='["images/merch/White Tee Front.jpg", "images/merch/White Tee Back.jpg"]'>
             <img src="images/merch/White Tee Front.jpg" alt="Item 1" class="feature-img">
           </div>
-          <div class="artist-name">Classic DoubleO White Tee (£19.14)</div>
+          <div class="artist-name">Classic DoubleO White Tee (£18.95)</div>
         </a>
 
         <!-- Product 2 -->
@@ -141,7 +141,7 @@
           <div class="image-rotator" data-images='["images/merch/Front, Black Top.jpg", "images/merch/Back, Black.jpg"]'>
             <img src="images/merch/Front, Black.jpg" alt="Item 2" class="feature-img">
           </div>
-          <div class="artist-name">Classic DoubleO Long Sleeve Black Top (£31.98)</div>
+          <div class="artist-name">Classic DoubleO Long Sleeve Black Top (£27.99)</div>
         </a>
 
         <!-- Product 3 -->
@@ -167,7 +167,7 @@
             ]'>
             <img src="images/AmberNotes/Front, Black-2.jpg" alt="Item 4" class="feature-img">
           </div>
-          <div class="artist-name">DoubleO Official Amber Notes Tee (£25.75)</div>
+          <div class="artist-name">DoubleO Official Amber Notes Tee (£26.24)</div>
         </a>
 
         <!-- Product 5 -->
@@ -185,7 +185,7 @@
             ]'>
             <img src="images/AmberNotes/Front, Black-3.jpg" alt="Item 5" class="feature-img">
           </div>
-          <div class="artist-name">DoubleO Official My World Tee (£25.75)</div>
+          <div class="artist-name">DoubleO Official My World Tee (£26.24)</div>
         </a>
 
       </div>

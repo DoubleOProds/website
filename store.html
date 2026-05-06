@@ -82,7 +82,7 @@
       z-index: 999;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 1s ease-in-out;
+      transition: opacity 0.5s ease-in-out;
       visibility: hidden;
     }
 
@@ -96,7 +96,7 @@
       max-width: 90%;
       max-height: 90%;
       border-radius: 12px;
-      transition: transform 1s ease, opacity 1s ease;
+      transition: transform 0.5s ease, opacity 0.5s ease;
       opacity: 0;
       transform: scale(0.98);
       pointer-events: none; 
@@ -219,7 +219,7 @@
         if (lightbox.dataset.source === String(i)) {
           lightboxImg.src = images[index];
         }
-      }, 2000);
+      }, 4000);
 
       // Hover in: show lightbox
       rotator.addEventListener('mouseenter', () => {

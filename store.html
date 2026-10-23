@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merch Store - DoubleO</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#8B5CF6',
+              pink: '#EC4899',
+              cyan: '#06B6D4',
+              dark: '#0F172A'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-950 text-white font-sans min-h-screen flex flex-col justify-between selection:bg-brand-purple selection:text-white">
+
+<!-- Header -->
+<header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-purple via-brand-pink to-brand-cyan flex items-center justify-center font-bold text-xl shadow-lg shadow-brand-purple/30">OO</div>
+        <span class="text-2xl font-black tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">
+                        DOUBLE<span class="text-brand-pink">O</span>
+                    </span>
+      </a>
+      <nav class="hidden md:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-slate-800">
+        <a href="index.html" class="nav-link px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:text-white">Home</a>
+        <a href="music.html" class="nav-link px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:text-white">Music</a>
+        <a href="videos.html" class="nav-link px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:text-white">Videos</a>
+        <a href="store.html" class="nav-link px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:text-white">Merch Store</a>
+        <a href="arcade.html" class="nav-link px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:text-white flex items-center gap-1.5">
+          <i class="fa-solid font-bold fa-gamepad text-brand-pink"></i> Arcade
+        </a>
+      </nav>
+      <button id="mobileMenuBtn" class="md:hidden text-slate-300 hover:text-white p-2">
+        <i class="fa-solid fa-bars text-2xl"></i>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-4 pt-2 pb-4 space-y-2">
+    <a href="index.html" class="block px-4 py-2 rounded-lg text-slate-300 hover:bg-slate-800">Home</a>
+    <a href="music.html" class="block px-4 py-2 rounded-lg text-slate-300 hover:bg-slate-800">Music</a>
+    <a href="videos.html" class="block px-4 py-2 rounded-lg text-slate-300 hover:bg-slate-800">Videos</a>
+    <a href="store.html" class="block px-4 py-2 rounded-lg text-slate-300 hover:bg-slate-800">Merch Store</a>
+    <a href="arcade.html" class="block px-4 py-2 rounded-lg text-slate-300 hover:bg-slate-800 text-brand-pink font-semibold">Arcade</a>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+  <div class="text-center max-w-2xl mx-auto mb-12">
+    <h1 class="text-4xl sm:text-5xl font-black mb-4">OFFICIAL MERCH STORE</h1>
+    <p class="text-slate-400">Exclusive DoubleO hoodies, tees, vinyl records, and accessories fulfilled securely on Etsy.</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Merch Item 1 -->
+    <div class="bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden hover:border-slate-700 transition-all flex flex-col justify-between group">
+      <div class="relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" alt="Neon Logo Hoodie" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+        <span class="absolute top-4 right-4 bg-orange-500 text-white font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">
+                        <i class="fa-brands fa-etsy mr-1"></i> Etsy Exclusive
+                    </span>
+      </div>
+      <div class="p-6 flex flex-col flex-grow justify-between">
+        <div>
+          <h3 class="text-xl font-bold">DoubleO Heavyweight Hoodie</h3>
+          <p class="text-slate-400 text-sm mt-1">Ultra-soft fleece hoodie featuring glowing neon chest emblem.</p>
+        </div>
+        <div class="flex items-center justify-between mt-6 pt-4 border-t border-slate-800">
+          <span class="text-2xl font-black text-brand-cyan">$49.99</span>
+          <a href="https://etsy.com" target="_blank" class="px-5 py-2.5 rounded-full bg-orange-600 hover:bg-orange-500 text-white font-bold text-sm transition-colors flex items-center gap-2">
+            Buy on Etsy <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Merch Item 2 -->
+    <div class="bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden hover:border-slate-700 transition-all flex flex-col justify-between group">
+      <div class="relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=600&q=80" alt="Limited Vinyl" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+        <span class="absolute top-4 right-4 bg-orange-500 text-white font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">
+                        <i class="fa-brands fa-etsy mr-1"></i> Etsy Exclusive
+                    </span>
+      </div>
+      <div class="p-6 flex flex-col flex-grow justify-between">
+        <div>
+          <h3 class="text-xl font-bold">Midnight Waves 12" Vinyl</h3>
+          <p class="text-slate-400 text-sm mt-1">Limited edition purple splatter vinyl with gatefold jacket.</p>
+        </div>
+        <div class="flex items-center justify-between mt-6 pt-4 border-t border-slate-800">
+          <span class="text-2xl font-black text-brand-cyan">$29.99</span>
+          <a href="https://etsy.com" target="_blank" class="px-5 py-2.5 rounded-full bg-orange-600 hover:bg-orange-500 text-white font-bold text-sm transition-colors flex items-center gap-2">
+            Buy on Etsy <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Merch Item 3 -->
+    <div class="bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden hover:border-slate-700 transition-all flex flex-col justify-between group">
+      <div class="relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80" alt="Embroidered Cap" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+        <span class="absolute top-4 right-4 bg-orange-500 text-white font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">
+                        <i class="fa-brands fa-etsy mr-1"></i> Etsy Exclusive
+                    </span>
+      </div>
+      <div class="p-6 flex flex-col flex-grow justify-between">
+        <div>
+          <h3 class="text-xl font-bold">DoubleO Embroidered Cap</h3>
+          <p class="text-slate-400 text-sm mt-1">Classic dad-hat style with high-density logo stitching.</p>
+        </div>
+        <div class="flex items-center justify-between mt-6 pt-4 border-t border-slate-800">
+          <span class="text-2xl font-black text-brand-cyan">$24.99</span>
+          <a href="https://etsy.com" target="_blank" class="px-5 py-2.5 rounded-full bg-orange-600 hover:bg-orange-500 text-white font-bold text-sm transition-colors flex items-center gap-2">
+            Buy on Etsy <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-slate-950 border-t border-slate-800 py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-brand-purple to-brand-pink flex items-center justify-center font-bold text-xs">OO</div>
+      <span class="text-lg font-bold">DOUBLEO</span>
+    </div>
+    <p class="text-xs text-slate-500">&copy; <span id="year"></span> DoubleO. Designed for GitHub Pages.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

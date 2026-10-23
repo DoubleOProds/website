@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music - DoubleO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            purple: '#8B5CF6',
+                            pink: '#EC4899',
+                            cyan: '#06B6D4',
+                            dark: '#0F172A',
+                            card: 'rgba(30, 41, 59, 0.7)'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-950 text-white font-sans min-h-screen flex flex-col justify-between selection:bg-brand-purple selection:text-white">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-purple via-brand-pink to-brand-cyan flex items-center justify-center font-bold text-xl shadow-lg shadow-brand-purple/30">OO</div>
+                    <span class="text-2xl font-black tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">
+                        DOUBLE<span class="text-brand-pink">O</span>
+                    </span>
+                </a>
+                <nav class="hidden md:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-slate-800">
+                    <a href="index.html" class="nav-link px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:text-white">Home</a>
+                    <a href="music.html" class="nav-link px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:text-white">Music</a>
+                    <a href="videos.html" class="nav-link px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:text-white">Videos</a>
+                    <a href="store.html" class="nav-link px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:text-white">Merch Store</a>
+                    <a href="arcade.html" class="nav-link px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:text-white flex items-center gap-1.5">
+                        <i class="fa-solid font-bold fa-gamepad text-brand-pink"></i> Arcade
+                    </a>
+                </nav>
+                <button id="mobileMenuBtn" class="md:hidden text-slate-300 hover:text-white p-2">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-4 pt-2 pb-4 space-y-2">
+            <a href="index.html" class="block px-4 py-2 rounded-lg text-slate-300 hover:bg-slate-800">Home</a>
+            <a href="music.html" class="block px-4 py-2 rounded-lg text-slate-300 hover:bg-slate-800">Music</a>
+            <a href="videos.html" class="block px-4 py-2 rounded-lg text-slate-300 hover:bg-slate-800">Videos</a>
+            <a href="store.html" class="block px-4 py-2 rounded-lg text-slate-300 hover:bg-slate-800">Merch Store</a>
+            <a href="arcade.html" class="block px-4 py-2 rounded-lg text-slate-300 hover:bg-slate-800 text-brand-pink font-semibold">Arcade</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <h1 class="text-4xl sm:text-5xl font-black mb-4">DISCOGRAPHY & MUSIC</h1>
+            <p class="text-slate-400">Listen to previews, stream on your favorite platforms, or check out Spotify and Apple Music embeds.</p>
+        </div>
+
+        <!-- Custom HTML5 Audio Player Player -->
+        <div class="p-8 rounded-3xl bg-slate-900 border border-slate-800 mb-12 shadow-2xl relative overflow-hidden">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <img id="currentCover" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&q=80" alt="Track Cover" class="w-48 h-48 rounded-2xl object-cover shadow-lg">
+                <div class="flex-1 w-full">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 id="currentTitle" class="text-2xl font-bold">Midnight Waves</h3>
+                            <p id="currentArtist" class="text-brand-purple font-medium">DoubleO • Original Track</p>
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-400 text-xs">Audio Preview</span>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="mt-6 mb-2">
+                        <div class="w-full bg-slate-800 rounded-full h-2 cursor-pointer relative" id="progressBar">
+                            <div id="progressFill" class="bg-gradient-to-r from-brand-purple to-brand-pink h-2 rounded-full w-0"></div>
+                        </div>
+                        <div class="flex justify-between text-xs text-slate-500 mt-1">
+                            <span id="currentTime">0:00</span>
+                            <span id="duration">0:30</span>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="flex items-center gap-4">
+                            <button id="prevBtn" class="text-slate-400 hover:text-white text-xl"><i class="fa-solid fa-backward-step"></i></button>
+                            <button id="playBtn" class="w-12 h-12 rounded-full bg-brand-purple hover:bg-brand-pink text-white flex items-center justify-center text-xl shadow-lg transition-colors">
+                                <i class="fa-solid fa-play"></i>
+                            </button>
+                            <button id="nextBtn" class="text-slate-400 hover:text-white text-xl"><i class="fa-solid fa-forward-step"></i></button>
+                        </div>
+
+                        <!-- Audio Visualizer Bars -->
+                        <div class="flex items-end gap-1 h-8" id="visualizerBars">
+                            <div class="w-1 bg-brand-purple h-2 rounded-full animate-pulse"></div>
+                            <div class="w-1 bg-brand-pink h-5 rounded-full animate-pulse"></div>
+                            <div class="w-1 bg-brand-cyan h-3 rounded-full animate-pulse"></div>
+                            <div class="w-1 bg-brand-purple h-7 rounded-full animate-pulse"></div>
+                            <div class="w-1 bg-brand-pink h-4 rounded-full animate-pulse"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <audio id="audioElement" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+        </div>
+
+        <!-- Embedded Streaming Service Widgets Section -->
+        <h2 class="text-2xl font-bold mb-6">Stream Everywhere</h2>
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+            <!-- Spotify Embed Placeholder -->
+            <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800">
+                <p class="text-xs text-slate-400 mb-2 font-semibold"><i class="fa-brands fa-spotify text-green-500 mr-1"></i> Spotify Embed</p>
+                <div class="w-full bg-slate-950 rounded-xl h-[352px] flex flex-col items-center justify-center text-slate-500 border border-slate-800 p-6 text-center">
+                    <i class="fa-brands fa-spotify text-6xl text-green-500 mb-4"></i>
+                    <p class="text-white font-semibold text-lg">Spotify Player Widget</p>
+                    <p class="text-xs text-slate-400 mt-2 max-w-xs">Replace this box with your official Spotify iframe embed code in <code class="text-brand-pink">music.html</code>.</p>
+                </div>
+            </div>
+
+            <!-- Apple Music Embed Placeholder -->
+            <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800">
+                <p class="text-xs text-slate-400 mb-2 font-semibold"><i class="fa-brands fa-apple text-pink-500 mr-1"></i> Apple Music Embed</p>
+                <div class="w-full bg-slate-950 rounded-xl h-[352px] flex flex-col items-center justify-center text-slate-500 border border-slate-800 p-6 text-center">
+                    <i class="fa-brands fa-apple text-6xl text-pink-500 mb-4"></i>
+                    <p class="text-white font-semibold text-lg">Apple Music Widget</p>
+                    <p class="text-xs text-slate-400 mt-2 max-w-xs">Replace this box with your official Apple Music embed widget iframe.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-brand-purple to-brand-pink flex items-center justify-center font-bold text-xs">OO</div>
+                <span class="text-lg font-bold">DOUBLEO</span>
+            </div>
+            <div class="flex items-center gap-6 text-slate-400 text-xl">
+                <a href="https://youtube.com" target="_blank" class="hover:text-red-500 transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://spotify.com" target="_blank" class="hover:text-green-500 transition-colors"><i class="fa-brands fa-spotify"></i></a>
+                <a href="https://apple.com" target="_blank" class="hover:text-pink-500 transition-colors"><i class="fa-brands fa-apple"></i></a>
+                <a href="https://etsy.com" target="_blank" class="hover:text-orange-500 transition-colors"><i class="fa-brands fa-etsy"></i></a>
+            </div>
+            <p class="text-xs text-slate-500">&copy; <span id="year"></span> DoubleO. Designed for GitHub Pages.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Inline script for Audio Player Controls
+        const playlist = [
+            { title: "Midnight Waves", artist: "DoubleO", cover: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&q=80", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
+            { title: "Cybernetic Heart", artist: "DoubleO", cover: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=400&q=80", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
+            { title: "Neon Horizon", artist: "DoubleO", cover: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=400&q=80", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" }
+        ];
+
+        let currentTrack = 0;
+        const audio = document.getElementById('audioElement');
+        const playBtn = document.getElementById('playBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressFill = document.getElementById('progressFill');
+        const progressBar = document.getElementById('progressBar');
+        const currentTimeEl = document.getElementById('currentTime');
+        const durationEl = document.getElementById('duration');
+
+        function loadTrack(index) {
+            const track = playlist[index];
+            document.getElementById('currentTitle').textContent = track.title;
+            document.getElementById('currentArtist').textContent = track.artist;
+            document.getElementById('currentCover').src = track.cover;
+            audio.src = track.src;
+        }
+
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+            } else {
+                audio.pause();
+                playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+            loadTrack(currentTrack);
+            audio.play();
+            playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentTrack = (currentTrack + 1) % playlist.length;
+            loadTrack(currentTrack);
+            audio.play();
+            playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                const percent = (audio.currentTime / audio.duration) * 100;
+                progressFill.style.width = `${percent}%`;
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+                durationEl.textContent = formatTime(audio.duration);
+            }
+        });
+
+        progressBar.addEventListener('click', (e) => {
+            const rect = progressBar.getBoundingClientRect();
+            const pos = (e.clientX - rect.left) / rect.width;
+            audio.currentTime = pos * audio.duration;
+        });
+
+        function formatTime(sec) {
+            const m = Math.floor(sec / 60);
+            const s = Math.floor(sec % 60);
+            return `${m}:${s < 10 ? '0' : ''}${s}`;
+        }
+    </script>
+</body>
+</html>

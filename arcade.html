@@ -63,13 +63,13 @@
 <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
     <div class="text-center max-w-2xl mx-auto mb-10">
         <h1 class="text-4xl sm:text-5xl font-black mb-4">DOUBLEO ARCADE</h1>
-        <p class="text-slate-400">Play music mini-games directly in your browser. Complete challenges to set new high scores!</p>
+        <p class="text-slate-400">Play mini-games directly in your browser. Complete challenges to set new high scores!</p>
     </div>
 
     <!-- Arcade Mini-Game Tabs -->
     <div class="flex justify-center gap-3 mb-8 flex-wrap">
-        <button onclick="switchGame('rhythm')" id="tab-rhythm" class="game-tab-btn px-6 py-2.5 rounded-full bg-brand-purple text-white font-bold text-sm shadow-lg shadow-brand-purple/20 transition-all flex items-center gap-2">
-            <i class="fa-solid fa-drum"></i> Rhythm Beats
+        <button onclick="switchGame('milk')" id="tab-milk" class="game-tab-btn px-6 py-2.5 rounded-full bg-brand-purple text-white font-bold text-sm shadow-lg shadow-brand-purple/20 transition-all flex items-center gap-2">
+            <i class="fa-solid fa-mug-hot"></i> Milk Maxer
         </button>
         <button onclick="switchGame('snake')" id="tab-snake" class="game-tab-btn px-6 py-2.5 rounded-full bg-slate-800 text-slate-400 hover:text-white font-bold text-sm transition-all flex items-center gap-2">
             <i class="fa-solid fa-wave-square"></i> Soundwave Snake
@@ -82,27 +82,26 @@
     <!-- Mini-Game Containers -->
     <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 max-w-3xl mx-auto min-h-[480px] flex flex-col justify-between relative shadow-2xl">
 
-        <!-- GAME 1: RHYTHM BEATS -->
-        <div id="game-rhythm" class="game-container flex flex-col items-center">
+        <!-- GAME 1: MILK MAXER -->
+        <div id="game-milk" class="game-container flex flex-col items-center">
             <div class="w-full flex justify-between items-center mb-4 text-sm font-semibold text-slate-400">
-                <div>SCORE: <span id="rhythm-score" class="text-brand-pink font-bold text-lg">0</span></div>
-                <div>HIGH SCORE: <span id="rhythm-high" class="text-white font-bold">0</span></div>
+                <div>SCORE: <span id="milk-score" class="text-brand-pink font-bold text-lg">0</span></div>
+                <div>SAVED MILK: <span id="milk-count" class="text-brand-cyan font-bold text-lg">0</span>/4</div>
+                <div>STATUS: <span id="milk-status" class="text-emerald-400 font-bold">Normal</span></div>
             </div>
-            <div class="relative w-full max-w-sm h-80 bg-slate-950 rounded-2xl overflow-hidden border border-slate-800 flex justify-between px-6 pt-4 pb-12">
-                <div id="lane-0" class="lane relative w-12 bg-slate-900/40 rounded-xl"></div>
-                <div id="lane-1" class="lane relative w-12 bg-slate-900/40 rounded-xl"></div>
-                <div id="lane-2" class="lane relative w-12 bg-slate-900/40 rounded-xl"></div>
-                <!-- Catch Zone Line -->
-                <div class="absolute bottom-12 left-0 right-0 h-1 bg-brand-purple/50"></div>
+
+            <div id="milkGameBox" class="relative w-full max-w-md h-80 bg-slate-950 rounded-2xl overflow-hidden border border-slate-800 cursor-crosshair flex flex-col items-center justify-center">
+                <div id="milk-start-screen" class="text-center p-4">
+                    <p class="text-slate-300 mb-4 font-medium">Catch milk buckets 🥛! Dodge falling furniture 🪑!</p>
+                    <button onclick="startMilkGame()" class="px-8 py-3 rounded-full bg-gradient-to-r from-brand-purple to-brand-pink font-bold shadow-lg shadow-brand-purple/30 hover:scale-105 transition-transform">
+                        Start Milk Maxer
+                    </button>
+                </div>
             </div>
-            <div class="flex gap-4 mt-6 w-full max-w-sm">
-                <button onclick="hitLane(0)" class="flex-1 py-3 bg-slate-800 hover:bg-brand-purple rounded-xl font-bold active:scale-95 transition-all text-center">A</button>
-                <button onclick="hitLane(1)" class="flex-1 py-3 bg-slate-800 hover:bg-brand-pink rounded-xl font-bold active:scale-95 transition-all text-center">S</button>
-                <button onclick="hitLane(2)" class="flex-1 py-3 bg-slate-800 hover:bg-brand-cyan rounded-xl font-bold active:scale-95 transition-all text-center">D</button>
+
+            <div class="mt-4 text-center text-xs text-slate-400">
+                Move mouse/finger inside box to steer bucket. Click or press <b class="text-white">SPACEBAR</b> to drink saved milk (Doubles points per extra bucket drank at once & grants furniture invincibility)!
             </div>
-            <button onclick="startRhythmGame()" class="mt-6 px-8 py-3 rounded-full bg-gradient-to-r from-brand-purple to-brand-pink font-bold shadow-lg shadow-brand-purple/30 hover:scale-105 transition-transform">
-                Start Rhythm Game
-            </button>
         </div>
 
         <!-- GAME 2: SOUNDWAVE SNAKE -->
@@ -165,6 +164,8 @@
 
 <script src="script.js"></script>
 <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
     // Game Switcher logic
     function switchGame(gameKey) {
         document.querySelectorAll('.game-container').forEach(el => el.classList.add('hidden'));
@@ -177,57 +178,160 @@
         const activeTab = document.getElementById(`tab-${gameKey}`);
         activeTab.classList.remove('bg-slate-800', 'text-slate-400');
         activeTab.classList.add('bg-brand-purple', 'text-white');
-    }
 
-    // --- RHYTHM BEATS CODE ---
-    let rhythmScore = 0;
-    let rhythmInterval;
-    function startRhythmGame() {
-        rhythmScore = 0;
-        document.getElementById('rhythm-score').textContent = rhythmScore;
-        clearInterval(rhythmInterval);
-        rhythmInterval = setInterval(spawnNote, 800);
-    }
-
-    function spawnNote() {
-        const laneIndex = Math.floor(Math.random() * 3);
-        const lane = document.getElementById(`lane-${laneIndex}`);
-        const note = document.createElement('div');
-        note.className = 'absolute w-full h-6 rounded-full bg-gradient-to-r from-brand-purple to-brand-pink shadow-md shadow-brand-purple/50';
-        note.style.top = '0px';
-        lane.appendChild(note);
-
-        let pos = 0;
-        const anim = setInterval(() => {
-            pos += 4;
-            note.style.top = pos + 'px';
-            if (pos > 280) {
-                clearInterval(anim);
-                if (note.parentNode) note.parentNode.removeChild(note);
-            }
-        }, 20);
-    }
-
-    function hitLane(laneIdx) {
-        const lane = document.getElementById(`lane-${laneIdx}`);
-        const notes = lane.children;
-        if (notes.length > 0) {
-            const note = notes[0];
-            const top = parseInt(note.style.top);
-            if (top > 200 && top < 270) {
-                rhythmScore += 10;
-                document.getElementById('rhythm-score').textContent = rhythmScore;
-                lane.removeChild(note);
-            }
+        if (gameKey !== 'milk' && milkGameRunning) {
+            stopMilkGame();
         }
     }
 
-    // Keyboard support for Rhythm game
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'a' || e.key === 'A') hitLane(0);
-        if (e.key === 's' || e.key === 'S') hitLane(1);
-        if (e.key === 'd' || e.key === 'D') hitLane(2);
-    });
+    // --- MILK MAXER CODE ---
+    let milkScore = 0;
+    let savedMilkCount = 0;
+    let milkGameRunning = false;
+    let invincibilityFrames = 0;
+    let milkInterval, milkSpawner;
+    let playerX = 180;
+
+    function startMilkGame() {
+        const box = document.getElementById('milkGameBox');
+        milkScore = 0;
+        savedMilkCount = 0;
+        invincibilityFrames = 0;
+        milkGameRunning = true;
+        updateMilkUI();
+
+        box.innerHTML = `
+            <div id="playerBucket" style="position: absolute; bottom: 10px; left: ${playerX}px; width: 60px; height: 35px;" class="bg-amber-400 rounded-b-xl flex items-center justify-center text-slate-950 font-bold text-lg shadow-lg">🪣</div>
+        `;
+
+        box.onmousemove = (e) => {
+            if (!milkGameRunning) return;
+            const rect = box.getBoundingClientRect();
+            playerX = e.clientX - rect.left - 30;
+            if (playerX < 0) playerX = 0;
+            if (playerX > box.clientWidth - 60) playerX = box.clientWidth - 60;
+            const bucket = document.getElementById('playerBucket');
+            if (bucket) bucket.style.left = playerX + 'px';
+        };
+
+        box.onclick = () => drinkMilk();
+        window.onkeydown = (e) => {
+            if (e.code === 'Space' && milkGameRunning) {
+                e.preventDefault();
+                drinkMilk();
+            }
+        };
+
+        clearInterval(milkInterval);
+        clearInterval(milkSpawner);
+        milkInterval = setInterval(updateMilkGame, 20);
+        milkSpawner = setInterval(spawnMilkItem, 900);
+    }
+
+    function stopMilkGame() {
+        milkGameRunning = false;
+        clearInterval(milkInterval);
+        clearInterval(milkSpawner);
+        window.onkeydown = null;
+    }
+
+    function drinkMilk() {
+        if (savedMilkCount <= 0) return;
+        // 1 bucket = 1 pt. Extra buckets at once double points (1=1, 2=2, 3=4, 4=8)
+        let pointsEarned = savedMilkCount === 1 ? 1 : Math.pow(2, savedMilkCount - 1);
+        milkScore += pointsEarned;
+        invincibilityFrames = savedMilkCount * 80; // ~1.6 seconds per bucket of invincibility
+        savedMilkCount = 0;
+        updateMilkUI();
+    }
+
+    function spawnMilkItem() {
+        if (!milkGameRunning) return;
+        const box = document.getElementById('milkGameBox');
+        const isFurniture = Math.random() < 0.45; // 45% furniture, 55% milk bucket
+        const item = document.createElement('div');
+        item.className = isFurniture ? 'falling-furniture absolute text-2xl' : 'falling-milk absolute text-2xl';
+        item.style.top = '0px';
+        item.style.left = (Math.random() * (box.clientWidth - 30)) + 'px';
+        item.innerHTML = isFurniture ? '🪑' : '🥛';
+        item.dataset.type = isFurniture ? 'furniture' : 'milk';
+        box.appendChild(item);
+    }
+
+    function updateMilkGame() {
+        if (!milkGameRunning) return;
+        const box = document.getElementById('milkGameBox');
+        const bucket = document.getElementById('playerBucket');
+        if (!bucket) return;
+
+        if (invincibilityFrames > 0) invincibilityFrames--;
+        updateMilkUI();
+
+        const bucketRect = bucket.getBoundingClientRect();
+        const items = box.querySelectorAll('.falling-milk, .falling-furniture');
+
+        items.forEach(item => {
+            let top = parseFloat(item.style.top || 0);
+            item.style.top = (top + 4) + 'px';
+
+            const itemRect = item.getBoundingClientRect();
+
+            // Collision with bucket
+            if (
+                itemRect.bottom >= bucketRect.top &&
+                itemRect.top <= bucketRect.bottom &&
+                itemRect.right >= bucketRect.left &&
+                itemRect.left <= bucketRect.right
+            ) {
+                const type = item.dataset.type;
+                item.remove();
+
+                if (type === 'milk') {
+                    if (savedMilkCount < 4) {
+                        savedMilkCount++;
+                    } else {
+                        milkScore += 8; // Max stored bucket extra credit
+                    }
+                    updateMilkUI();
+                } else if (type === 'furniture') {
+                    if (invincibilityFrames <= 0) {
+                        milkGameOver();
+                    }
+                }
+            }
+
+            if (top > box.clientHeight) {
+                item.remove();
+            }
+        });
+    }
+
+    function updateMilkUI() {
+        document.getElementById('milk-score').textContent = milkScore;
+        document.getElementById('milk-count').textContent = savedMilkCount;
+        const statusEl = document.getElementById('milk-status');
+        if (invincibilityFrames > 0) {
+            statusEl.textContent = "INVINCIBLE 🛡️";
+            statusEl.className = "text-fuchsia-400 font-bold animate-pulse";
+        } else {
+            statusEl.textContent = "Normal";
+            statusEl.className = "text-emerald-400 font-bold";
+        }
+    }
+
+    function milkGameOver() {
+        stopMilkGame();
+        const box = document.getElementById('milkGameBox');
+        box.innerHTML = `
+            <div class="text-center p-4">
+                <h3 class="text-xl font-bold text-rose-500 mb-2">Oof! Crushed by Furniture!</h3>
+                <p class="text-slate-300 mb-4">Final Score: <strong class="text-white">${milkScore}</strong></p>
+                <button onclick="startMilkGame()" class="px-8 py-3 rounded-full bg-gradient-to-r from-brand-purple to-brand-pink font-bold shadow-lg hover:scale-105 transition-transform">
+                    Play Again
+                </button>
+            </div>
+        `;
+    }
 
     // --- SOUNDWAVE SNAKE CODE ---
     const canvas = document.getElementById('snakeCanvas');
